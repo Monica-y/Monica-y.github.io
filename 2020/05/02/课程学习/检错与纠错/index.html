@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>纠错与检错 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="纠错与检错笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="纠错与检错">
+<meta property="og:url" content="https://monica-y.github.io/2020/05/02/%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0/%E6%A3%80%E9%94%99%E4%B8%8E%E7%BA%A0%E9%94%99/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="纠错与检错笔记">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-05-02T09:14:15.230Z">
+<meta property="article:modified_time" content="2020-04-28T02:08:20.844Z">
+<meta property="article:author" content="Monica">
+<meta property="article:tag" content="计算机通信与网络">
+<meta property="article:tag" content="读书笔记">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://Monica-y.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-课程学习/检错与纠错" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/05/02/%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0/%E6%A3%80%E9%94%99%E4%B8%8E%E7%BA%A0%E9%94%99/" class="article-date">
+  <time datetime="2020-05-02T09:14:15.230Z" itemprop="datePublished">2020-05-02</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E9%80%9A%E4%BF%A1%E4%B8%8E%E7%BD%91%E7%BB%9C/">计算机通信与网络</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      纠错与检错
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="一、差错的类型"><a href="#一、差错的类型" class="headerlink" title="一、差错的类型"></a>一、差错的类型</h2><p>1、单个位差错：在给定的数据单元（例如一个字节、字符或是分组）中仅有一位发生从1到0或从0到1的变化。<br>2、突发性差错：在数据单元中有两位或是更多位发生1到0或0到1的变化。<br>注意：突发性差错并不意味着差错在连续位上出现。突发性差错的长度按从第一个差错位到最后一个差错位的长度计算。其间的某些位也可能未产生差错。</p>
+<h2 id="二、前向纠错和重传"><a href="#二、前向纠错和重传" class="headerlink" title="二、前向纠错和重传"></a>二、前向纠错和重传</h2><p>1、向前纠错：接收方通过使用冗余位尝试推测报文的方法。如果差错的个数很小，这是可能的。<br>2、重传：接收方检测出有差错发生并要求发送方重新发送报文的技术。</p>
+<h2 id="三、模运算"><a href="#三、模运算" class="headerlink" title="三、模运算"></a>三、模运算</h2><p>1、在模运算中，只使用有限范围中的正整数。它的上限称为模数N。然后使用0到N-1的正整数。<br>2、在模N系统中，如果数字大于N，则除以N并取余数。如果它是负数，需要加上N的倍数使其变为正整数。<br>3、模运算中的加法和减法是简单的。在同一列上的两个数字相加没有进位，在同一列上的两个数字相减没有借位。<br>4、XOR运算：如果两个位相同，XOR运算的结果是0；如果不同，则结果是1.</p>
+<h2 id="四、块编码"><a href="#四、块编码" class="headerlink" title="四、块编码"></a>四、块编码</h2><p>在块编码中，我们把报文划分成块，每个块有k位，称为数据字，并增加r个冗余位使其长度变为n = k + r,形成n位的块称为码字。</p>
+<h2 id="五、最小汉明距离"><a href="#五、最小汉明距离" class="headerlink" title="五、最小汉明距离"></a>五、最小汉明距离</h2><p>1、两个字的汉明距离是对应位不同的数量。对两个字进行异或操作并计算1的个数，就是汉明距离。<br>2、最小汉明距离是一组字中所有可能对的最小汉明距离。<br>3、三个参数：码字长度n，数据字长度k，最小汉明距离d(min)。<br>4、如果s个差错发生在传输中，发送的码字和接收到的码字间的汉明距离是s。如果我们的编码能检测出最多s个差错，那么两个有效编码间的最小汉明距离必须是s+1，这样接收到的码字才不会与有效码字匹配。<br>5、为了保证纠正所有情况下最多t个差错，块编码中的最小汉明距离d(min) = 2t + 1。</p>
+<h2 id="六、线性块编码"><a href="#六、线性块编码" class="headerlink" title="六、线性块编码"></a>六、线性块编码</h2><p>1、在线性块编码中，任两个有效码字的异或(XOR)生成另一个有效码字。<br>2、线性编码的最小汉明距离是具有最少1的个数的非0有效码字中1的个数。<br>3、简单奇偶校验码(码字中1的个数是偶数的情况)：n = k + 1、d(min) = 2的单个位检错编码，它不能纠正任何差错。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://monica-y.github.io/2020/05/02/%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0/%E6%A3%80%E9%94%99%E4%B8%8E%E7%BA%A0%E9%94%99/" data-id="ck9peucib0007z0u9hy764cym" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E9%80%9A%E4%BF%A1%E4%B8%8E%E7%BD%91%E7%BB%9C/" rel="tag">计算机通信与网络</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" rel="tag">读书笔记</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/05/02/%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0/%E4%BD%BF%E7%94%A8%E7%94%B5%E8%AF%9D%E7%BD%91%E5%92%8C%E6%9C%89%E7%BA%BF%E7%94%B5%E8%A7%86%E7%BD%91%E8%BF%9B%E8%A1%8C%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          使用电话网和有线电视网进行数据传输
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/05/02/%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0/%E4%BC%A0%E8%BE%93%E4%BB%8B%E8%B4%A8/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">传输介质</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/C/">C++</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B4%9B%E8%B0%B7/">洛谷</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E9%80%9A%E4%BF%A1%E4%B8%8E%E7%BD%91%E7%BB%9C/">计算机通信与网络</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%B9%E5%99%A8%E7%B1%BBmap%E7%9A%84%E4%BD%BF%E7%94%A8/" rel="tag">容器类map的使用</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E9%80%9A%E4%BF%A1%E4%B8%8E%E7%BD%91%E7%BB%9C/" rel="tag">计算机通信与网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" rel="tag">读书笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/" rel="tag">贪心算法</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/C/" style="font-size: 10px;">C++</a> <a href="/tags/%E5%AE%B9%E5%99%A8%E7%B1%BBmap%E7%9A%84%E4%BD%BF%E7%94%A8/" style="font-size: 10px;">容器类map的使用</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E9%80%9A%E4%BF%A1%E4%B8%8E%E7%BD%91%E7%BB%9C/" style="font-size: 20px;">计算机通信与网络</a> <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" style="font-size: 20px;">读书笔记</a> <a href="/tags/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/" style="font-size: 10px;">贪心算法</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/05/02/%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0/%E4%BD%BF%E7%94%A8%E7%94%B5%E8%AF%9D%E7%BD%91%E5%92%8C%E6%9C%89%E7%BA%BF%E7%94%B5%E8%A7%86%E7%BD%91%E8%BF%9B%E8%A1%8C%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93/">使用电话网和有线电视网进行数据传输</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/02/%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0/%E6%A3%80%E9%94%99%E4%B8%8E%E7%BA%A0%E9%94%99/">纠错与检错</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/02/%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0/%E4%BC%A0%E8%BE%93%E4%BB%8B%E8%B4%A8/">传输介质</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/02/%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0/%E6%A3%80%E9%94%99%E4%B8%8E%E7%BA%A0%E9%94%99%E6%9C%80%E6%96%B0%E7%89%88/">课程学习/检错与纠错最新版</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/02/%E7%BC%96%E7%A8%8B/C++/">C++中指针栈模板的建立</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Monica<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
