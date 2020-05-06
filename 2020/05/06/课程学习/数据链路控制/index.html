@@ -20,20 +20,21 @@
     var CONFIG = {"hostname":"monica-y.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="洛谷贪心算法例题">
+  <meta name="description" content="数据链路控制读书笔记">
 <meta property="og:type" content="article">
-<meta property="og:title" content="洛谷 P5019 铺设道路">
-<meta property="og:url" content="https://monica-y.github.io/2020/05/02/%E7%BC%96%E7%A8%8B/%E6%B4%9B%E8%B0%B7%E9%94%99%E9%A2%98%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/index.html">
+<meta property="og:title" content="数据链路控制">
+<meta property="og:url" content="https://monica-y.github.io/2020/05/06/%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0/%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E6%8E%A7%E5%88%B6/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="洛谷贪心算法例题">
+<meta property="og:description" content="数据链路控制读书笔记">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-05-02T09:13:56.066Z">
-<meta property="article:modified_time" content="2020-04-18T11:38:19.158Z">
+<meta property="article:published_time" content="2020-05-06T03:32:00.388Z">
+<meta property="article:modified_time" content="2020-05-06T09:34:49.711Z">
 <meta property="article:author" content="Monica">
-<meta property="article:tag" content="贪心算法">
+<meta property="article:tag" content="计算机通信与网络">
+<meta property="article:tag" content="读书笔记">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://monica-y.github.io/2020/05/02/%E7%BC%96%E7%A8%8B/%E6%B4%9B%E8%B0%B7%E9%94%99%E9%A2%98%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/">
+<link rel="canonical" href="https://monica-y.github.io/2020/05/06/%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0/%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E6%8E%A7%E5%88%B6/">
 
 
 <script id="page-configurations">
@@ -46,7 +47,7 @@
   };
 </script>
 
-  <title>洛谷 P5019 铺设道路 | Hexo</title>
+  <title>数据链路控制 | Hexo</title>
   
 
 
@@ -161,7 +162,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://monica-y.github.io/2020/05/02/%E7%BC%96%E7%A8%8B/%E6%B4%9B%E8%B0%B7%E9%94%99%E9%A2%98%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/">
+    <link itemprop="mainEntityOfPage" href="https://monica-y.github.io/2020/05/06/%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0/%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E6%8E%A7%E5%88%B6/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -174,7 +175,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          洛谷 P5019 铺设道路
+          数据链路控制
         </h1>
 
         <div class="post-meta">
@@ -183,28 +184,22 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2020-05-02 17:13:56" itemprop="dateCreated datePublished" datetime="2020-05-02T17:13:56+08:00">2020-05-02</time>
+              <time title="创建时间：2020-05-06 11:32:00 / 修改时间：17:34:49" itemprop="dateCreated datePublished" datetime="2020-05-06T11:32:00+08:00">2020-05-06</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-04-18 19:38:19" itemprop="dateModified" datetime="2020-04-18T19:38:19+08:00">2020-04-18</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%B4%9B%E8%B0%B7/" itemprop="url" rel="index"><span itemprop="name">洛谷</span></a>
+                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E9%80%9A%E4%BF%A1%E4%B8%8E%E7%BD%91%E7%BB%9C/" itemprop="url" rel="index"><span itemprop="name">计算机通信与网络</span></a>
                 </span>
             </span>
 
           
-            <div class="post-description">洛谷贪心算法例题</div>
+            <div class="post-description">数据链路控制读书笔记</div>
 
         </div>
       </header>
@@ -215,10 +210,11 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>有一条长度为n的道路，可以看作是n块首尾相连的区域，一开始，第i块区域下陷深度为d[i]。每天可以选择一段连续区间[L,R],填充这段区间中的每块区域，让其下陷深度减少1。在选择区间时，需要保证，区间内的每块区域在填充前下陷深度均不为零。求所需的最少天数。<a href="https://www.luogu.com.cn/problem/P5019" target="_blank" rel="noopener">原题</a></p>
-<h2 id="借鉴的思路"><a href="#借鉴的思路" class="headerlink" title="借鉴的思路"></a>借鉴的思路</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#include&lt;iostream&gt;</span></span><br><span class="line">using namespace std;</span><br><span class="line">int longth;</span><br><span class="line">int road[100005] = &#123; 0 &#125;;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line"> int days = 0;</span><br><span class="line"> cin &gt;&gt; longth;</span><br><span class="line"> <span class="keyword">for</span> (int i = 1; i &lt;= longth; i++)</span><br><span class="line"> &#123;</span><br><span class="line">  cin &gt;&gt; road[i];</span><br><span class="line"> &#125;//输入每一段的下陷深度</span><br><span class="line"> <span class="keyword">for</span> (int i = 1; i &lt;= longth; i++)</span><br><span class="line">    //注意循环的起始点，因为<span class="keyword">if</span>语句里总是将当前项与前一项比较，所以定义road[0] = 0是为了使得road[1]被纳入计算days的范围</span><br><span class="line"> &#123;</span><br><span class="line">  <span class="keyword">if</span> (road[i] &gt; road[i - 1])</span><br><span class="line">        //进行比较，如果后面的坑比前面的深，则在填较深的那个的时候与它相邻的那个总会捎带一起填平，所以就不需要去专门填较浅的坑</span><br><span class="line">  &#123;</span><br><span class="line">   days = road[i] - road[i - 1]+days;</span><br><span class="line">            //这里是计算出大坑相对于小坑多花的天数，如果向后遍历一直是小坑，则不需要计入天数，因为小坑总是会被与它相邻的大坑捎带填平</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line"> &#125;</span><br><span class="line"> cout &lt;&lt; days &lt;&lt; endl;</span><br><span class="line"> <span class="built_in">return</span> 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="我的思路"><a href="#我的思路" class="headerlink" title="我的思路"></a>我的思路</h2><p>不管采用什么样的顺序，最深的坑总是最花费最多的天数才能被填满，所以每一次总是当前从最深的坑下手，然后以当前最深的坑为起点，向前向后遍历寻找符合要求的最长填坑区间，找出区间后将对应区间的坑深度减一。思路是没有漏洞的，但是洛谷提交后三个点会超时，在千方百计优化以后，仍然会超时，是思路及本身时间复杂度的问题。就是想不到题解的思路，只有七十分，果然模拟不能AC这道题。</p>
+        <p>数据链路层的两个主要功能是数据链路控制和介质访问控制。数据链路控制的功能是处理两个临近节点之间通信。这个功能的主要职能是流量控制和差错控制。介质访问控制是控制如何共享链路。<br>数据链路控制的功能包括成帧、流量控制和差错控制，以及能提供帧在节点之间流畅且可靠传输的软件实现协议。</p>
+<h2 id="一、成帧"><a href="#一、成帧" class="headerlink" title="一、成帧"></a>一、成帧</h2><p>1、固定长度成帧<br>2、可变长度成帧（以下讨论内容均是对此分类而言）<br>3、面向字符协议<br>（1）在面向字符协议中，数据用来自ASCII编码系统的八位字符传输。头部通常携带源端地址和目的端地址以及其他控制信息，而尾部携带检错或纠错冗余位，也是8位的倍数。为了将一个帧与下一个分离开来，在帧的开始和结束增加了8位（1字节）的标记。<br>（2）标记的选择使用字节填充策略，字节填充（或字符填充）是指如果存在与标记相同模式的字符的话，便在帧的数据部分填入一个特殊的字节。数据段被填入一个额外的字节，这个字节通常称为转义字符，它有预定义的位模式。当接收方遇到转义字符时，便会将它从数据段移走，并仍将下一字符作为数据处理，而不是当作分界的标记。同时，作为文本一部分的转义字符必须能被另一个转义字符标注。换言之，如果转义字符时文本的一部分，那么要增加额外的转义字符来表明第二个转义字符时文本的一部分。<br>（3）和如今广泛应用的编码系统，例如Unicode有16位和32位字符，就会与8位字符的面向字符协议产生冲突。所以面向位协议将是大势所趋。<br>4、面向位协议<br>（1）在面向位协议中，帧的数据段是一个可变长的位的序列。多数协议使用一个特殊的8位模式的标记01111110作为分隔符来标明帧的开始和结束。<br>（2）位填充是指在遇到1个0后面紧跟着5个1时便添加一个0的过程，使得接收方不会误认0111110是一个标记。当碰到在5个1以后如果是0，仍然填充0，这个0将会被接收方移走。这就意味着如果有类似标记的模式01111110出现在数据中时，它会变成011111010（填充后），而不会被接收方误认为是一个标记。而真正的标记01111110是不会被发送方填充的，故而能被接收方正确地确认。</p>
+<h2 id="二、流量控制"><a href="#二、流量控制" class="headerlink" title="二、流量控制"></a>二、流量控制</h2><p>每个接收设备都有一块存储区，称之为缓冲区，存储进入的数据直到它们被处理。如果缓冲区也装满了，接收方必须能告知发送方停止传输直到它能够再次接收为止。</p>
+<h2 id="三、差错控制"><a href="#三、差错控制" class="headerlink" title="三、差错控制"></a>三、差错控制</h2><p>在数据链路层，差错控制通常指差错检测和重传的方法。数据链路层的差错控制基于自动重复请求，即重传数据。</p>
+<h2 id="四、无噪声通道协议"><a href="#四、无噪声通道协议" class="headerlink" title="四、无噪声通道协议"></a>四、无噪声通道协议</h2><p>1、ACK是确认帧，NAK是否定确认帧。</p>
 
     </div>
 
@@ -228,7 +224,8 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/" rel="tag"># 贪心算法</a>
+              <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E9%80%9A%E4%BF%A1%E4%B8%8E%E7%BD%91%E7%BB%9C/" rel="tag"># 计算机通信与网络</a>
+              <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" rel="tag"># 读书笔记</a>
           </div>
 
         
@@ -237,13 +234,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/05/02/%E7%BC%96%E7%A8%8B/C++/" rel="prev" title="C++中指针栈模板的建立">
-      <i class="fa fa-chevron-left"></i> C++中指针栈模板的建立
+    <a href="/2020/05/02/%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0/%E4%BC%A0%E8%BE%93%E4%BB%8B%E8%B4%A8/" rel="prev" title="传输介质">
+      <i class="fa fa-chevron-left"></i> 传输介质
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2020/05/02/%E7%BC%96%E7%A8%8B/%E6%B4%9B%E8%B0%B7%E9%94%99%E9%A2%98%E4%BD%BF%E7%94%A8map/" rel="next" title="洛谷 P1102 A-B 数对">
-      洛谷 P1102 A-B 数对 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -302,7 +296,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#借鉴的思路"><span class="nav-number">1.</span> <span class="nav-text">借鉴的思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#我的思路"><span class="nav-number">2.</span> <span class="nav-text">我的思路</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、成帧"><span class="nav-number">1.</span> <span class="nav-text">一、成帧</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、流量控制"><span class="nav-number">2.</span> <span class="nav-text">二、流量控制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、差错控制"><span class="nav-number">3.</span> <span class="nav-text">三、差错控制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、无噪声通道协议"><span class="nav-number">4.</span> <span class="nav-text">四、无噪声通道协议</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
