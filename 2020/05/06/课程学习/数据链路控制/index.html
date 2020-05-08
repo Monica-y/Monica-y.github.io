@@ -28,7 +28,7 @@
 <meta property="og:description" content="数据链路控制读书笔记">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-05-06T03:32:00.388Z">
-<meta property="article:modified_time" content="2020-05-06T09:34:49.711Z">
+<meta property="article:modified_time" content="2020-05-08T13:33:19.585Z">
 <meta property="article:author" content="Monica">
 <meta property="article:tag" content="计算机通信与网络">
 <meta property="article:tag" content="读书笔记">
@@ -184,10 +184,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-05-06 11:32:00 / 修改时间：17:34:49" itemprop="dateCreated datePublished" datetime="2020-05-06T11:32:00+08:00">2020-05-06</time>
+              <time title="创建时间：2020-05-06 11:32:00" itemprop="dateCreated datePublished" datetime="2020-05-06T11:32:00+08:00">2020-05-06</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-05-08 21:33:19" itemprop="dateModified" datetime="2020-05-08T21:33:19+08:00">2020-05-08</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -214,7 +220,9 @@
 <h2 id="一、成帧"><a href="#一、成帧" class="headerlink" title="一、成帧"></a>一、成帧</h2><p>1、固定长度成帧<br>2、可变长度成帧（以下讨论内容均是对此分类而言）<br>3、面向字符协议<br>（1）在面向字符协议中，数据用来自ASCII编码系统的八位字符传输。头部通常携带源端地址和目的端地址以及其他控制信息，而尾部携带检错或纠错冗余位，也是8位的倍数。为了将一个帧与下一个分离开来，在帧的开始和结束增加了8位（1字节）的标记。<br>（2）标记的选择使用字节填充策略，字节填充（或字符填充）是指如果存在与标记相同模式的字符的话，便在帧的数据部分填入一个特殊的字节。数据段被填入一个额外的字节，这个字节通常称为转义字符，它有预定义的位模式。当接收方遇到转义字符时，便会将它从数据段移走，并仍将下一字符作为数据处理，而不是当作分界的标记。同时，作为文本一部分的转义字符必须能被另一个转义字符标注。换言之，如果转义字符时文本的一部分，那么要增加额外的转义字符来表明第二个转义字符时文本的一部分。<br>（3）和如今广泛应用的编码系统，例如Unicode有16位和32位字符，就会与8位字符的面向字符协议产生冲突。所以面向位协议将是大势所趋。<br>4、面向位协议<br>（1）在面向位协议中，帧的数据段是一个可变长的位的序列。多数协议使用一个特殊的8位模式的标记01111110作为分隔符来标明帧的开始和结束。<br>（2）位填充是指在遇到1个0后面紧跟着5个1时便添加一个0的过程，使得接收方不会误认0111110是一个标记。当碰到在5个1以后如果是0，仍然填充0，这个0将会被接收方移走。这就意味着如果有类似标记的模式01111110出现在数据中时，它会变成011111010（填充后），而不会被接收方误认为是一个标记。而真正的标记01111110是不会被发送方填充的，故而能被接收方正确地确认。</p>
 <h2 id="二、流量控制"><a href="#二、流量控制" class="headerlink" title="二、流量控制"></a>二、流量控制</h2><p>每个接收设备都有一块存储区，称之为缓冲区，存储进入的数据直到它们被处理。如果缓冲区也装满了，接收方必须能告知发送方停止传输直到它能够再次接收为止。</p>
 <h2 id="三、差错控制"><a href="#三、差错控制" class="headerlink" title="三、差错控制"></a>三、差错控制</h2><p>在数据链路层，差错控制通常指差错检测和重传的方法。数据链路层的差错控制基于自动重复请求，即重传数据。</p>
-<h2 id="四、无噪声通道协议"><a href="#四、无噪声通道协议" class="headerlink" title="四、无噪声通道协议"></a>四、无噪声通道协议</h2><p>1、ACK是确认帧，NAK是否定确认帧。</p>
+<h2 id="四、无噪声通道协议"><a href="#四、无噪声通道协议" class="headerlink" title="四、无噪声通道协议"></a>四、无噪声通道协议</h2><h3 id="最简单的协议"><a href="#最简单的协议" class="headerlink" title="最简单的协议"></a>最简单的协议</h3><p>1、ACK是确认帧，NAK是否定确认帧。<br>2、发送方数据链路层的程序不断地运行着，直到有来自网络层的请求才会有行为。接收方数据链路层的程序也不断地运行着，直到有来自物理层的通知才会有行为。两端的程序都在不断地运行，因为它们不知道相关事件何时发生。</p>
+<h3 id="停止等待协议"><a href="#停止等待协议" class="headerlink" title="停止等待协议"></a>停止等待协议</h3><p>1、当发送方发出一个帧后必须停下来直到接收到来自接收方的确认，然后再发送一个帧。与上一个协议相比，这个协议里加入了流量控制。<br>2、需要一个半双工的链路来实现。<br>3、在这个协议中发送方会发生两个事件：来自网络层的请求或来自物理层的通知。对这些事件的响应必须是交替的。换言之，当发送一个帧后，算法必须忽略另一个网络层的请求直到该帧被确认。</p>
+<h2 id="五、有噪声通道"><a href="#五、有噪声通道" class="headerlink" title="五、有噪声通道"></a>五、有噪声通道</h2><h3 id="停止等待自动重复请求-Stop-and-Wait-ARQ"><a href="#停止等待自动重复请求-Stop-and-Wait-ARQ" class="headerlink" title="停止等待自动重复请求(Stop-and-Wait ARQ)"></a>停止等待自动重复请求(Stop-and-Wait ARQ)</h3><p>1、为了检测和纠正被损坏的帧，我们需要给数据帧加上冗余的位。当帧到达接收方站点时，它被检测，如果它被损坏了，它会被无声地丢弃。<br>2、发送方保留已发送帧的副本。与此同时，它启动一个定时器。如果定时器到时间没有收到已发送帧的ACK，就要重发该帧，保留副本并重启定时器。<br>3、既然一个ACK帧同样会被损坏或丢弃，它也需要冗余位和一个序列号。</p>
 
     </div>
 
@@ -296,7 +304,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、成帧"><span class="nav-number">1.</span> <span class="nav-text">一、成帧</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、流量控制"><span class="nav-number">2.</span> <span class="nav-text">二、流量控制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、差错控制"><span class="nav-number">3.</span> <span class="nav-text">三、差错控制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、无噪声通道协议"><span class="nav-number">4.</span> <span class="nav-text">四、无噪声通道协议</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、成帧"><span class="nav-number">1.</span> <span class="nav-text">一、成帧</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、流量控制"><span class="nav-number">2.</span> <span class="nav-text">二、流量控制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、差错控制"><span class="nav-number">3.</span> <span class="nav-text">三、差错控制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、无噪声通道协议"><span class="nav-number">4.</span> <span class="nav-text">四、无噪声通道协议</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#最简单的协议"><span class="nav-number">4.1.</span> <span class="nav-text">最简单的协议</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#停止等待协议"><span class="nav-number">4.2.</span> <span class="nav-text">停止等待协议</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#五、有噪声通道"><span class="nav-number">5.</span> <span class="nav-text">五、有噪声通道</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#停止等待自动重复请求-Stop-and-Wait-ARQ"><span class="nav-number">5.1.</span> <span class="nav-text">停止等待自动重复请求(Stop-and-Wait ARQ)</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
