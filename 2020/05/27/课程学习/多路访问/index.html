@@ -29,7 +29,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://monica-y.github.io/2020/05/27/%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0/%E5%A4%9A%E8%B7%AF%E8%AE%BF%E9%97%AE/assets/%E6%9C%AC%E7%AB%A0%E8%AE%A8%E8%AE%BA%E7%9A%84%E5%A4%9A%E8%B7%AF%E8%AE%BF%E9%97%AE%E5%8D%8F%E8%AE%AE%E7%9A%84%E5%88%86%E7%B1%BB.png">
 <meta property="article:published_time" content="2020-05-27T12:56:29.564Z">
-<meta property="article:modified_time" content="2020-05-27T14:30:12.191Z">
+<meta property="article:modified_time" content="2020-05-28T08:04:00.330Z">
 <meta property="article:author" content="Monica">
 <meta property="article:tag" content="计算机通信与网络">
 <meta property="article:tag" content="读书笔记">
@@ -186,10 +186,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-05-27 20:56:29 / 修改时间：22:30:12" itemprop="dateCreated datePublished" datetime="2020-05-27T20:56:29+08:00">2020-05-27</time>
+              <time title="创建时间：2020-05-27 20:56:29" itemprop="dateCreated datePublished" datetime="2020-05-27T20:56:29+08:00">2020-05-27</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-05-28 16:04:00" itemprop="dateModified" datetime="2020-05-28T16:04:00+08:00">2020-05-28</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -215,7 +221,11 @@
         <h2 id="序"><a href="#序" class="headerlink" title="序"></a>序</h2><p>我们认为数据链路层有两个子层。上子层负责数据链路控制，下子层负责解决对共享介质的访问。如果通道是专用的，我们并不需要下子层。IEEE确实为LAN做了如此的分割，上子层负责流量控制和差错控制，被称为逻辑链路控制层（LLC）；下子层主要负责多路访问的解决方法，被称为介质访问控制层（MAC）。<br><img src="./assets/%E6%9C%AC%E7%AB%A0%E8%AE%A8%E8%AE%BA%E7%9A%84%E5%A4%9A%E8%B7%AF%E8%AE%BF%E9%97%AE%E5%8D%8F%E8%AE%AE%E7%9A%84%E5%88%86%E7%B1%BB.png" alt="本章讨论的多路访问协议的分类"></p>
 <h2 id="一、随机访问-random-access"><a href="#一、随机访问-random-access" class="headerlink" title="一、随机访问(random access)"></a>一、随机访问(random access)</h2><p>在随机访问或竞争访问方法中，没有任何站点时优于其他站点的，也没有任何站点能控制其他站点。一个站点没有权利允许或者不允许另一个站点的发送。每一次，当一个站点要发送数据时，都要用协议定义的程序来决定是否要发送。这个决定取决于介质的状态（空闲或忙碌），所以这个方法叫做随机访问。换言之，只要遵循预定义的程序，包括介质状态的检测，满足条件的每一个站点都能传输数据，所以这个方法又叫竞争访问。</p>
 <h2 id="二、ALOHA"><a href="#二、ALOHA" class="headerlink" title="二、ALOHA"></a>二、ALOHA</h2><p>1、ALOHA使用一个十分简单的程序称为多路访问(multiple access,MA)。而在本章中主要使用的方法时外加一种程序（就是在站点传送之前要对介质进行侦听）改进而来。它称为载波侦听多路访问(CSMA)。该方法后来又演化为两个并行的方法：带冲突检测的载波侦听多路访问(carrier sense multiple access with collision detection,CSMA/CD)和带避免冲突的载波侦听多路访问(carrier sense multiple access with collision avoidance,CSMA/CA)。CSMA/CD告诉站点一旦检测到冲突，下一步该做什么，而CSMA/CA尝试如何避免冲突。</p>
-<h3 id="纯ALOHA"><a href="#纯ALOHA" class="headerlink" title="纯ALOHA"></a>纯ALOHA</h3><p>1、纯ALOHA指定超时后，每个站点在重发帧之前都会随机等待一段时间。这个随机事件有助于避免更多的冲突。我们称这个时间为补偿时间TB。<br>2、纯ALOHA还需要第二个方法来阻止重新传输的帧造成通道拥堵。一个站点在经过最大次数(Kmax)的重发尝试后，它必须放弃并在以后再试。<br>3、超时周期等于往返传输延迟的最大可能值，也就是连个最远距离站点之间发送一个帧所需时间的两倍（2<em>Tp）,也就是一个往返。<br>4、补偿时间TB是一个随机值，主要取决于K（未成功的传输尝试次数）的值。TB的通用公式是二进制指数回退。每一次传输随机选择0到2^k-1范围内的一个数，该数乘以Tp（传输的最长时间）或乘以Tfr（一个帧的平均传输时间）得到TB的值。Kmax的常用值是15。<br>5、脆弱时间是可能发生冲突时间的长短，在纯ALOHA中它为2</em>Tfr（一个帧的平均传输时间）。这就意味着在该站点开始传输前1毫秒，没有站点会开始传输，并且当该站点正在传输的1毫秒期间也没有站点会开始传输（都是为了避免冲突吧）。<br>6、吞吐量：若G为一个帧传输时间内系统产生的帧的平均数量。纯ALOHA的吞吐量是s = G*e^(-2G),当G= 1/2时（即只有一个站点在脆弱时间内只产生一个帧），最大吞吐量Smax = 0.184。</p>
+<h3 id="纯ALOHA"><a href="#纯ALOHA" class="headerlink" title="纯ALOHA"></a>纯ALOHA</h3><p>1、纯ALOHA指定超时后，每个站点在重发帧之前都会随机等待一段时间。这个随机事件有助于避免更多的冲突。我们称这个时间为补偿时间TB。<br>2、纯ALOHA还需要第二个方法来阻止重新传输的帧造成通道拥堵。一个站点在经过最大次数(Kmax)的重发尝试后，它必须放弃并在以后再试。<br>3、超时周期等于往返传输延迟的最大可能值，也就是连个最远距离站点之间发送一个帧所需时间的两倍（2<em>Tp）,也就是一个往返。<br>4、补偿时间TB是一个随机值，主要取决于K（未成功的传输尝试次数）的值。TB的通用公式是二进制指数回退。每一次传输随机选择0到2^k-1范围内的一个数，该数乘以Tp（传输的最长时间）或乘以Tfr（一个帧的平均传输时间）得到TB的值。Kmax的常用值是15。<br>5、脆弱时间是可能发生冲突时间的长短，在纯ALOHA中它为2</em>Tfr（一个帧的平均传输时间）。这就意味着在该站点开始传输前1毫秒，没有站点会开始传输，并且当该站点正在传输的1毫秒期间也没有站点会开始传输（都是为了避免冲突吧）。<br>6、吞吐量：若G为一个帧传输时间内系统产生的帧的平均数量。纯ALOHA的吞吐量是S = G*e^(-2G),当G= 1/2时（即只有一个站点在脆弱时间内只产生一个帧），最大吞吐量Smax = 0.184。</p>
+<h3 id="时隙ALOHA"><a href="#时隙ALOHA" class="headerlink" title="时隙ALOHA"></a>时隙ALOHA</h3><p>1、时隙ALOHA(slotted ALOHA)中，我们把时间分割成Tfr秒的时隙，并强制站点只有再时隙开始之时才能发送。<br>2、时隙ALOHA的脆弱时间为Tfr。<br>3、时隙ALOHA的吞吐量是S = G*e^(-G)。当G= 1（即只有一个站点在脆弱时间内只产生一个帧）时，最大吞吐量Smax = 0.368。</p>
+<h2 id="三、载波侦听多路访问（CSMA）"><a href="#三、载波侦听多路访问（CSMA）" class="headerlink" title="三、载波侦听多路访问（CSMA）"></a>三、载波侦听多路访问（CSMA）</h2><p>1、载波侦听多路访问要求每一个站点在发送之前首先要监听介质（或者检查介质的状态）。<br>2、CSMA的脆弱时间是传播时间Tp。当一个站点发送一个帧，且其他站点也试图在这个时间段内发送帧时，就会发生冲突。但是，如果第一个帧已经到达了介质的末端，其他每个站点都能“听到”这个位，并停止发送，就不会冲突了。</p>
+<h3 id="等待方法"><a href="#等待方法" class="headerlink" title="等待方法"></a>等待方法</h3><p>1、1-持续方法(1-persistent method)是最简单直接的。该方法是如果站点发现了链路空闲，那么它就立即发送帧（概率是1）。以太网使用该方法<br>2、非持续方法(nonpersistent method)中，要发送帧的站点监听线路，如果线路不空闲，站点就等待一个随机时间，然后再次侦听线路。减少了冲突概率但却会降低网络的效率。<br>3、p-持续方法(p-persistent method)中，当链路空闲时，有p的概率会发送帧，有1-p的概率会等待下一个时隙的开始并再次检查线路。</p>
+<h2 id="四、带冲突检测的载波侦听多路访问-CSMA-CD"><a href="#四、带冲突检测的载波侦听多路访问-CSMA-CD" class="headerlink" title="四、带冲突检测的载波侦听多路访问(CSMA/CD)"></a>四、带冲突检测的载波侦听多路访问(CSMA/CD)</h2><p>1、CSMA方法没有规定冲突之后的处理程序，带冲突检测的载波侦听多路访问（CSMA/CD）提出了处理冲突的方法。<br>2、在这一方法中，任意站点都可以发送帧，然后就监听介质看传送是否成功。如果不成功，说明存在冲突，需要重新发送此帧。</p>
 
     </div>
 
@@ -297,7 +307,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#序"><span class="nav-number">1.</span> <span class="nav-text">序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一、随机访问-random-access"><span class="nav-number">2.</span> <span class="nav-text">一、随机访问(random access)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、ALOHA"><span class="nav-number">3.</span> <span class="nav-text">二、ALOHA</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#纯ALOHA"><span class="nav-number">3.1.</span> <span class="nav-text">纯ALOHA</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#序"><span class="nav-number">1.</span> <span class="nav-text">序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一、随机访问-random-access"><span class="nav-number">2.</span> <span class="nav-text">一、随机访问(random access)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、ALOHA"><span class="nav-number">3.</span> <span class="nav-text">二、ALOHA</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#纯ALOHA"><span class="nav-number">3.1.</span> <span class="nav-text">纯ALOHA</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#时隙ALOHA"><span class="nav-number">3.2.</span> <span class="nav-text">时隙ALOHA</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、载波侦听多路访问（CSMA）"><span class="nav-number">4.</span> <span class="nav-text">三、载波侦听多路访问（CSMA）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#等待方法"><span class="nav-number">4.1.</span> <span class="nav-text">等待方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、带冲突检测的载波侦听多路访问-CSMA-CD"><span class="nav-number">5.</span> <span class="nav-text">四、带冲突检测的载波侦听多路访问(CSMA&#x2F;CD)</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
