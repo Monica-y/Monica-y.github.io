@@ -29,7 +29,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://monica-y.github.io/2020/05/27/%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0/%E5%A4%9A%E8%B7%AF%E8%AE%BF%E9%97%AE/assets/%E6%9C%AC%E7%AB%A0%E8%AE%A8%E8%AE%BA%E7%9A%84%E5%A4%9A%E8%B7%AF%E8%AE%BF%E9%97%AE%E5%8D%8F%E8%AE%AE%E7%9A%84%E5%88%86%E7%B1%BB.png">
 <meta property="article:published_time" content="2020-05-27T12:56:29.564Z">
-<meta property="article:modified_time" content="2020-05-28T08:04:00.330Z">
+<meta property="article:modified_time" content="2020-05-30T03:07:29.949Z">
 <meta property="article:author" content="Monica">
 <meta property="article:tag" content="计算机通信与网络">
 <meta property="article:tag" content="读书笔记">
@@ -194,7 +194,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-05-28 16:04:00" itemprop="dateModified" datetime="2020-05-28T16:04:00+08:00">2020-05-28</time>
+                <time title="修改时间：2020-05-30 11:07:29" itemprop="dateModified" datetime="2020-05-30T11:07:29+08:00">2020-05-30</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -225,7 +225,10 @@
 <h3 id="时隙ALOHA"><a href="#时隙ALOHA" class="headerlink" title="时隙ALOHA"></a>时隙ALOHA</h3><p>1、时隙ALOHA(slotted ALOHA)中，我们把时间分割成Tfr秒的时隙，并强制站点只有再时隙开始之时才能发送。<br>2、时隙ALOHA的脆弱时间为Tfr。<br>3、时隙ALOHA的吞吐量是S = G*e^(-G)。当G= 1（即只有一个站点在脆弱时间内只产生一个帧）时，最大吞吐量Smax = 0.368。</p>
 <h2 id="三、载波侦听多路访问（CSMA）"><a href="#三、载波侦听多路访问（CSMA）" class="headerlink" title="三、载波侦听多路访问（CSMA）"></a>三、载波侦听多路访问（CSMA）</h2><p>1、载波侦听多路访问要求每一个站点在发送之前首先要监听介质（或者检查介质的状态）。<br>2、CSMA的脆弱时间是传播时间Tp。当一个站点发送一个帧，且其他站点也试图在这个时间段内发送帧时，就会发生冲突。但是，如果第一个帧已经到达了介质的末端，其他每个站点都能“听到”这个位，并停止发送，就不会冲突了。</p>
 <h3 id="等待方法"><a href="#等待方法" class="headerlink" title="等待方法"></a>等待方法</h3><p>1、1-持续方法(1-persistent method)是最简单直接的。该方法是如果站点发现了链路空闲，那么它就立即发送帧（概率是1）。以太网使用该方法<br>2、非持续方法(nonpersistent method)中，要发送帧的站点监听线路，如果线路不空闲，站点就等待一个随机时间，然后再次侦听线路。减少了冲突概率但却会降低网络的效率。<br>3、p-持续方法(p-persistent method)中，当链路空闲时，有p的概率会发送帧，有1-p的概率会等待下一个时隙的开始并再次检查线路。</p>
-<h2 id="四、带冲突检测的载波侦听多路访问-CSMA-CD"><a href="#四、带冲突检测的载波侦听多路访问-CSMA-CD" class="headerlink" title="四、带冲突检测的载波侦听多路访问(CSMA/CD)"></a>四、带冲突检测的载波侦听多路访问(CSMA/CD)</h2><p>1、CSMA方法没有规定冲突之后的处理程序，带冲突检测的载波侦听多路访问（CSMA/CD）提出了处理冲突的方法。<br>2、在这一方法中，任意站点都可以发送帧，然后就监听介质看传送是否成功。如果不成功，说明存在冲突，需要重新发送此帧。</p>
+<h2 id="四、带冲突检测的载波侦听多路访问-CSMA-CD"><a href="#四、带冲突检测的载波侦听多路访问-CSMA-CD" class="headerlink" title="四、带冲突检测的载波侦听多路访问(CSMA/CD)"></a>四、带冲突检测的载波侦听多路访问(CSMA/CD)</h2><p>1、CSMA方法没有规定冲突之后的处理程序，带冲突检测的载波侦听多路访问（CSMA/CD）提出了处理冲突的方法。<br>2、在这一方法中，任意站点都可以发送帧，然后就监听介质看传送是否成功。如果不成功，说明存在冲突，需要重新发送此帧。<br>3、帧的最小长度：帧传输时间Tfr必须至少是最大传播时间Tp的两倍。在发送帧的最后一位前，发送站点必须检测冲突，如有任何冲突要放弃传输。而一旦整个帧被发送了，站点就无法保留帧的副本并无法进行线路的冲突检测。<br>4、在ALOHA中是先传输一个完整的帧，然后等待确认。在CMSA/CD中，传输和冲突检测是一个连续的过程。站点的传输和接收时连续的和同步的（使用两个不同的端口）。<br>5、万一其他站点仍未检查到冲突，便发送一个短小的干扰信号（jamming signal）使冲突加强。<br>6、能量级别：在级别0，通道是空闲的。在正常级别，一个站点成功地占用了通道并正在发送一个帧。在非正常级别，发生了冲突且能量的级别是正常级别的两倍。将要发送或者正在发送帧的站点必须监控能力级别来测定通道是否处于空闲，繁忙还是冲突状态。<br>7、CSMA/CD的吞吐量大于纯ALOHA或时隙ALOHA。</p>
+<h2 id="五、带冲突避免的载波侦听多路访问-CSMA-CA"><a href="#五、带冲突避免的载波侦听多路访问-CSMA-CA" class="headerlink" title="五、带冲突避免的载波侦听多路访问(CSMA/CA)"></a>五、带冲突避免的载波侦听多路访问(CSMA/CA)</h2><p>1、CSMA/CA通过使用三种方法来避免冲突：帧间间隔，竞争窗口和确认。</p>
+<h3 id="帧间间隔（IFS）"><a href="#帧间间隔（IFS）" class="headerlink" title="帧间间隔（IFS）"></a>帧间间隔（IFS）</h3><p>1、首先，通过推迟传输来避免冲突，即使通道是空闲的。如果在IFS时间后，通道仍然是空闲的，但它仍然要等待一段时间，这段时间等于竞争时间，这段时间等于竞争时间。<br>2、IFS变量也能用来区分站点或帧的优先次序。例如，一个站点被赋值的IFS越短，它的优先权越高。</p>
+<h3 id="竞争窗口"><a href="#竞争窗口" class="headerlink" title="竞争窗口"></a>竞争窗口</h3><p>1、第一次将竞争时间设定为一个时隙，以后每次站点在IFS时间后无法检测到空闲通道时，时隙的数量都要翻番。<br>2、在CSMA/CA中，如果站点发现通道繁忙，它并不重启竞争窗口的时钟，而是停止定时器并当通道空闲时再重启定时器。这给了站点最长等待时间的优先权。</p>
 
     </div>
 
@@ -310,7 +313,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#序"><span class="nav-number">1.</span> <span class="nav-text">序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一、随机访问-random-access"><span class="nav-number">2.</span> <span class="nav-text">一、随机访问(random access)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、ALOHA"><span class="nav-number">3.</span> <span class="nav-text">二、ALOHA</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#纯ALOHA"><span class="nav-number">3.1.</span> <span class="nav-text">纯ALOHA</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#时隙ALOHA"><span class="nav-number">3.2.</span> <span class="nav-text">时隙ALOHA</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、载波侦听多路访问（CSMA）"><span class="nav-number">4.</span> <span class="nav-text">三、载波侦听多路访问（CSMA）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#等待方法"><span class="nav-number">4.1.</span> <span class="nav-text">等待方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、带冲突检测的载波侦听多路访问-CSMA-CD"><span class="nav-number">5.</span> <span class="nav-text">四、带冲突检测的载波侦听多路访问(CSMA&#x2F;CD)</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#序"><span class="nav-number">1.</span> <span class="nav-text">序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一、随机访问-random-access"><span class="nav-number">2.</span> <span class="nav-text">一、随机访问(random access)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、ALOHA"><span class="nav-number">3.</span> <span class="nav-text">二、ALOHA</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#纯ALOHA"><span class="nav-number">3.1.</span> <span class="nav-text">纯ALOHA</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#时隙ALOHA"><span class="nav-number">3.2.</span> <span class="nav-text">时隙ALOHA</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、载波侦听多路访问（CSMA）"><span class="nav-number">4.</span> <span class="nav-text">三、载波侦听多路访问（CSMA）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#等待方法"><span class="nav-number">4.1.</span> <span class="nav-text">等待方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、带冲突检测的载波侦听多路访问-CSMA-CD"><span class="nav-number">5.</span> <span class="nav-text">四、带冲突检测的载波侦听多路访问(CSMA&#x2F;CD)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#五、带冲突避免的载波侦听多路访问-CSMA-CA"><span class="nav-number">6.</span> <span class="nav-text">五、带冲突避免的载波侦听多路访问(CSMA&#x2F;CA)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#帧间间隔（IFS）"><span class="nav-number">6.1.</span> <span class="nav-text">帧间间隔（IFS）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#竞争窗口"><span class="nav-number">6.2.</span> <span class="nav-text">竞争窗口</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
