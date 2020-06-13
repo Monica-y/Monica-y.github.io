@@ -28,7 +28,7 @@
 <meta property="og:description" content="连接局域网、主干网和虚拟局域网笔记">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-06-12T03:47:53.547Z">
-<meta property="article:modified_time" content="2020-06-12T04:04:02.583Z">
+<meta property="article:modified_time" content="2020-06-13T08:50:37.574Z">
 <meta property="article:author" content="Monica">
 <meta property="article:tag" content="计算机通信与网络">
 <meta property="article:tag" content="读书笔记">
@@ -184,10 +184,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-06-12 11:47:53 / 修改时间：12:04:02" itemprop="dateCreated datePublished" datetime="2020-06-12T11:47:53+08:00">2020-06-12</time>
+              <time title="创建时间：2020-06-12 11:47:53" itemprop="dateCreated datePublished" datetime="2020-06-12T11:47:53+08:00">2020-06-12</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-06-13 16:50:37" itemprop="dateModified" datetime="2020-06-13T16:50:37+08:00">2020-06-13</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -214,6 +220,8 @@
 <h3 id="无源集线器"><a href="#无源集线器" class="headerlink" title="无源集线器"></a>无源集线器</h3><p>这种集线器是介质的一部分。</p>
 <h3 id="中继器"><a href="#中继器" class="headerlink" title="中继器"></a>中继器</h3><p>1、中继器接收信号，并且在信号变得很弱或者被破坏之前，重新生成原始的位模式，然后中继器发送新生成的信号。中继器能够扩展局域网的物理长度。<br>2、中继器连接的是同一局域网的两个分段，所连接的网段仍然是一个局域网的一部分。网段是指一个局域网中被中继器分割的部分。<br>3、中继器转发每一帧，它没有过滤能力。<br>4、中继器是再生器，不是放大器。</p>
 <h3 id="有源集线器（hub）"><a href="#有源集线器（hub）" class="headerlink" title="有源集线器（hub）"></a>有源集线器（hub）</h3><p>有源集线器是一个多端口的中继器。它通常用于星型拓扑结构中，在站点间建立连接。集线器也可以创建多级链接，以克服10Base-T标准（见第十三章，标准以太网的通用实现四——双绞线以太网）的距离限制（100m）。</p>
+<h3 id="网桥-bridge"><a href="#网桥-bridge" class="headerlink" title="网桥(bridge)"></a>网桥(bridge)</h3><p>1、网桥用作物理层设备时，它重新生成接收到的信号。用作数据链路层设备时，它可以检查帧所包含的物理（MAC）地址（源地址和目标地址）。<br>2、网桥有一个用做过滤决策的表。它检查帧的目的地址，并决定该帧是被转发（不在同一局域网内，需要通过网桥转发）或是丢弃（在同一个局域网内，不需要通过网桥转发）。转发帧必须指定端口。每个网桥都有一个端口地址映射表。<br>3、网桥不改变帧中所包含的物理（MAC）地址。</p>
+<h3 id="透明网桥"><a href="#透明网桥" class="headerlink" title="透明网桥"></a>透明网桥</h3><p>1、安装有透明网桥的系统必须符合以下三个标准：<br>(1)帧必须能从一个站点转发到另一个站点。<br>(2)通过学习网络中帧的传输，自动建立转发表。<br>(3)必须避免系统内循环。<br>2、学习：<br>最早的网桥的转发表是静态的。配置网桥时，系统管理员需要手工输入每个表的条目。比静态表更好的解决方法是使用自动映射地址到端口的动态表。为了动态生成转发表，需要网桥从帧传输中逐渐学习。要做到这一点，网桥对源地址和目的地址都要检查。目的地址用来做转发决定（表查找）；源地址用做添加表条目和更新的目的。<br>3、循环：<br>使用生成树算法来建立无循环拓扑结构。成本的解释规则留给系统管理员来决定，我们选择以最小跳数作为成本。通常，从网桥到LAN的跳数为1，而从LAN到网桥的跳数为0。<br>(1)每个网桥有一个内置的ID（通常是唯一的序列号）。每个网桥广播它的ID，这样所有网桥都知道哪个是最小的ID。选择ID最小的网桥作为根网桥（作为树的根）。<br>(2)通过检查从根网桥到目的地的整个成本来找出最短路径。<br>(3)最短路径的组合生成了最短的树。<br>(4)基于生成树，我们标记属于生成树部分的端口为转发端口，它转发网桥接收到的帧，还标记不属于生成树部分的端口为阻塞端口，它阻断网桥接收到的帧。</p>
 
     </div>
 
@@ -295,7 +303,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、连接设备"><span class="nav-number">1.</span> <span class="nav-text">一、连接设备</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#连接设备的分类"><span class="nav-number">1.1.</span> <span class="nav-text">连接设备的分类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#无源集线器"><span class="nav-number">1.2.</span> <span class="nav-text">无源集线器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#中继器"><span class="nav-number">1.3.</span> <span class="nav-text">中继器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#有源集线器（hub）"><span class="nav-number">1.4.</span> <span class="nav-text">有源集线器（hub）</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、连接设备"><span class="nav-number">1.</span> <span class="nav-text">一、连接设备</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#连接设备的分类"><span class="nav-number">1.1.</span> <span class="nav-text">连接设备的分类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#无源集线器"><span class="nav-number">1.2.</span> <span class="nav-text">无源集线器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#中继器"><span class="nav-number">1.3.</span> <span class="nav-text">中继器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#有源集线器（hub）"><span class="nav-number">1.4.</span> <span class="nav-text">有源集线器（hub）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#网桥-bridge"><span class="nav-number">1.5.</span> <span class="nav-text">网桥(bridge)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#透明网桥"><span class="nav-number">1.6.</span> <span class="nav-text">透明网桥</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
