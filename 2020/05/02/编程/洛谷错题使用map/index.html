@@ -20,17 +20,17 @@
     var CONFIG = {"hostname":"monica-y.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="接触map类，其他关于STL的知识">
+  <meta name="description" content="接触map类，其他关于STL的知识，BFS，DFS和一些乱七八糟的笔记。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="洛谷 P1102 A-B 数对">
+<meta property="og:title" content="ACM学习笔记">
 <meta property="og:url" content="https://monica-y.github.io/2020/05/02/%E7%BC%96%E7%A8%8B/%E6%B4%9B%E8%B0%B7%E9%94%99%E9%A2%98%E4%BD%BF%E7%94%A8map/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="接触map类，其他关于STL的知识">
+<meta property="og:description" content="接触map类，其他关于STL的知识，BFS，DFS和一些乱七八糟的笔记。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-05-02T09:13:56.066Z">
-<meta property="article:modified_time" content="2020-06-15T03:21:11.712Z">
+<meta property="article:modified_time" content="2020-06-16T03:56:16.152Z">
 <meta property="article:author" content="Monica">
-<meta property="article:tag" content="容器类map的使用">
+<meta property="article:tag" content="洛谷">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="https://monica-y.github.io/2020/05/02/%E7%BC%96%E7%A8%8B/%E6%B4%9B%E8%B0%B7%E9%94%99%E9%A2%98%E4%BD%BF%E7%94%A8map/">
@@ -46,7 +46,7 @@
   };
 </script>
 
-  <title>洛谷 P1102 A-B 数对 | Hexo</title>
+  <title>ACM学习笔记 | Hexo</title>
   
 
 
@@ -174,7 +174,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          洛谷 P1102 A-B 数对
+          ACM学习笔记
         </h1>
 
         <div class="post-meta">
@@ -191,7 +191,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-06-15 11:21:11" itemprop="dateModified" datetime="2020-06-15T11:21:11+08:00">2020-06-15</time>
+                <time title="修改时间：2020-06-16 11:56:16" itemprop="dateModified" datetime="2020-06-16T11:56:16+08:00">2020-06-16</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -199,12 +199,12 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%B4%9B%E8%B0%B7/" itemprop="url" rel="index"><span itemprop="name">洛谷</span></a>
+                  <a href="/categories/ACM/" itemprop="url" rel="index"><span itemprop="name">ACM</span></a>
                 </span>
             </span>
 
           
-            <div class="post-description">接触map类，其他关于STL的知识</div>
+            <div class="post-description">接触map类，其他关于STL的知识，BFS，DFS和一些乱七八糟的笔记。</div>
 
         </div>
       </header>
@@ -238,6 +238,11 @@
 
 <h2 id="通过value确定数组的index"><a href="#通过value确定数组的index" class="headerlink" title="通过value确定数组的index"></a>通过value确定数组的index</h2><p>lower_bound(起始地址，结束地址，要查找的数值)-起始地址;<br>上述的结果就是index</p>
 <h2 id="使用sort"><a href="#使用sort" class="headerlink" title="使用sort"></a>使用sort</h2><p>方法一：重写sort的比较函数<br>方法二：重载结构体的大于号</p>
+<h2 id="BFS和DFS"><a href="#BFS和DFS" class="headerlink" title="BFS和DFS"></a>BFS和DFS</h2><h3 id="DFS"><a href="#DFS" class="headerlink" title="DFS"></a>DFS</h3><p>1、使用DFS搜索方案时要记得回退（就是把标记已经走过的点取消标记）–回溯法。<br>2、DFS的特点是搜索到下一个可访问节点立即就去访问下一个节点（只修改当前访问点的标记，不修改下一个节点的标记）<br>3、求最短距离要在DFS函数中多加一个参数记录步数，最后在递归终点取最小值就可以。<br>4、DFS有可能会被卡，沿着一条路走到TLE。</p>
+<h3 id="BFS"><a href="#BFS" class="headerlink" title="BFS"></a>BFS</h3><p>1、BFS的特点是搜索到下一个可访问节点就将它加入到队列中，而不是立即去访问它，首先要遍历当前节点所有可以访问的节点。（会修改下一个可访问节点的标记，为的是避免在以后的搜索中不再重复将这个待访问点加入到队列中）<br>2、BFS可以天然的求出最小路径。因为BFS是一层一层地向外扩展，每一个点最先被加入到队列时，一定是通过拓展层数最小地方法扩展到的。（也就是第一个求出来的结果一定是最短的）<br>3、BFS更占空间，更难写。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">void bfs()</span><br><span class="line">&#123;</span><br><span class="line"> Node st;</span><br><span class="line"> st.n = 3;</span><br><span class="line"> st.nown = 1;</span><br><span class="line"> q.push(st);</span><br><span class="line"> <span class="keyword">while</span>(!q.empty())</span><br><span class="line"> &#123;</span><br><span class="line">  Node zt = q.front();</span><br><span class="line">  q.pop();</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">"%d:"</span>,zt.nown);</span><br><span class="line">  <span class="keyword">for</span>(int i = 1;i &lt; zt.nown;i++)</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d "</span>,zt.A[i]);</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">  <span class="keyword">if</span>(zt.nown == zt.n+1)</span><br><span class="line">  &#123;</span><br><span class="line">   <span class="keyword">for</span>(int i = 1;i &lt;= zt.n;i++)</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d "</span>,zt.A[i]);</span><br><span class="line">   <span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">  &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">   <span class="keyword">for</span>(int i = 1;i &lt;= zt.n;i++)</span><br><span class="line">   &#123;</span><br><span class="line">    int ok = 1;</span><br><span class="line">    <span class="keyword">for</span>(int j = 1;j &lt; zt.nown;j++)</span><br><span class="line">    &#123;</span><br><span class="line">     <span class="keyword">if</span>(zt.A[j] == i) ok = 0;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(ok)</span><br><span class="line">    &#123;</span><br><span class="line">     zt.A[zt.nown] = i;</span><br><span class="line">     Node nextn;</span><br><span class="line">     memcpy(nextn.A,zt.A,(zt.nown+1) * sizeof(int));</span><br><span class="line">     nextn.n = zt.n;</span><br><span class="line">     nextn.nown = zt.nown+1;</span><br><span class="line">     q.push(nextn);</span><br><span class="line">    &#125;</span><br><span class="line">   &#125;</span><br><span class="line">  &#125;</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="相同点"><a href="#相同点" class="headerlink" title="相同点"></a>相同点</h3><p>1、无论BFS还是DFS，我们都有一个提供这些信息的东西。<br>2、这些信息定义了一个子问题，提供了定位一个子问题所需的所有条件，定义了解决一个问题过程中的状态。<br>3、都要对结果进行判重，防止重复搜索甚至陷入死循环。</p>
 
     </div>
 
@@ -247,7 +252,7 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/%E5%AE%B9%E5%99%A8%E7%B1%BBmap%E7%9A%84%E4%BD%BF%E7%94%A8/" rel="tag"># 容器类map的使用</a>
+              <a href="/tags/%E6%B4%9B%E8%B0%B7/" rel="tag"># 洛谷</a>
           </div>
 
         
@@ -256,12 +261,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/05/02/%E7%BC%96%E7%A8%8B/%E6%B4%9B%E8%B0%B7%E9%94%99%E9%A2%98%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/" rel="prev" title="洛谷 P5019 铺设道路">
-      <i class="fa fa-chevron-left"></i> 洛谷 P5019 铺设道路
+    <a href="/2020/05/02/%E7%BC%96%E7%A8%8B/C++/" rel="prev" title="C++中指针栈模板的建立">
+      <i class="fa fa-chevron-left"></i> C++中指针栈模板的建立
     </a></div>
       <div class="post-nav-item">
-    <a href="/2020/05/02/%E7%BC%96%E7%A8%8B/C++/" rel="next" title="C++中指针栈模板的建立">
-      C++中指针栈模板的建立 <i class="fa fa-chevron-right"></i>
+    <a href="/2020/05/02/%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0/%E6%A3%80%E9%94%99%E4%B8%8E%E7%BA%A0%E9%94%99/" rel="next" title="纠错与检错">
+      纠错与检错 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -321,7 +326,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#借鉴的思路"><span class="nav-number">1.</span> <span class="nav-text">借鉴的思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#经验教训"><span class="nav-number">2.</span> <span class="nav-text">经验教训</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#又一个可以使用map的题"><span class="nav-number">3.</span> <span class="nav-text">又一个可以使用map的题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解法"><span class="nav-number">4.</span> <span class="nav-text">解法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#unique"><span class="nav-number">5.</span> <span class="nav-text">unique</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二维变长数组"><span class="nav-number">6.</span> <span class="nav-text">二维变长数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在map中使用两个索引对应一个value"><span class="nav-number">7.</span> <span class="nav-text">在map中使用两个索引对应一个value</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#通过value确定数组的index"><span class="nav-number">8.</span> <span class="nav-text">通过value确定数组的index</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用sort"><span class="nav-number">9.</span> <span class="nav-text">使用sort</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#借鉴的思路"><span class="nav-number">1.</span> <span class="nav-text">借鉴的思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#经验教训"><span class="nav-number">2.</span> <span class="nav-text">经验教训</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#又一个可以使用map的题"><span class="nav-number">3.</span> <span class="nav-text">又一个可以使用map的题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解法"><span class="nav-number">4.</span> <span class="nav-text">解法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#unique"><span class="nav-number">5.</span> <span class="nav-text">unique</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二维变长数组"><span class="nav-number">6.</span> <span class="nav-text">二维变长数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在map中使用两个索引对应一个value"><span class="nav-number">7.</span> <span class="nav-text">在map中使用两个索引对应一个value</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#通过value确定数组的index"><span class="nav-number">8.</span> <span class="nav-text">通过value确定数组的index</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用sort"><span class="nav-number">9.</span> <span class="nav-text">使用sort</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BFS和DFS"><span class="nav-number">10.</span> <span class="nav-text">BFS和DFS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#DFS"><span class="nav-number">10.1.</span> <span class="nav-text">DFS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BFS"><span class="nav-number">10.2.</span> <span class="nav-text">BFS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相同点"><span class="nav-number">10.3.</span> <span class="nav-text">相同点</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -342,7 +347,7 @@
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">5</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
