@@ -27,8 +27,8 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="web前端技术导论学习笔记">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-06-15T12:14:55.620Z">
-<meta property="article:modified_time" content="2020-06-15T12:14:55.620Z">
+<meta property="article:published_time" content="2020-06-17T12:55:19.603Z">
+<meta property="article:modified_time" content="2020-06-17T12:55:19.603Z">
 <meta property="article:author" content="Monica">
 <meta property="article:tag" content="web前端">
 <meta property="article:tag" content="读书笔记">
@@ -184,6 +184,23 @@
       <div class="post-body">
           <h2 id="一、web前端基础"><a href="#一、web前端基础" class="headerlink" title="一、web前端基础"></a>一、web前端基础</h2><p>HTML：基础<br>CSS：页面样式<br>JavaScript：属于一种编程语言，使网页可交互</p>
 <h2 id="二、输入URL后经历了什么"><a href="#二、输入URL后经历了什么" class="headerlink" title="二、输入URL后经历了什么"></a>二、输入URL后经历了什么</h2><p>DNS解析<br>IP解析<br>浏览器解析<br>页面绘制</p>
+<h2 id="三、将CSS引入到html中"><a href="#三、将CSS引入到html中" class="headerlink" title="三、将CSS引入到html中"></a>三、将CSS引入到html中</h2> <!--<link rel  = "stylesheet" herf = "css/cssStyle.css"/>-->
+
+<h2 id="四、CSS选择器"><a href="#四、CSS选择器" class="headerlink" title="四、CSS选择器"></a>四、CSS选择器</h2><p>1、普通选择器<br>p<br>class ‘.’<br>id ‘#’<br>优先级 id class p<br>2、属性选择器<br>img[shuxing]{}<br>3、伪类选择器<br>class trans<br>.trans:hover<br>4、伪元素选择器<br>5、后迭选择器<br>6、相邻选择器<br>7、通用兄弟选择器</p>
+<h2 id="五、CSS盒模型"><a href="#五、CSS盒模型" class="headerlink" title="五、CSS盒模型"></a>五、CSS盒模型</h2><p>HTML：</p>
+<!--<div class = "box"></div>-->
+<p>CSS:<br>.box{<br>    width:100px;<br>    …<br>}</p>
+<h2 id="六、CSS布局"><a href="#六、CSS布局" class="headerlink" title="六、CSS布局"></a>六、CSS布局</h2><p>1、两个盒子的边界不等于上面盒子的下边距和下面盒子的上边距之和，要解决它使用BFC（块格式化上下文），以overflow为例。<br>overflow:hidden//BFC自适应排版<br>2、块级元素（独占一行，有自己的框高）、行内元素（不能独占一行，也没有自己的框高）、行内块级元素（不能独占一行，但有自己的框高）<br>3、vertical aglin属性</p>
+<h2 id="七、定位"><a href="#七、定位" class="headerlink" title="七、定位"></a>七、定位</h2><p>position：relative 相对于元素自身在文档中的偏移<br>position：absolute 相对于父元素<br>position：fix 相对于浏览器视口的偏移</p>
+<h2 id="八、Flex布局"><a href="#八、Flex布局" class="headerlink" title="八、Flex布局"></a>八、Flex布局</h2><p>1、flex-direction 决定文件流的填充方向（沿着主轴或者沿着cross轴）<br>2、flex—warp 文件流自动换行的方式<br>3、justify-content 规定了对齐方式和元素的间距<br>4、align-items<br>5、flex-grow 容器里的元素平分宽度<br>.item{<br>    flex-grow:1<br>}<br>第二个元素占其余两个的二倍<br>.item2{<br>    flex-grow:2<br>}<br>6、flex-basis 自动填满剩余空间</p>
+<h2 id="九、移动设备自适应"><a href="#九、移动设备自适应" class="headerlink" title="九、移动设备自适应"></a>九、移动设备自适应</h2><p>设置meta标签<br>媒体查询<br>相对单位 rem 百分比 视口</p>
+<h2 id="遗留问题"><a href="#遗留问题" class="headerlink" title="遗留问题"></a>遗留问题</h2><p>1、div标签干嘛的</p>
+<h2 id="js"><a href="#js" class="headerlink" title="js"></a>js</h2><p>1、console.log()是个输出<br>2、null表示期待一个对象，但是此时对象并不存在<br>undefine 表示未定义，输出一个字符串<br>3、字符串与别的类型相加会自动转换为字符串<br>4、+可以用于字符串转换成数字<br>5、使用==js会进行类型转换，不建议使用==，最好使用===，不转换类型</p>
+<p>1、使用let，const，不建议使用var<br>let a = 1+2;<br>let a//不能重复声名<br>不能修改const的值<br>2、使用{}定义新的作用域</p>
+<p>1、函数作用域还包括参数<br>function add(a,b){<br>    return a+b;<br>    //如果没有返回值，就是默认返回一个undefine<br>}<br>2、可以传入更多、更少的参数（少的参数就默认为undefine）<br>add()<br>add(1);<br>add(1,2,3);<br>3、如果为了保证传入的参数时有效的，可以在函数运行之前判断，如果有一个参数是undefine，就给这个参数赋上默认值。<br>4、可以在写函数参数列表的时候给参数赋上默认值。<br>5、使用function可以实现将函数提到整个文件的最头部，这样子就可以在文件的任意位置调用它。<br>6、函数表达式<br>const minius1 = function minius2(a,b){<br>    return a-b;<br>}//可以不写名字minius2<br>7、箭头函数<br>const minius1 = minius2(a,b){<br>    return a-b;<br>}//没来得及抄上QAQ<br>8、写一个生成函数的函数，就return一个函数</p>
+<h2 id="js对象"><a href="#js对象" class="headerlink" title="js对象"></a>js对象</h2><p>1、属性名必须是字符串，值可以是任意的<br>2、属性之间用逗号分隔<br>let folder1 = {<br>    ‘size’:2000,<br>    ‘name’：’floder1’,<br>    ‘subFiles’:[‘index.js’]<br>    ‘other object’:null<br>};//如果是合法的标识符，可以省略‘’，但other object不是<br>3、访问属性.<br>floder1.size;//必须是合法的标识符<br>floder1[‘other object’]//没有什么限制<br>4、链式调用<br>floder1[‘other object’]//没抄全QAQ<br>5、可以随意增加属性<br>floder1.createTime = ‘2020-6-1’;<br>floder1[‘modifyTime’] = ‘2020-6-15’;<br>6、遍历对象的所有属性<br>Object.keys(对象)这个方法会返回对象的所有属性<br>for(const key in 对象){<br>    console.log(key,对象[key])<br>}<br>console.log(‘classmate’ in 对象)<br>//如果classmate在对象中会返回true<br>delete student.teacher;<br>//删除对象的这个属性；<br>7、对象的引用<br>const emptyObj3 = emptyObj1<br>这两个变量指向同一个对象<br>cosnt标记了，引用是不变的，也就是指向关系是不变的，但对象的属性可变。</p>
+<p>1、class必须包含constructor的方法，就像是构造函数。<br>2、this指向新生成的对象或是调用这个方法的实例。<br>3、类和对象的区别<br>方法不属于某个类的本身，使用in可以返回该方法属于这个对象，但是使用object.key这个是不属于的，只有在构造函数里的才是属于对象的<br>4、普通的对象是属于Object的，可以使用new object新建一个方法<br>5、普通对象可以使用object类的一些方法</p>
+<p>1、数组的类是Array<br>const arr1 = new Array(3);<br>2、数组的方法<br>arr1.push(40);<br>arr1.join(‘.’);//数组转字符串<br>arr1.slice(1,3);//获取数组的一部分<br>3、基本类型的包装对象</p>
 
       </div>
       
@@ -245,7 +262,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、web前端基础"><span class="nav-number">1.</span> <span class="nav-text">一、web前端基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、输入URL后经历了什么"><span class="nav-number">2.</span> <span class="nav-text">二、输入URL后经历了什么</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、web前端基础"><span class="nav-number">1.</span> <span class="nav-text">一、web前端基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、输入URL后经历了什么"><span class="nav-number">2.</span> <span class="nav-text">二、输入URL后经历了什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、将CSS引入到html中"><span class="nav-number">3.</span> <span class="nav-text">三、将CSS引入到html中</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、CSS选择器"><span class="nav-number">4.</span> <span class="nav-text">四、CSS选择器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#五、CSS盒模型"><span class="nav-number">5.</span> <span class="nav-text">五、CSS盒模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#六、CSS布局"><span class="nav-number">6.</span> <span class="nav-text">六、CSS布局</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#七、定位"><span class="nav-number">7.</span> <span class="nav-text">七、定位</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#八、Flex布局"><span class="nav-number">8.</span> <span class="nav-text">八、Flex布局</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#九、移动设备自适应"><span class="nav-number">9.</span> <span class="nav-text">九、移动设备自适应</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#遗留问题"><span class="nav-number">10.</span> <span class="nav-text">遗留问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#js"><span class="nav-number">11.</span> <span class="nav-text">js</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#js对象"><span class="nav-number">12.</span> <span class="nav-text">js对象</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -259,7 +276,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">16</span>
+          <span class="site-state-item-count">18</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
