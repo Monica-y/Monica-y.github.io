@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"monica-y.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="学习KMP的笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="KMP">
+<meta property="og:url" content="https://monica-y.github.io/2020/10/17/%E7%BC%96%E7%A8%8B/KMP/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="学习KMP的笔记">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-10-17T02:28:08.888Z">
+<meta property="article:modified_time" content="2020-10-17T10:44:53.022Z">
+<meta property="article:author" content="Monica">
+<meta property="article:tag" content="KMP">
+<meta property="article:tag" content="算法">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://monica-y.github.io/2020/10/17/%E7%BC%96%E7%A8%8B/KMP/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>KMP | Hexo</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Hexo</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://monica-y.github.io/2020/10/17/%E7%BC%96%E7%A8%8B/KMP/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Monica">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          KMP
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-10-17 10:28:08 / 修改时间：18:44:53" itemprop="dateCreated datePublished" datetime="2020-10-17T10:28:08+08:00">2020-10-17</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url" rel="index"><span itemprop="name">数据结构</span></a>
+                </span>
+            </span>
+
+          
+            <div class="post-description">学习KMP的笔记</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="前缀和后缀"><a href="#前缀和后缀" class="headerlink" title="前缀和后缀"></a>前缀和后缀</h2><p>prefix table<br>例如：模式串为：ababc<br>前缀为：（前缀和后缀都是从左向右看的）<br>a<br>ab<br>aba<br>abab<br>ababc<br>以abab为例，它的最长前缀（不能是它本身）是aba，它的最长后缀是bab，由此看见abab的三个字母的前后缀是不相同的，不符合我们的要求。于是尝试abab的两个字母的前后缀，前缀为ab，后缀为ab，现在前后缀是相同的，于是对于abab来说，它的最长公共前后缀为2。<br>以aba为例，它的最长公共前后缀为1，前缀为a，后缀为a。<br>以ab为例，它的最长公共前后缀为0。<br>以a为例，它的最长公共前后缀为0。</p>
+<p>因为前缀不能是字符串本身，所以将ababc对应的最长公共前后缀（0）删掉，然后再在a的前面补上一个-1，则五个前缀，对应五个最长公共前后缀，将以上结果绘成一个前缀表：<br>a b a b c<br>-1 0 0 1 2<br>(注意在这个时候，模式串的编号从0开始)</p>
+<h2 id="求next数组"><a href="#求next数组" class="headerlink" title="求next数组"></a>求next数组</h2><p>视频链接![<a href="https://www.bilibili.com/video/BV1hW411a7ys/?spm_id_from=333.788.videocard.0]" target="_blank" rel="noopener">https://www.bilibili.com/video/BV1hW411a7ys/?spm_id_from=333.788.videocard.0]</a><br>以ababca为例，它的最长公共前后缀为1，要让它变成2，那么就要在结尾的a后面再加上一个b，这就是求next数组的核心思想。也就是看模式串的（如果是从0开始）第1位是不是和当前要更新的next数组对应位置的元素相等，若相等，则最长公共前后缀要加一。<br>如果不匹配，则移动j的位置，就相当于将模式串不断按照next数组后移，查找可以和i位置字符匹配成功的最大公共前后缀的长度。<br>设当前位i的前一位的最长公共前后缀为k，则</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">设</span><br><span class="line">next[i-1] = k;</span><br><span class="line">判断</span><br><span class="line"><span class="keyword">if</span>(next[k] == next[i])</span><br><span class="line"> next[i] = next[k]+1;</span><br></pre></td></tr></table></figure>
+
+<p>代码求next数组（这个是这个视频里up主给的代码，我不太理解，而且也非常不简洁，只是记录在这里）<br>这个代码实现的next数组下标从0开始，模式串下标从0开始。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">void prefix_table(char patter[],int prefix[],int n)</span><br><span class="line">&#123;</span><br><span class="line">    prefix[0] = 0;//相当于next数组</span><br><span class="line">    int len = 0;//当前最大公共前后缀长度</span><br><span class="line">    int i = 1;//第0位一定为0，从第1位开始比较</span><br><span class="line">    <span class="keyword">while</span>(i&lt;n)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(pattern[i] == pattern[len])</span><br><span class="line">        &#123;</span><br><span class="line">            len++;</span><br><span class="line">            prefix[i] = len;</span><br><span class="line">            i++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(len&gt;0)</span><br><span class="line">              len = prefix[len-1];</span><br><span class="line">            <span class="keyword">else</span>//避免在此陷入死循环，当len = 0时就直接赋值</span><br><span class="line">              &#123;</span><br><span class="line">                  prefix[i] = len;</span><br><span class="line">                  i++;</span><br><span class="line">              &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">void move_prefix_table(int prefix[],int n)</span><br><span class="line">&#123;</span><br><span class="line">    int i;</span><br><span class="line">    <span class="keyword">for</span>(i = n-1;i&gt;0;i--)</span><br><span class="line">    &#123;</span><br><span class="line">        prefix[i] = prefix[i-1];</span><br><span class="line">    &#125;</span><br><span class="line">    prefix[0] = -1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>next求解精简版<br>这个代码实现里面next数组下标从1开始，模式串下标从1开始,所以在存储字符串的时候要注意一下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">void get_next(char pattern[], int next[], int n)</span><br><span class="line">&#123;</span><br><span class="line">    int i = 1;</span><br><span class="line">    next[1] = 0;</span><br><span class="line">    int j = 0;</span><br><span class="line">    <span class="keyword">while</span> (i &lt;= n)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (j == 0 || pattern[j] == pattern[i])</span><br><span class="line">        &#123;</span><br><span class="line">            i++;</span><br><span class="line">            j++;</span><br><span class="line">            next[i] = j;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            j = next[j];//i不变，j后退，重新匹配,相当于将字符串移动到next[j]的位置看能不能匹配上，这样就少匹配了1~next[j]这些位置的字符，因为由最大公共前后缀可得，他们是匹配的。</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="用next数组进行搜索"><a href="#用next数组进行搜索" class="headerlink" title="用next数组进行搜索"></a>用next数组进行搜索</h2><p>如果next数组和模式串的下标从0开始，那么如果next数组值为-1，则</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">j = next[j];</span><br><span class="line"><span class="keyword">if</span>(j == -1)</span><br><span class="line">&#123;</span><br><span class="line">    i++;</span><br><span class="line">    j++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">void kmp_search(char txt[],char pattern)</span><br><span class="line">&#123;</span><br><span class="line">    int n = strlen(pattern);</span><br><span class="line">    int m = strlen(text);</span><br><span class="line">    int*next = new int[n];</span><br><span class="line">    get_next(pattern,next,n);</span><br><span class="line">    int i = 1;</span><br><span class="line">    int j = 1;</span><br><span class="line"></span><br><span class="line">    //text[i]     len(text) = m</span><br><span class="line">    //pattern[j]  len(pattern) = n</span><br><span class="line">    <span class="keyword">while</span>(i&lt;m)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(j == n&amp;&amp;text[i] == pattern[j])</span><br><span class="line">        &#123;</span><br><span class="line">            cout&lt;&lt;i-j&lt;&lt;endl;//匹配成功的位置</span><br><span class="line">            j = next[j];//继续向后匹配，看后面还有没有和模式串匹配的位置</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(text[i] == pattern[j])</span><br><span class="line">        &#123;</span><br><span class="line">            i++;</span><br><span class="line">            j++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            j = next[j];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="求nextval数组"><a href="#求nextval数组" class="headerlink" title="求nextval数组"></a>求nextval数组</h2><p>这个很像是并查集里面的路径压缩，和求next数组的方法大同小异。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">void get_nextval(char pattern[], int &amp;nextval[],int n)</span><br><span class="line">&#123;</span><br><span class="line">     i= 1; nextval[1] = 0; j = 0;</span><br><span class="line">     <span class="keyword">while</span>( i&lt;n )&#123;</span><br><span class="line">          <span class="keyword">if</span>(j==0 || pattern[i] == pattern[j])&#123;</span><br><span class="line">                ++i; ++j;</span><br><span class="line">                <span class="keyword">if</span>(pattern[i] != pattern[j]) nextval[i] = j;//如果j == 0，则nextval[0] = next[0],和next求法完全相同</span><br><span class="line">                <span class="keyword">else</span>  nextval[i] = nextval[j];//更新nextval数组</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="keyword">else</span>  j = nextval[j];//在pattern中查找pattern[j]的最长公共前后缀</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/KMP/" rel="tag"># KMP</a>
+              <a href="/tags/%E7%AE%97%E6%B3%95/" rel="tag"># 算法</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/09/23/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E4%B8%80%E6%AC%A1%E5%AE%9E%E9%AA%8C/" rel="prev" title="数据结构源码">
+      <i class="fa fa-chevron-left"></i> 数据结构源码
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前缀和后缀"><span class="nav-number">1.</span> <span class="nav-text">前缀和后缀</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#求next数组"><span class="nav-number">2.</span> <span class="nav-text">求next数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用next数组进行搜索"><span class="nav-number">3.</span> <span class="nav-text">用next数组进行搜索</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#求nextval数组"><span class="nav-number">4.</span> <span class="nav-text">求nextval数组</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Monica</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">23</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Monica</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
