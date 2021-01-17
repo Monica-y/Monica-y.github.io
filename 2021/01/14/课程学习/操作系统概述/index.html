@@ -31,9 +31,12 @@
 <meta property="og:image" content="https://monica-y.github.io/images/%E4%BD%9C%E4%B8%BA%E7%B3%BB%E7%BB%9F%E8%B5%84%E6%BA%90%E7%9A%84%E7%AE%A1%E7%90%86%E8%80%851.1.png">
 <meta property="og:image" content="https://monica-y.github.io/images/%E4%BD%9C%E4%B8%BA%E7%94%A8%E6%88%B7%E5%92%8C%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A1%AC%E4%BB%B6%E4%B9%8B%E9%97%B4%E7%9A%84%E6%8E%A5%E5%8F%A31.1.png">
 <meta property="og:image" content="https://monica-y.github.io/images/%E7%94%A8%E6%88%B7%E6%8E%A5%E5%8F%A31.1.png">
-<meta property="og:image" content="https://monica-y.github.io/images/%E7%9F%A5%E8%AF%86%E5%9B%9E%E9%A1%BE1.1.png">
+<meta property="og:image" content="https://monica-y.github.io/images/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9F%A5%E8%AF%86%E5%9B%9E%E9%A1%BE1.1.png">
+<meta property="og:image" content="https://monica-y.github.io/images/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9F%A5%E8%AF%86%E6%80%BB%E8%A7%881.2.png">
+<meta property="og:image" content="https://monica-y.github.io/images/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9F%A5%E8%AF%86%E5%9B%9E%E9%A1%BE1.2.png">
+<meta property="og:image" content="https://monica-y.github.io/images/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9F%A5%E8%AF%86%E6%80%BB%E8%A7%881.3.png">
 <meta property="article:published_time" content="2021-01-14T07:35:12.489Z">
-<meta property="article:modified_time" content="2021-01-15T02:31:25.041Z">
+<meta property="article:modified_time" content="2021-01-17T11:55:49.038Z">
 <meta property="article:author" content="Monica">
 <meta property="article:tag" content="读书笔记">
 <meta property="article:tag" content="操作系统">
@@ -198,7 +201,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-01-15 10:31:25" itemprop="dateModified" datetime="2021-01-15T10:31:25+08:00">2021-01-15</time>
+                <time title="修改时间：2021-01-17 19:55:49" itemprop="dateModified" datetime="2021-01-17T19:55:49+08:00">2021-01-17</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -230,7 +233,15 @@
 <p>程序接口 == 系统调用：只能通过用户程序间接使用。<br>易懵概念：系统调用 = 系统调用指令 = 广义指令</p>
 <p>CUI：图形用户界面<br>用户可以使用形象的图形界面进行操作，而不再需要记忆复杂的命令、参数。</p>
 <p>3、作为最接近硬件的层次<br>需要提供的功能和目标：实现对硬件机器的拓展<br>没有任何软件支持的计算机称为裸机。在裸机上安装的操作系统，可以提供资源管理功能和方便用户的服务功能，将裸机改造成功能更强、使用更方便的机器。<br>通常把覆盖了软件的机器称为扩充机器，又称之为虚拟机。</p>
-<p>知识回顾与重要考点<br><img src="/images/%E7%9F%A5%E8%AF%86%E5%9B%9E%E9%A1%BE1.1.png" alt="知识回顾1.1"></p>
+<p>知识回顾与重要考点<br><img src="/images/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9F%A5%E8%AF%86%E5%9B%9E%E9%A1%BE1.1.png" alt="操作系统知识回顾1.1"></p>
+<h2 id="操作系统的特征"><a href="#操作系统的特征" class="headerlink" title="操作系统的特征"></a>操作系统的特征</h2><p><img src="/images/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9F%A5%E8%AF%86%E6%80%BB%E8%A7%881.2.png" alt="知识总览1.2"></p>
+<p>1、并发<br>指两个或多个事件在同一时间间隔内发生。这些事件宏观上是同时发生的，但微观上是交替发生的。<br>常考易混概念–并行：指两个或多个事件在同一时刻同时发生。<br>操作系统的并发性指计算机系统中同时存在着多个运行着的程序。<br>一个单核处理机（CPU）同一时刻只能执行一个程序，因此操作系统会负责协调多个程序交替执行（这些程序微观上是交替执行的，但是宏观上看起来就像是在同时执行）。<br>事实上，操作系统就是伴随着“多道程序技术”而出现的。因此，操作系统和程序并发是一起诞生的。</p>
+<p>2、共享<br>共享即资源共享，是指系统中的资源可供内存中多个并发执行的进程共同使用。<br>两种资源共享方式<br>互斥共享方式 系统中的某些资源，虽然可以提供给多个进程使用，但一个时间段内只允许一个进程访问该资源<br>同时共享方式 系统中的某些资源，允许一个时间段内由多个进程“同时”对他们进行访问<br>所谓的“同时”往往是宏观上的，而在微观上，这些进程可能是交替地对该资源进行访问（即分时共享）</p>
+<p>并发和共享的关系–互为存在条件<br>并发性指计算机系统中同时存在着多个运行着的程序。<br>共享性是指系统中的资源可供内存中多个并发执行的进程共同使用。<br>如果失去并发性，则系统中只有一个程序正在运行，则共享性失去存在的意义。<br>如果失去共享性，则并发的程序不能同时访问硬盘资源，就无法实现同时发送文件，也就无法并发。</p>
+<p>3、虚拟<br>虚拟是指把一个物理上的实体变为若干个逻辑上的对应物。物理实体（前者）是实际存在的，而逻辑上对应物（后者）是用户感受到的。<br>虚拟技术中的“时分复用技术”。微观上处理机在各个微小的时间段内交替着为各个进程服务。如虚拟处理器。<br>虚拟技术中的“空分复用技术”。如虚拟存储器技术。<br>显然，如果失去了并发性，则一个时间段内系统中只需运行一道程序，那么就失去了实现虚拟性的意义了。因此，没有并发性，就谈不上虚拟性。</p>
+<p>4、异步<br>异步是指，在多道程序环境下，允许多个程序并发执行，但由于资源有限，进程的执行不是一贯到底的，而是走走停停，以不可预知的速度向前推进，着就是进程的异步性。<br>显然，如果失去了并发性，则系统只能串行地处理各个进程，每个进程的执行会一贯到底。只有系统拥有并发性，才有可能导致异步性。</p>
+<p>知识回顾与重要考点<br><img src="/images/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9F%A5%E8%AF%86%E5%9B%9E%E9%A1%BE1.2.png" alt="操作系统知识回顾1.2"><br>重要考点：<br>理解并发和并行的区别。<br>并发和共享互为存在条件<br>没有并发和共享，就谈不上虚拟和异步，因此并发和共享是操作系统的两个最基本的特征</p>
+<h2 id="操作系统的发展与分类"><a href="#操作系统的发展与分类" class="headerlink" title="操作系统的发展与分类"></a>操作系统的发展与分类</h2><p><img src="/images/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9F%A5%E8%AF%86%E6%80%BB%E8%A7%881.3.png" alt="知识总览1.3"></p>
 
     </div>
 
@@ -315,7 +326,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#操作系统的概念（定义）功能和目标"><span class="nav-number">1.</span> <span class="nav-text">操作系统的概念（定义）功能和目标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#操作系统的功能和目标"><span class="nav-number">2.</span> <span class="nav-text">操作系统的功能和目标</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#操作系统的概念（定义）功能和目标"><span class="nav-number">1.</span> <span class="nav-text">操作系统的概念（定义）功能和目标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#操作系统的功能和目标"><span class="nav-number">2.</span> <span class="nav-text">操作系统的功能和目标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#操作系统的特征"><span class="nav-number">3.</span> <span class="nav-text">操作系统的特征</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#操作系统的发展与分类"><span class="nav-number">4.</span> <span class="nav-text">操作系统的发展与分类</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
