@@ -35,8 +35,12 @@
 <meta property="og:image" content="https://monica-y.github.io/images/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9F%A5%E8%AF%86%E6%80%BB%E8%A7%881.2.png">
 <meta property="og:image" content="https://monica-y.github.io/images/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9F%A5%E8%AF%86%E5%9B%9E%E9%A1%BE1.2.png">
 <meta property="og:image" content="https://monica-y.github.io/images/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9F%A5%E8%AF%86%E6%80%BB%E8%A7%881.3.png">
+<meta property="og:image" content="https://monica-y.github.io/images/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9F%A5%E8%AF%86%E5%9B%9E%E9%A1%BE1.3.png">
+<meta property="og:image" content="https://monica-y.github.io/images/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9F%A5%E8%AF%86%E6%80%BB%E8%A7%881.4.png">
+<meta property="og:image" content="https://monica-y.github.io/images/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E8%BF%90%E8%A1%8C%E6%9C%BA%E5%88%B61.4.png">
+<meta property="og:image" content="https://monica-y.github.io/images/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9A%84%E5%B1%82%E6%AC%A1%E7%BB%93%E6%9E%841.4.png">
 <meta property="article:published_time" content="2021-01-14T07:35:12.489Z">
-<meta property="article:modified_time" content="2021-01-17T11:55:49.038Z">
+<meta property="article:modified_time" content="2021-01-19T02:51:44.106Z">
 <meta property="article:author" content="Monica">
 <meta property="article:tag" content="读书笔记">
 <meta property="article:tag" content="操作系统">
@@ -201,7 +205,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-01-17 19:55:49" itemprop="dateModified" datetime="2021-01-17T19:55:49+08:00">2021-01-17</time>
+                <time title="修改时间：2021-01-19 10:51:44" itemprop="dateModified" datetime="2021-01-19T10:51:44+08:00">2021-01-19</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -242,6 +246,19 @@
 <p>4、异步<br>异步是指，在多道程序环境下，允许多个程序并发执行，但由于资源有限，进程的执行不是一贯到底的，而是走走停停，以不可预知的速度向前推进，着就是进程的异步性。<br>显然，如果失去了并发性，则系统只能串行地处理各个进程，每个进程的执行会一贯到底。只有系统拥有并发性，才有可能导致异步性。</p>
 <p>知识回顾与重要考点<br><img src="/images/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9F%A5%E8%AF%86%E5%9B%9E%E9%A1%BE1.2.png" alt="操作系统知识回顾1.2"><br>重要考点：<br>理解并发和并行的区别。<br>并发和共享互为存在条件<br>没有并发和共享，就谈不上虚拟和异步，因此并发和共享是操作系统的两个最基本的特征</p>
 <h2 id="操作系统的发展与分类"><a href="#操作系统的发展与分类" class="headerlink" title="操作系统的发展与分类"></a>操作系统的发展与分类</h2><p><img src="/images/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9F%A5%E8%AF%86%E6%80%BB%E8%A7%881.3.png" alt="知识总览1.3"></p>
+<p>一、手工操作阶段<br>主要缺点：用户独占全机、人机速度矛盾导致资源利用率极低。</p>
+<p>二、批处理阶段–单道批处理系统<br>引入脱机输入/输出技术（用磁带完成），并监督程序（操作系统的雏形）负责控制作业的输入、输出。<br>主要优点：缓解了一定程度的人机速度矛盾，资源利用率有所提升。<br>主要缺点：内存中仅能有一道程序运行，只有该程序运行结束之后才能调入下一道程序。CPU有大量的时间是在空闲等待I/O完成。资源利用率依然很低。</p>
+<p>三、批处理阶段–多道批处理系统<br>操作系统正式诞生，并引入了中断技术，由操作系统负责管理这些程序的运行。各个程序并发执行。<br>主要优点：多道程序并发执行，共享计算机资源。资源利用率大幅提升，CPU和其他资源保持“忙碌”状态，系统吞吐量增大。<br>主要缺点：用户响应时间长，没有人机交互功能（用户提交自己的作业之后就只能等待计算机处理完成，中间不能控制自己的作业执行）</p>
+<p>四、分时操作系统<br>计算机以时间片为单位轮流为各个用户/作业服务，各个用户可通过终端与计算机进行交互。<br>主要优点：用户请求可以被即时相应，解决了人机交互问题。允许多个用户同时使用一台计算机，并且用户对计算机的操作相互独立，感受不到别人的存在。<br>主要缺点：不能优先处理一些紧急任务。操作系统对各个用户/作业都是完全公平的，循环地为每个用户/作业服务一个时间片，不区分任务的紧急性。</p>
+<p>五、实时操作系统<br>主要优点：能够优先响应一些紧急任务，某些紧急任务不需要时间片排队。<br>在实时操作系统的控制下，计算机系统接收到外部信号后及时进行处理，并且要在严格的时限内处理完事件。实时操作系统的主要特点是及时性和可靠性。<br>实时操作系统可细分为<br>硬实时系统：必须在绝对严格的规定时间内完成处理，如导弹控制系统，自动驾驶系统。<br>软实时系统：能接受偶尔违反时间规定，如12306火车订票系统</p>
+<p><img src="/images/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9F%A5%E8%AF%86%E5%9B%9E%E9%A1%BE1.3.png" alt="操作系统知识回顾1.3"></p>
+<h2 id="操作系统的运行机制与体系结构"><a href="#操作系统的运行机制与体系结构" class="headerlink" title="操作系统的运行机制与体系结构"></a>操作系统的运行机制与体系结构</h2><p><img src="/images/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9F%A5%E8%AF%86%E6%80%BB%E8%A7%881.4.png" alt="知识总览1.4"></p>
+<p>一、指令<br>1、一条高级语言的代码翻译过来可能会对应多条指令<br>简单来说，“指令”就是处理器（CPU）能识别、执行的最基本指令</p>
+<p>2、指令的分类<br>特权指令：如内存清零指令 不允许用户程序使用<br>非特权指令：如普通的运算指令</p>
+<p>分别对应两种处理器状态<br>用户态（目态） 此时CPU只能执行非特权指令<br>核心态（管态） 特权指令、非特权指令都可执行<br>用程序状态寄存器（PSW）中的某标志位来识别当前处理器处于什么状态。如0为用户态，1为核心态</p>
+<p>分别对应两种程序<br>内核程序 操作系统的内核程序是系统的管理者，既可以执行特权指令，也可以执行非特权指令，运行在核心态<br>应用程序 为了保证系统能安全运行，普通应用程序只能执行非特权指令，运行在用户态</p>
+<p><img src="/images/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E8%BF%90%E8%A1%8C%E6%9C%BA%E5%88%B61.4.png" alt="操作系统的运行机制1.4"></p>
+<p>二、操作系统的内核<br><img src="/images/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9A%84%E5%B1%82%E6%AC%A1%E7%BB%93%E6%9E%841.4.png" alt="操作系统计算机的层次结构1.4"><br>原语是一种特殊的程序。是最接近硬件的部分，这种程序的运行具有原子性。</p>
 
     </div>
 
@@ -326,7 +343,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#操作系统的概念（定义）功能和目标"><span class="nav-number">1.</span> <span class="nav-text">操作系统的概念（定义）功能和目标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#操作系统的功能和目标"><span class="nav-number">2.</span> <span class="nav-text">操作系统的功能和目标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#操作系统的特征"><span class="nav-number">3.</span> <span class="nav-text">操作系统的特征</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#操作系统的发展与分类"><span class="nav-number">4.</span> <span class="nav-text">操作系统的发展与分类</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#操作系统的概念（定义）功能和目标"><span class="nav-number">1.</span> <span class="nav-text">操作系统的概念（定义）功能和目标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#操作系统的功能和目标"><span class="nav-number">2.</span> <span class="nav-text">操作系统的功能和目标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#操作系统的特征"><span class="nav-number">3.</span> <span class="nav-text">操作系统的特征</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#操作系统的发展与分类"><span class="nav-number">4.</span> <span class="nav-text">操作系统的发展与分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#操作系统的运行机制与体系结构"><span class="nav-number">5.</span> <span class="nav-text">操作系统的运行机制与体系结构</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
