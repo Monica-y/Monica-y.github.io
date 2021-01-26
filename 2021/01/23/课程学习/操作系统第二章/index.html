@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"monica-y.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="第二章学习笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="操作系统概述">
+<meta property="og:url" content="https://monica-y.github.io/2021/01/23/%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%AC%E4%BA%8C%E7%AB%A0/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="第二章学习笔记">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://monica-y.github.io/images/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9F%A5%E8%AF%86%E6%80%BB%E8%A7%882.1.png">
+<meta property="og:image" content="https://monica-y.github.io/images/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FPCB2.1.png">
+<meta property="og:image" content="https://monica-y.github.io/images/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E8%BF%9B%E7%A8%8B%E7%9A%84%E7%BB%84%E6%88%902.1.png">
+<meta property="og:image" content="https://monica-y.github.io/images/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E8%BF%9B%E7%A8%8B%E7%9A%84%E7%BB%84%E7%BB%87%E6%96%B9%E5%BC%8F2.1.png">
+<meta property="og:image" content="https://monica-y.github.io/images/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E8%BF%9B%E7%A8%8B%E7%9A%84%E7%89%B9%E5%BE%812.1.png">
+<meta property="og:image" content="https://monica-y.github.io/images/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9F%A5%E8%AF%86%E5%9B%9E%E9%A1%BE2.1.png">
+<meta property="og:image" content="https://monica-y.github.io/images/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9F%A5%E8%AF%86%E6%80%BB%E8%A7%882.2.png">
+<meta property="og:image" content="https://monica-y.github.io/images/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E8%BF%9B%E7%A8%8B%E7%9A%84%E4%B8%89%E7%A7%8D%E5%9F%BA%E6%9C%AC%E7%8A%B6%E6%80%812.2.png">
+<meta property="og:image" content="https://monica-y.github.io/images/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E8%BF%9B%E7%A8%8B%E7%9A%84%E5%8F%A6%E5%A4%96%E4%B8%A4%E7%A7%8D%E7%8A%B6%E6%80%812.2.png">
+<meta property="og:image" content="https://monica-y.github.io/images/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E8%BF%9B%E7%A8%8B%E7%8A%B6%E6%80%81%E7%9A%84%E8%BD%AC%E6%8D%A22.2.png">
+<meta property="og:image" content="https://monica-y.github.io/images/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9F%A5%E8%AF%86%E5%9B%9E%E9%A1%BE2.2.png">
+<meta property="article:published_time" content="2021-01-23T02:57:16.571Z">
+<meta property="article:modified_time" content="2021-01-26T10:23:03.433Z">
+<meta property="article:author" content="Monica">
+<meta property="article:tag" content="读书笔记">
+<meta property="article:tag" content="操作系统">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://monica-y.github.io/images/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9F%A5%E8%AF%86%E6%80%BB%E8%A7%882.1.png">
+
+<link rel="canonical" href="https://monica-y.github.io/2021/01/23/%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%AC%E4%BA%8C%E7%AB%A0/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>操作系统概述 | Hexo</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Hexo</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://monica-y.github.io/2021/01/23/%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%AC%E4%BA%8C%E7%AB%A0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Monica">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          操作系统概述
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-01-23 10:57:16" itemprop="dateCreated datePublished" datetime="2021-01-23T10:57:16+08:00">2021-01-23</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-01-26 18:23:03" itemprop="dateModified" datetime="2021-01-26T18:23:03+08:00">2021-01-26</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index"><span itemprop="name">操作系统</span></a>
+                </span>
+            </span>
+
+          
+            <div class="post-description">第二章学习笔记</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="进程的定义、组成、组织方式、特征"><a href="#进程的定义、组成、组织方式、特征" class="headerlink" title="进程的定义、组成、组织方式、特征"></a>进程的定义、组成、组织方式、特征</h2><p><img src="/images/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9F%A5%E8%AF%86%E6%80%BB%E8%A7%882.1.png" alt="操作系统知识总览2.1"></p>
+<p>一、进程的定义<br>1、程序：就是一个指令序列<br>2、早期的计算机（只支持单道程序）程序包含程序段和数据段，程序的代码放在程序段内，程序运行过程处理的数据放在数据段内（如变量）。<br>3、引入多道程序技术之后：内存中同时放入多道程序，各个程序的代码、运算数据存放的位置不同。操作系统要确定各个程序的存放位置。为了方便操作系统管理，完成各程序并发执行、引入了进程、进程实体的概念。<br>系统位每个运行的程序配置一个数据结构，称为进程控制块（PCB），用来描述进程的各种信息（如程序代码存放位置）<br>PCB、程序段、数据段三部分构成了进程实体（进程映像）<br>4、程序段、数据段、PCB三部分组成了进程实体（进程映像）。一般情况下，我们把进程实体就简称为进程，例如，所谓创建进程，实质上是创建进程实体中的PCB；而撤销进程，实质上是撤销进程实体中的PCB。<br>注意：PCB是进程存在的唯一标志。<br>5、进程是程序的一次执行过程。<br>6、进程是一个程序及其数据在处理机上顺序执行时所发生的活动。<br>7、进程是具有独立功能的程序在数据集合上运行的过程，它是系统进行资源分配和调度的一个独立单位。<br>8、567从不同的角度定义了了进程，他们都强调“动态性”。<br>9、在引入进程实体的概念后，可把进程定义为：进程是进程实体的运行过程，是系统进行资源分配和调度的一个独立单位。<br>10、严格来说，进程实体和进程并不一样，进程实体是静态的，进程则是动态的。不过，除非题目专门考察二者区别，否则可以认为进程实体就是进程。因此我们也可以说“进程有程序段、数据段、PCB三部分组成”。</p>
+<p>二、进程的组成<br>1、进程（进程实体）由程序段、数据段、PCB三部分组成。<br>2、程序段存放的就是程序的代码本身。程序运行时使用、产生的运算数据。如全局变量、局部变量、宏定义的变量就存放在数据段内。<br>3、操作系统通过PCB来管理进程，因此PCB中应该包含操作系统对其进行管理所需的各种信息。<br><img src="/images/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FPCB2.1.png" alt="操作系统PCB2.1"><br>进程标识符PID：当进程被创建时，操作系统会为该进程分配一个唯一的、不重复的ID，用于区分不同的进程（类似于身份证号）<br>保存各种寄存器值的原因：当进程切换时需要把进程当前的运行状况记录下来保存在PCB中，如程序计数器的值表示了当前程序执行到哪一句。<br>4、另一种分类方式<br>进程标识符<br>处理机状态<br>进程调度信息<br>进程控制信息<br><img src="/images/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E8%BF%9B%E7%A8%8B%E7%9A%84%E7%BB%84%E6%88%902.1.png" alt="操作系统进程的组成2.1"><br>注意：进程的管理者（操作系统）所需的数据都在PCB中。程序段和数据段存放的是程序本身运行所需的数据。</p>
+<p>三、进程的组织<br>1、在一个系统中，通常有数十、数百乃至数千个PCB。为了能对他们加以有效的管理，应当用适当的方式把这些PCB组织起来。<br>注：进程的组成讨论的是一个进程内部由哪些部分构成的问题，而进程的组织讨论的是多个进程之间的组织方式问题。<br><img src="/images/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E8%BF%9B%E7%A8%8B%E7%9A%84%E7%BB%84%E7%BB%87%E6%96%B9%E5%BC%8F2.1.png" alt="操作系统进程的组织方式2.1"><br>2、链接方式<br>执行指针：指向当前处于运行态（执行态）的进程。单CPU计算机中，同一时刻只会有一个进程处于运行态。<br>就绪队列指针：指向当前处于就绪态的进程<br>阻塞队列指针：指向当前处于阻塞态的进程，很多操作系统还会根据阻塞原因不同，再分为多个阻塞队列。<br>3、索引方式<br>上述指针指向的是一个索引表而不是一个队列（链表）的队头。</p>
+<p>四、进程的特征<br><img src="/images/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E8%BF%9B%E7%A8%8B%E7%9A%84%E7%89%B9%E5%BE%812.1.png" alt="操作系统进程的特征2.1"><br>1、动态性是进程最基本的特征。<br>2、进程是资源分配、接受调度的基本单位。<br>3、异步性会导致并发程序执行结果的不确定性。具体会在“进程同步”相关小节进行学习。</p>
+<p><img src="/images/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9F%A5%E8%AF%86%E5%9B%9E%E9%A1%BE2.1.png" alt="操作系统知识回顾2.1"><br>1、PCB是进程存在的唯一标志。<br>2、进程管理者（操作系统）所需的数据都在PCB中<br>3、程序本身的运行所需的数据在程序段、数据段中</p>
+<p>##　进程的状态与转换</p>
+<p><img src="/images/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9F%A5%E8%AF%86%E6%80%BB%E8%A7%882.2.png" alt="操作系统知识总览2.2"></p>
+<p>一、进程的状态–三种基本状态<br>1、进程是程序的一次执行。在这个执行过程中，有时进程正在被CPU处理，有时又需要等待CPU服务，可见，进程的状态是会有各种变化。为了方便对各个进程的管理，操作系统需要将进程合理地划分为几种状态。<br><img src="/images/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E8%BF%9B%E7%A8%8B%E7%9A%84%E4%B8%89%E7%A7%8D%E5%9F%BA%E6%9C%AC%E7%8A%B6%E6%80%812.2.png" alt="操作系统进程的三种基本状态2.2"><br>2、运行态注意：单核处理机环境下，每一时刻最多只有一个进程处于运行态。（双核环境下可以同时有两个进程处于运行态）<br>3、就绪态注意：进程已经拥有了除处理机之外所有需要的资源，一旦获得处理机，即可立即进入运行态开始运行。即：万事俱备，只欠CPU<br>4、阻塞态注意：等待操作系统分配打印机、等待读磁盘操作的结果。CPU是计算机中最昂贵的部件，为了提高CPU的利用率，需要先将其他进程需要的资源分配到位，才能得到CPU的服务。</p>
+<p>二、进程的状态–另外两种状态<br>1、操作系统需要完成创建进程。操作系统为该进程分配所需的内存空间等系统资源，并为其创建、初始化PCB（如：为进程分配PID）<br>2、进程运行结束（或者由于bug导致进程无法继续执行下去，比如数组越界错误），需要撤销进程。<br>操作系统需要完成撤销进程相关的工作。完成将分配给进程的资源回收、撤销进程PCB等工作。<br><img src="/images/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E8%BF%9B%E7%A8%8B%E7%9A%84%E5%8F%A6%E5%A4%96%E4%B8%A4%E7%A7%8D%E7%8A%B6%E6%80%812.2.png" alt="操作系统进程的另外两种状态2.2"></p>
+<p>三、进程状态的转换<br><img src="/images/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E8%BF%9B%E7%A8%8B%E7%8A%B6%E6%80%81%E7%9A%84%E8%BD%AC%E6%8D%A22.2.png" alt="操作系统进程状态的转换2.2"><br>1、运行态-&gt;阻塞态是一种进程自身做出的主动行为。<br>2、阻塞态-&gt;就绪态不是进程自身能控制得，是一种被动行为。<br>3、注意：不能由阻塞态直接转换为运行态，也不能由就绪态直接转换为阻塞态（因为进入阻塞态是进程主动请求得，必然需要进程在运行时才能发出这种请求）</p>
+<p><img src="/images/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9F%A5%E8%AF%86%E5%9B%9E%E9%A1%BE2.2.png" alt="操作系统知识回顾2.2"></p>
+<h2 id="进程控制"><a href="#进程控制" class="headerlink" title="进程控制"></a>进程控制</h2>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" rel="tag"># 读书笔记</a>
+              <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag"># 操作系统</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/01/21/%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0/%E8%AE%A1%E7%BB%84%E6%95%B0%E6%8D%AE%E7%9A%84%E8%A1%A8%E7%A4%BA%E5%92%8C%E8%BF%90%E7%AE%97/" rel="prev" title="数据的表示和运算">
+      <i class="fa fa-chevron-left"></i> 数据的表示和运算
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#进程的定义、组成、组织方式、特征"><span class="nav-number">1.</span> <span class="nav-text">进程的定义、组成、组织方式、特征</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#进程控制"><span class="nav-number">2.</span> <span class="nav-text">进程控制</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Monica</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">35</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Monica</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
