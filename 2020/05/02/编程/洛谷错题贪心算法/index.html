@@ -217,7 +217,6 @@
       
         <p>有一条长度为n的道路，可以看作是n块首尾相连的区域，一开始，第i块区域下陷深度为d[i]。每天可以选择一段连续区间[L,R],填充这段区间中的每块区域，让其下陷深度减少1。在选择区间时，需要保证，区间内的每块区域在填充前下陷深度均不为零。求所需的最少天数。<a href="https://www.luogu.com.cn/problem/P5019" target="_blank" rel="noopener">原题</a></p>
 <h2 id="借鉴的思路"><a href="#借鉴的思路" class="headerlink" title="借鉴的思路"></a>借鉴的思路</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#include&lt;iostream&gt;</span></span><br><span class="line">using namespace std;</span><br><span class="line">int longth;</span><br><span class="line">int road[100005] = &#123; 0 &#125;;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line"> int days = 0;</span><br><span class="line"> cin &gt;&gt; longth;</span><br><span class="line"> <span class="keyword">for</span> (int i = 1; i &lt;= longth; i++)</span><br><span class="line"> &#123;</span><br><span class="line">  cin &gt;&gt; road[i];</span><br><span class="line"> &#125;//输入每一段的下陷深度</span><br><span class="line"> <span class="keyword">for</span> (int i = 1; i &lt;= longth; i++)</span><br><span class="line">    //注意循环的起始点，因为<span class="keyword">if</span>语句里总是将当前项与前一项比较，所以定义road[0] = 0是为了使得road[1]被纳入计算days的范围</span><br><span class="line"> &#123;</span><br><span class="line">  <span class="keyword">if</span> (road[i] &gt; road[i - 1])</span><br><span class="line">        //进行比较，如果后面的坑比前面的深，则在填较深的那个的时候与它相邻的那个总会捎带一起填平，所以就不需要去专门填较浅的坑</span><br><span class="line">  &#123;</span><br><span class="line">   days = road[i] - road[i - 1]+days;</span><br><span class="line">            //这里是计算出大坑相对于小坑多花的天数，如果向后遍历一直是小坑，则不需要计入天数，因为小坑总是会被与它相邻的大坑捎带填平</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line"> &#125;</span><br><span class="line"> cout &lt;&lt; days &lt;&lt; endl;</span><br><span class="line"> <span class="built_in">return</span> 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <h2 id="我的思路"><a href="#我的思路" class="headerlink" title="我的思路"></a>我的思路</h2><p>不管采用什么样的顺序，最深的坑总是最花费最多的天数才能被填满，所以每一次总是当前从最深的坑下手，然后以当前最深的坑为起点，向前向后遍历寻找符合要求的最长填坑区间，找出区间后将对应区间的坑深度减一。思路是没有漏洞的，但是洛谷提交后三个点会超时，在千方百计优化以后，仍然会超时，是思路及本身时间复杂度的问题。就是想不到题解的思路，只有七十分，果然模拟不能AC这道题。</p>
 
     </div>
@@ -236,13 +235,10 @@
 
         
     <div class="post-nav">
+      <div class="post-nav-item"></div>
       <div class="post-nav-item">
-    <a href="/2020/05/02/hello-world/" rel="prev" title="Hello World">
-      <i class="fa fa-chevron-left"></i> Hello World
-    </a></div>
-      <div class="post-nav-item">
-    <a href="/2020/05/02/%E7%BC%96%E7%A8%8B/C++/" rel="next" title="C++中指针栈模板的建立">
-      C++中指针栈模板的建立 <i class="fa fa-chevron-right"></i>
+    <a href="/2020/05/02/%E7%BC%96%E7%A8%8B/ACM%E7%AC%94%E8%AE%B0/" rel="next" title="ACM学习笔记">
+      ACM学习笔记 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -411,6 +407,8 @@
 
 
 
+
+  
 
   
 

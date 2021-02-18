@@ -27,6 +27,9 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="无线局域网读书笔记">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://monica-y.github.io/2020/06/06/%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0/%E6%97%A0%E7%BA%BF%E5%B1%80%E5%9F%9F%E7%BD%91/assets/IEEE%20802.11%E6%A0%87%E5%87%86%E4%B8%AD%E7%9A%84MAC%E5%B1%82.png">
+<meta property="og:image" content="https://monica-y.github.io/2020/06/06/%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0/%E6%97%A0%E7%BA%BF%E5%B1%80%E5%9F%9F%E7%BD%91/assets/IEEE%20802.11%E7%9A%84%E5%AF%BB%E5%9D%80%E6%9C%BA%E5%88%B6.png">
+<meta property="og:image" content="https://monica-y.github.io/2020/06/06/%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0/%E6%97%A0%E7%BA%BF%E5%B1%80%E5%9F%9F%E7%BD%91/assets/IEEE%20802.11%E5%AF%BB%E5%9D%80%E8%BF%87%E7%A8%8B.png">
 <meta property="og:image" content="https://monica-y.github.io/2020/06/06/%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0/%E6%97%A0%E7%BA%BF%E5%B1%80%E5%9F%9F%E7%BD%91/assets/%E6%9A%B4%E9%9C%B2%E7%AB%99%E9%97%AE%E9%A2%98.png">
 <meta property="article:published_time" content="2020-06-06T08:59:47.446Z">
 <meta property="article:modified_time" content="2020-06-12T03:46:16.344Z">
@@ -34,7 +37,7 @@
 <meta property="article:tag" content="计算机通信与网络">
 <meta property="article:tag" content="读书笔记">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://monica-y.github.io/2020/06/06/%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0/%E6%97%A0%E7%BA%BF%E5%B1%80%E5%9F%9F%E7%BD%91/assets/%E6%9A%B4%E9%9C%B2%E7%AB%99%E9%97%AE%E9%A2%98.png">
+<meta name="twitter:image" content="https://monica-y.github.io/2020/06/06/%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0/%E6%97%A0%E7%BA%BF%E5%B1%80%E5%9F%9F%E7%BD%91/assets/IEEE%20802.11%E6%A0%87%E5%87%86%E4%B8%AD%E7%9A%84MAC%E5%B1%82.png">
 
 <link rel="canonical" href="https://monica-y.github.io/2020/06/06/%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0/%E6%97%A0%E7%BA%BF%E5%B1%80%E5%9F%9F%E7%BD%91/">
 
@@ -221,20 +224,20 @@
         <h2 id="一、IEEE-802-11概述"><a href="#一、IEEE-802-11概述" class="headerlink" title="一、IEEE 802.11概述"></a>一、IEEE 802.11概述</h2><p>1、IEEE定义的无线局域网规范称做IEEE 802.11，该规范涵盖了物理层和数据链路层。<br>2、标准定义了两种类型的服务：基本服务集（BSS）和扩展服务集（ESS）。</p>
 <h3 id="基本服务集（basic-service-set，BSS）"><a href="#基本服务集（basic-service-set，BSS）" class="headerlink" title="基本服务集（basic service set，BSS）"></a>基本服务集（basic service set，BSS）</h3><p>1、一个基本服务集由固定的或移动的无线站点和一个可选的，称为访问点（access point，AP）的中央基站组成。<br>2、不带AP的BSS称为特别网络，它是一个独立网络，不能向其他BSS发送数据，这就是它被称做特别的体系结构的原因。<br>３、带AP的BSS称为基础网络。</p>
 <h3 id="扩展服务集-extend-service-set-ESS"><a href="#扩展服务集-extend-service-set-ESS" class="headerlink" title="扩展服务集(extend service set,ESS)"></a>扩展服务集(extend service set,ESS)</h3><p>1、扩展服务集由两个或更多个带有AP的BSS组成。通过一个分布式系统（通常是一个有线局域网，如以太网）将各个BSS连接在一起。分布式系统连接BSS中的AP。<br>2、拓展服务使用两种类型的站点：移动的和固定的。移动站点是BBS内的一个普通站点，而固定站点则是一个属于有线局域网一部分的AP站点。<br>3、在连接BSS时，互相可达的站点之间可以相互通信而不必使用AP。但是，位于两个不同BSS的两个站点间的通信一般要跨过两个AP。这一概念与移动电话网络中的通信类似，这时可以将每一个BSS看做是一个信元而将每一个AP看做是一个基站。注意，一个移动站点可以同时属于多个BSS。<br>4、站点类型<br>不迁移（no-transition）：仅可以在BSS内部移动。<br>BSS迁移（BSS-transition）：可以从一个BSS移动到另一个BSS，但是其移动被限制在一个ESS之内。<br>ESS迁移（ESS-transition）：可以从一个ESS移动到另一个ESS，但是IEEE 802.11不能保证通信在移动中是连续的。</p>
-<h2 id="二、IEEE-802-11定义的MAC子层"><a href="#二、IEEE-802-11定义的MAC子层" class="headerlink" title="二、IEEE 802.11定义的MAC子层"></a>二、IEEE 802.11定义的MAC子层</h2><p>IEEE 802.11定义了两个MAC子层：分布式协调功能（DCF）和点协调功能（PCF）。<br>![IEEE 802.11标准中的MAC层](./assets/IEEE 802.11标准中的MAC层.png)</p>
+<h2 id="二、IEEE-802-11定义的MAC子层"><a href="#二、IEEE-802-11定义的MAC子层" class="headerlink" title="二、IEEE 802.11定义的MAC子层"></a>二、IEEE 802.11定义的MAC子层</h2><p>IEEE 802.11定义了两个MAC子层：分布式协调功能（DCF）和点协调功能（PCF）。<br><img src="./assets/IEEE 802.11标准中的MAC层.png" alt="IEEE 802.11标准中的MAC层"></p>
 <h3 id="分布式协调功能（distributed-coordination-function，DCF）"><a href="#分布式协调功能（distributed-coordination-function，DCF）" class="headerlink" title="分布式协调功能（distributed coordination function，DCF）"></a>分布式协调功能（distributed coordination function，DCF）</h3><p>1、帧交换时序：在发送一个帧之前，源站点通过检测载波频率的能量级来侦听介质。在通道空闲之前，通道使用带补偿的持续策略。站点发现通道空闲之后，它等待一个分布式帧间间隔（distributed interframe space，DIFS）的时间周期，然后就发送一个叫做请求发送（RTS）的控制帧。<br>2、接收到RTS并等待一个称做短帧间间隔（short interframe space，SIFS）的短暂时间后，目的站点就向源站点发送一个叫做清除发送（CTS）的控制帧，表示目的站点准备接收数据。<br>3、在等待一个与SIFS相等的时间后，源站点就发送数据。<br>4、在等待一个与SIFS相等的时间后，目的站点发送确认说明已经接收到帧。</p>
 <h3 id="DCF的网络分配矢量（network-allocation-vector，NAV）"><a href="#DCF的网络分配矢量（network-allocation-vector，NAV）" class="headerlink" title="DCF的网络分配矢量（network allocation vector，NAV）"></a>DCF的网络分配矢量（network allocation vector，NAV）</h3><p>当一个站点发送RTS帧时，它包含了需要占据通道的时间。受这一次传送影响的站点建立了网络分配矢量的定时器，该定时器指出在允许这些站点检测通道是否空闲之前还必须经过多长时间。</p>
 <h3 id="DCF握手时的冲突"><a href="#DCF握手时的冲突" class="headerlink" title="DCF握手时的冲突"></a>DCF握手时的冲突</h3><p>在RTS或CTS控制帧正在发送时，这一期间叫做握手周期。但是由于没有检测冲突的机制，因此发送方在它没有从接收方收到CTS时就会以为产生了冲突，于是采取补偿策略并重新发送。</p>
 <h3 id="点协调功能-point-coordination-function-PCF"><a href="#点协调功能-point-coordination-function-PCF" class="headerlink" title="点协调功能(point coordination function,PCF)"></a>点协调功能(point coordination function,PCF)</h3><p>1、点协调功能是一种可以在基础网络设施中（不特别网络中）实现的可选访问方式。它在DCF的上面实现，主要用于对时间敏感的传输。<br>2、为了给予PCF高于DCF的优先级，已定义了另一套帧间间隔：PIFS和SIFS。SIFS与DCF中的一样，但是PIFS（PCF IFS）比DIFS短。这意味着如果同时一个站点想使用DCF，而一个AP想使用PCF，那个AP有优先权。<br>3、由于PCF的优先级高于DCF，只使用DCF的站点可能得不到对介质的访问。为了避免这种情况，设计了重复间隔来覆盖无竞争（PCF）和基于竞争（DFC）的通信。重复间隔会持续地重复，开始于一个称为信号帧地特殊控制帧。当其他站点听到信号帧时，在重复间隔地无竞争周期内它们开始它们的NAV，而PC（点控制方）开始发送信号，在无竞争周期结束时，PC发送CF结束（无竞争）帧允许基于竞争的站点能使用介质。</p>
 <h3 id="MAC层帧格式"><a href="#MAC层帧格式" class="headerlink" title="MAC层帧格式"></a>MAC层帧格式</h3><p>1、帧控制（FC）：长度为2字节（16位），定义了帧的类型和一些控制信息。<br>2、D：2字节，在一些帧类型中，本字段定义了用于设置NAV值得传输间隔时间。在一个控制帧中，这个字段用来定义帧的ID。<br>3、地址：有四个地址字段，前三个相连，然后隔一个序列控制字段，又有了第四个地址字段，每个字段有6字节。<br>4、序列控制：2字节，本字段定义帧的序列号，以用于流量控制。<br>5、帧主体：0~2312字节之间<br>6、FCS：四字节，包含一个CRC-32的差错检测序列。</p>
 <h3 id="帧类型"><a href="#帧类型" class="headerlink" title="帧类型"></a>帧类型</h3><p>1、管理帧（00）：管理帧用于站点和接入点之间初始化通信<br>2、控制帧（01）：控制帧用于访问通道和对帧的确认。<br>3、数据帧（10）：数据帧用于携带数据与控制信息。</p>
-<h2 id="三、IEEE-802-11的寻址机制"><a href="#三、IEEE-802-11的寻址机制" class="headerlink" title="三、IEEE 802.11的寻址机制"></a>三、IEEE 802.11的寻址机制</h2><p>![IEEE 802.11的寻址机制](./assets/IEEE 802.11的寻址机制.png)<br>注意：地址1总是下一个设备的地址，而地址2总是前一个设备的地址。如果最后的目的站点没有被地址1定义的话，地址3就是最后目的站点的地址。如果起始源站点的地址与地址2不同的话，那么地址4就是其实信源站点的地址。<br>![IEEE 802.11寻址过程](./assets/IEEE 802.11寻址过程.png)</p>
+<h2 id="三、IEEE-802-11的寻址机制"><a href="#三、IEEE-802-11的寻址机制" class="headerlink" title="三、IEEE 802.11的寻址机制"></a>三、IEEE 802.11的寻址机制</h2><p><img src="./assets/IEEE 802.11的寻址机制.png" alt="IEEE 802.11的寻址机制"><br>注意：地址1总是下一个设备的地址，而地址2总是前一个设备的地址。如果最后的目的站点没有被地址1定义的话，地址3就是最后目的站点的地址。如果起始源站点的地址与地址2不同的话，那么地址4就是其实信源站点的地址。<br><img src="./assets/IEEE 802.11寻址过程.png" alt="IEEE 802.11寻址过程"></p>
 <h3 id="情况1"><a href="#情况1" class="headerlink" title="情况1"></a>情况1</h3><p>To DS = 0并且From DS = 0。这表明该帧既不是发往一个分布式系统（to DS = 0）也不是来自一个分布式系统中（From DS= 0）。该帧是从BSS中的一个站点到另一个站点，而不经过分布式系统。需要给原始的发送方站点发送ACK帧。</p>
 <h3 id="情况2"><a href="#情况2" class="headerlink" title="情况2"></a>情况2</h3><p>To DS = 0而From DS = 1.这表示该帧从一个分布式系统中来（From DS= 1）。该帧从一个AP中来，到另一个站点去。ACK帧将会被发送给AP。地址3包含该帧的原始发送方地址（在另外的BSS中）。</p>
 <h3 id="情况3"><a href="#情况3" class="headerlink" title="情况3"></a>情况3</h3><p>To DS = 0而From DS = 1.这表示该帧从一个分布式系统中来（From DS = 1）。该帧从一个站点发往AP。ACK帧将被发送到原始站点。注意，地址3包含该帧的最终目的地址（在另外的BSS中）。</p>
 <h3 id="情况4"><a href="#情况4" class="headerlink" title="情况4"></a>情况4</h3><p>To DS = 1并且From DS = 1。这种情况说明分布式系统也是无线的。帧在一个无线分布式系统中从一个AP发送到另一个AP。如果分布式系统是一个有线局域网，这里就不需要定义地址，因为在这些情况下帧的格式就是有线局域网帧（如以太网）的格式。这里需要四个地址定义原始发送方、最终的目的地和两个中间AP。</p>
 <h2 id="四、隐藏站问题和暴露站问题"><a href="#四、隐藏站问题和暴露站问题" class="headerlink" title="四、隐藏站问题和暴露站问题"></a>四、隐藏站问题和暴露站问题</h2><h3 id="隐藏站问题"><a href="#隐藏站问题" class="headerlink" title="隐藏站问题"></a>隐藏站问题</h3><p>1、站点C在站点B的传输范围之外，站点B在站点C的传输范围之外。但是，站点A既在站点B的范围之内，也在站点C的范围之内，它能听到B或C传送的任何信号。<br>2、解决方法：使用我们前面提到的握手帧（见本章分布式协调功能标题处）当B发送RTS请求发送帧之后，A站点发送的CTS清除发送帧可以被B和C站点接收到，使得C站点不再发送消息，避免冲突。</p>
-<h3 id="暴露站问题"><a href="#暴露站问题" class="headerlink" title="暴露站问题"></a>暴露站问题</h3><p>1、这个比较难以描述，直接上图，就是A在向B站点传送消息，占用了“B的范围”这个介质，C想给D发送消息，但是听到了A在发送消息，以为“C的范围”这个介质已经被占用，但实际上介质处于空闲状态。<br><img src="./assets/%E6%9A%B4%E9%9C%B2%E7%AB%99%E9%97%AE%E9%A2%98.png" alt="暴露站问题"><br>2、简单来说，就是C站给D站也发送了RTS，但是由于与A站给B站发送的数据相冲突，导致C站没有收到从D站发来的CTS（有关问题见本章“DCF握手时的冲突”标题）。</p>
+<h3 id="暴露站问题"><a href="#暴露站问题" class="headerlink" title="暴露站问题"></a>暴露站问题</h3><p>1、这个比较难以描述，直接上图，就是A在向B站点传送消息，占用了“B的范围”这个介质，C想给D发送消息，但是听到了A在发送消息，以为“C的范围”这个介质已经被占用，但实际上介质处于空闲状态。<br><img src="./assets/暴露站问题.png" alt="暴露站问题"><br>2、简单来说，就是C站给D站也发送了RTS，但是由于与A站给B站发送的数据相冲突，导致C站没有收到从D站发来的CTS（有关问题见本章“DCF握手时的冲突”标题）。</p>
 <h2 id="五、物理层"><a href="#五、物理层" class="headerlink" title="五、物理层"></a>五、物理层</h2><h3 id="IEEE-802-11-FHSS"><a href="#IEEE-802-11-FHSS" class="headerlink" title="IEEE 802.11 FHSS"></a>IEEE 802.11 FHSS</h3><p>IEEE 802.11 FHSS使用了第六章中讨论的跳频扩频（FHSS）方法。这个规范中的调制技术可以是二电平FSK（见第五章频移键控）或四电平FSK（1或2位/波特），这使得数据速率是1或2Mbps。</p>
 <h3 id="IEEE-802-11-DSSS"><a href="#IEEE-802-11-DSSS" class="headerlink" title="IEEE 802.11 DSSS"></a>IEEE 802.11 DSSS</h3><p>IEEE 802.11 DSSS使用第六章中讨论的直接序列扩频（DSSS）方法。这个规范的调制技术是在1M baud/s下的PSK。系统允许1位或2位/波特（BPSK或QPSK），其数据速率是1Mbps或2Mbps。</p>
 <h3 id="IEEE-802-11-红外线"><a href="#IEEE-802-11-红外线" class="headerlink" title="IEEE 802.11 红外线"></a>IEEE 802.11 红外线</h3><p>IEEE 802.11 红外线使用脉冲位置调制（PPM），先将数字信号进行四到十六位的编码（对1Mbps数据）或是二到四位的编码（对2Mbps数据），然后将映射后的序列转换成光纤信号，光存在则为1，光不存在则为0。</p>
@@ -444,6 +447,8 @@
 
 
 
+
+  
 
   
 
