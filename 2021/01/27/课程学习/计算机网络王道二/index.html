@@ -29,8 +29,10 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://monica-y.github.io/images/%E8%AE%A1%E7%BD%91%E5%85%B8%E5%9E%8B%E7%9A%84%E6%95%B0%E6%8D%AE%E9%80%9A%E4%BF%A1%E6%A8%A1%E5%9E%8B2.2.png">
 <meta property="og:image" content="https://monica-y.github.io/images/%E8%AE%A1%E7%BD%91%E4%BF%A1%E9%81%932.2.png">
+<meta property="og:image" content="https://monica-y.github.io/images/%E8%AE%A1%E7%BD%91%E5%A4%B1%E7%9C%9F2.4.png">
+<meta property="og:image" content="https://monica-y.github.io/images/%E8%AE%A1%E7%BD%91%E5%A5%88%E6%B0%8F%E5%92%8C%E9%A6%99%E5%86%9C2.4.png">
 <meta property="article:published_time" content="2021-01-27T03:54:03.713Z">
-<meta property="article:modified_time" content="2021-02-20T08:37:15.474Z">
+<meta property="article:modified_time" content="2021-03-05T15:22:55.904Z">
 <meta property="article:author" content="Monica">
 <meta property="article:tag" content="读书笔记">
 <meta property="article:tag" content="计算机网络">
@@ -195,7 +197,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-02-20 16:37:15" itemprop="dateModified" datetime="2021-02-20T16:37:15+08:00">2021-02-20</time>
+                <time title="修改时间：2021-03-05 23:22:55" itemprop="dateModified" datetime="2021-03-05T23:22:55+08:00">2021-03-05</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -226,7 +228,12 @@
 <p>三、三种通信方式<br>从通信双方信息的交互方式看，可以有三种基本方式：<br>1、单工通信：只有一个方向的通信而没有反方向的交互，仅需要一条信道。<br>2、半双工通信：通信的双方都可以发送或接收信息，但任何一方都不能同时发送和接收，需要两条信道。<br>3、全双工通信：通信双方可以同时发送和接受信息，也需要两条信道。</p>
 <p>四、两种数据传输方式<br>1、串行传输：速度慢、费用低、适合远距离<br>2、并行传输：速度快、费用高、适合近距离，用于计算机内部数据传输</p>
 <h2 id="码元、波特、速率、带宽"><a href="#码元、波特、速率、带宽" class="headerlink" title="码元、波特、速率、带宽"></a>码元、波特、速率、带宽</h2><p>一、码元<br>1、码元是指一个固定时长的信号波形（数字脉冲），代表不同离散数值的基本波形，是数字通信中数字信号的计量单位，这个时长内的信号称为k进制码元，而该时长称为码元宽度。当码元的离散状态有M个时（M大于2），此时码元为M进制码元。<br>2、1码元可以携带多个比特的信息量。例如，在使用二进制编码时，只有两种不同的码元，一种代表0状态，另一种代表1状态。<br>3、k进制码元—4进制码元-&gt;码元的离散状态有4个-&gt;4种高低不同的信号波形：00，01，10，11，2bit。<br>二、速率、波特、带宽<br>1、速率也叫数据率，是指数据的传输速率，表示单位时间内传输的数据量。可以用码元传输速率和信息传输速率表示。<br>传播速率是指数据在整个链路上传播的速度，传输速率是指主机往链路上放数据的速率。<br>2、码元传输速率：别名码元速率、波形速率、调制速率、符号速率等，它表示单位时间内数字通信系统所传输的码元个数（也可称为脉冲个数或信号变化的次数），单位是波特（Baud）。1波特表示数字通信系统每秒传输一个码元。这里的码元可以是多进制的，也可以是二进制的，但码元速率与进制无关。<br>1s传输多少个码元<br>1Baud = 1码元/s<br>3、信息传输速率：别名信息速、比特率等，表示单位时间内数字通信系统传输的二进制码元个数（即比特数），单位是比特/秒（b/s）。<br>1s传输多少个比特<br>4、关系：若一个码元携带n bit的信息量，则M Baud的码元传输速率所对应的信息传输速率为M x n bit/s。<br>5、带宽：表示在单位时间内从网络中的某一点到另一点所能通过的“最高数据率”，常用来表示网络的通信线路所能传输数据的能力。单位是b/s。<br>6、哪个系统传输速率更快：系统传输的是比特流，通常比较的是信息传输速率，所以（在这个题中）传输十六进制码元的通信系统传输速率较快，如果用该系统去传输四进制码元会有更高的码元传输速率。</p>
-<h2 id="奈氏准则和香农定理"><a href="#奈氏准则和香农定理" class="headerlink" title="奈氏准则和香农定理"></a>奈氏准则和香农定理</h2>
+<h2 id="奈氏准则和香农定理"><a href="#奈氏准则和香农定理" class="headerlink" title="奈氏准则和香农定理"></a>奈氏准则和香农定理</h2><p>一、失真<br>1、现实中的信道（带宽受限、有噪声、干扰）<br><img src="/images/计网失真2.4.png" alt="计网失真2.4"><br>2、影响失真程度的因素：<br>1）码元传输速率（正相关）<br>2）信号传输距离（正相关）<br>3）噪声干扰（正相关）<br>4）传输媒体质量（负相关）<br>二、失真的一种现象—码间串扰<br>1、信道带宽时信道能通过的最高频率和最低频率之差。<br>2、码间串扰：接收端收到的信号波形失去了码元之间清晰界限的现象<br>三、奈氏准则（奈奎斯特定理）<br>1、奈氏准则：在理想低通（无噪声，带宽受限）条件下，为了避免码间串扰，极限码元传输速率为2W Baud，W是信道带宽，单位是Hz。<br>只有在这两个公式中带宽才用Hz。<br>2、理想低通信道下的极限数据传输率 = $2Wlog_2V$(b/s)<br>其中，V指的是几种码元/码元的离散电平数目<br>3、在任何信道中，码元传输的速率是有上限的。若传输速率超过此上限，就会出现严重的码间串扰问题，使接收端对码元的完全正确识别成位不可能。<br>4、信道的频带宽度（即能通过的信号高频分量越多），就可以使用更高的速率进行码元的有效传输。<br>5、奈氏准则给出了码元传输速率的限制，但并没有对信息传输速率给出限制。<br>6、由于码元的传输速率受奈氏准则的制约，所以要提高数据的传输速率，就必须设法使每个码元能够携带更多个比特的信息量，这就需要采用多元制的调制方法。<br>四、香农定理<br>1、噪声存在于所有的电子设备和通信信道中。由于噪声随机产生，它的瞬时值有时会很大，因此噪声会使接收端对码元的判决产生错误。但是噪声的影响是相对的，若信号较强，那么噪声影响相对较小。因此，信噪比就很重要。</p>
+<script type="math/tex; mode=display">信噪比 = \frac{信号的平均功率}{噪声的平均功率}</script><p>常记为S/N，并用分贝（dB）作为度量单位，即：</p>
+<script type="math/tex; mode=display">信噪比（dB）=10log_{10}(S/N)</script><p>以分贝为单位要取对数，而第一种定义只是一个比值。这两种方法是数值等价的。<br>2、香农定理：在带宽受限且有噪声的信道中，为了不产生误差，信息的数据传输速率有上限值。</p>
+<script type="math/tex; mode=display">信道的极限数据传输速率=Wlog_2(1+S/N)(b/s)</script><p>其中，S／N为信噪比。如果是以分贝为单位，则需要使用上一个公式计算出信噪比。w（Hz）为带宽。<br>3、信道的带宽或信道中的信噪比越大，则信息的极限传输速率就越高。<br>4、对一定的传输带宽和一定的信噪比。信息传输速率的上限就确定了。<br>5、只要信息的传输速率低于信道的极限传输速率，就一定能找到某种方法来实现无差错的传输。<br>6、香农定理得出的为极限信息传输速率，实际信道能达到的传输速率要比它低不少。<br>7、从香农定理可以看出，若信道带宽w或信噪比S/N没有上限（不可能），那么信道的极限信息传输也就没有上限。<br><img src="/images/计网奈氏和香农2.4.png" alt="计网奈氏和香农2.4"><br>有的时候就像是例题中写的，要使用两个准则，然后取计算结果的最大值作为最大传输速率。</p>
+<h2 id="编码-amp-调制（1）"><a href="#编码-amp-调制（1）" class="headerlink" title="编码&amp;调制（1）"></a>编码&amp;调制（1）</h2><p>该学计组了QAQ</p>
+
     </div>
 
     
@@ -310,7 +317,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#物理层基本概念"><span class="nav-number">1.</span> <span class="nav-text">物理层基本概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据通信基础知识"><span class="nav-number">2.</span> <span class="nav-text">数据通信基础知识</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#码元、波特、速率、带宽"><span class="nav-number">3.</span> <span class="nav-text">码元、波特、速率、带宽</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#奈氏准则和香农定理"><span class="nav-number">4.</span> <span class="nav-text">奈氏准则和香农定理</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#物理层基本概念"><span class="nav-number">1.</span> <span class="nav-text">物理层基本概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据通信基础知识"><span class="nav-number">2.</span> <span class="nav-text">数据通信基础知识</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#码元、波特、速率、带宽"><span class="nav-number">3.</span> <span class="nav-text">码元、波特、速率、带宽</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#奈氏准则和香农定理"><span class="nav-number">4.</span> <span class="nav-text">奈氏准则和香农定理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编码-amp-调制（1）"><span class="nav-number">5.</span> <span class="nav-text">编码&amp;调制（1）</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -423,6 +430,61 @@
   
 
   
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+          load: ['[tex]/mhchem'],
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+          packages: {'[+]': ['mhchem']},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 
