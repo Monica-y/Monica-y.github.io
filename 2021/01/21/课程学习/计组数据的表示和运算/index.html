@@ -51,7 +51,7 @@
 <meta property="og:image" content="https://monica-y.github.io/images/%E8%AE%A1%E7%BB%84%E7%AE%97%E6%95%B0%E7%A7%BB%E4%BD%8D2.8.png">
 <meta property="og:image" content="https://monica-y.github.io/images/%E8%AE%A1%E7%BB%84%E7%9F%A5%E8%AF%86%E5%9B%9E%E9%A1%BE2.8.png">
 <meta property="article:published_time" content="2021-01-21T12:26:22.611Z">
-<meta property="article:modified_time" content="2021-03-06T15:17:13.241Z">
+<meta property="article:modified_time" content="2021-03-07T02:43:11.322Z">
 <meta property="article:author" content="Monica">
 <meta property="article:tag" content="读书笔记">
 <meta property="article:tag" content="计算机组成与系统结构">
@@ -216,7 +216,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-03-06 23:17:13" itemprop="dateModified" datetime="2021-03-06T23:17:13+08:00">2021-03-06</time>
+                <time title="修改时间：2021-03-07 10:43:11" itemprop="dateModified" datetime="2021-03-07T10:43:11+08:00">2021-03-07</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -267,8 +267,7 @@
 <h2 id="原码补码移码的作用"><a href="#原码补码移码的作用" class="headerlink" title="原码补码移码的作用"></a>原码补码移码的作用</h2><p>一、加减运算<br>1、使用原码运算：加法—用加法器完成；减法—用减法器完成。<br>2、用加法代替减法，模运算。<br>3、带余数法—设$x,m\in Z,m&gt;0$则存在唯一确定的整数q和r，使得：</p>
 <script type="math/tex; mode=display">x = qm + r,0\leqslant r<m</script><p>4、（mod 12）把所有整数分为12类（余数为0~11）mod 12余数相同的数，都是同一类，都是等价的<br>5、即10+（-3）、10+9、10+21…在（mod 12）的条件下效果相同<br>6、$\left\lvert -3\right\rvert + \left\lvert 9\right\rvert = 12$,即二者绝对值之和=模，则-3和9互为补数<br>7、在（mod m）的条件下，若额能找到负数的补数，就可以用正数的加法来等价替代减法。<br>模-a的绝对值 = a的补数<br>8、若计算机的字长为8 bit，则在数值计算过程中，天然的完成了mod$2^8$运算。则我们可以通过使用$2^8-a的绝对值 = a的补数$来将减法运算转换成加法运算。<br>9、任何运算结果在（$mod 2^8$）后只保留最低8位。<br>10、补码—让减法操作变为加法操作，节省硬件成本。<br>11、补码的作用：使用补码可将减法操作转变为等价的加法，ALU中无需集成减法器。执行加法操作时，符号位一起参与运算。<br>12、移码表示的整数很方便对比大小。</p>
 <h2 id="移位运算"><a href="#移位运算" class="headerlink" title="移位运算"></a>移位运算</h2><p><img src="/images/计组知识总览2.8.png" alt="计组知识总览2.8"><br><img src="/images/计组知识总览2.8.1.png" alt="计组知识总览2.8.1"><br>一、算数移位<br>1、移位：通过改变各个数码位和小数点的相对位置，从而改变各数码位的位权。可用移位运算实现乘法、除法。<br>2、原码的算术运算—符号位保持不变，仅对数值位进行移位。<br><img src="/images/计组原码的算数移位2.8.png" alt="计组原码的算数移位2.8"><br>3、右移：高位补0，低位舍弃。若舍弃的位=0，则相当于➗2；若舍弃的位$\neq 0$,则会丢失精度。<br>4、左移：低位补0，高位舍弃。若舍弃的位=0，则相当于×2；若舍弃的位$\neq 0$,则会出现严重误差。<br>5、定点小数与定点整数同理，不再赘述。<br>6、反码的算数移位—正数的反码与原码相同，因此对正数反码的移位运算也和原码相同。<br>右移：高位补0，低位舍弃。<br>左移：低位补0，高位舍弃。<br>7、反码的算数移位—负数的反码数值位与原码相反，因此负数反码的移位运算规则如下：<br>右移：高位补1，低位舍弃。<br>左移：低位补1，高位舍弃。<br>8、补码的算数移位—正数的补码与原码相同，因此对正数补码的移位运算也和原码相同。<br>右移：高位补0，低位舍弃。<br>左移：低位补0，高位舍弃。<br>9、补码的算数移位—负数补码=反码末位+1.在负数原码中，从右向左数第一个1及其右边的0不变，其余位全部取反。<br>右移：高位补1，低位舍弃。<br>左移：低位补0，高位舍弃。<br><img src="/images/计组算数移位2.8.png" alt="计组算数移位2.8"><br>二、逻辑移位<br>1、逻辑右移：高位补0，低位舍弃。<br>逻辑左移：低位补0，高位舍弃。<br>2、可以把逻辑移位看作是对“无符号数”的算数移位。<br>三、循环移位<br>1、循环左移：把最高位拿下来放在最低位的位置上。<br>2、进位位：为了实现结果超过8bit的数的加法，计算机中会设置专门用来保存进位数据的位来确定低位的运算是否产生了进位。<br>带进位位的循环左移：原本数值位置的最高位放在了进位位的位置，而进位位的数据被放在了数据的最低位。<br>3、使用循环移位方法实现大端存储和小端存储的转换。<br><img src="/images/计组知识回顾2.8.png" alt="计组知识回顾2.8"><br>注意这个框图中关于反码的算数移位表述有问题。</p>
-<h2 id="加减运算-amp-溢出判断"><a href="#加减运算-amp-溢出判断" class="headerlink" title="加减运算&amp;溢出判断"></a>加减运算&amp;溢出判断</h2><p>该学操作系统了QAQ</p>
-
+<h2 id="加减运算-amp-溢出判断"><a href="#加减运算-amp-溢出判断" class="headerlink" title="加减运算&amp;溢出判断"></a>加减运算&amp;溢出判断</h2>
     </div>
 
     
