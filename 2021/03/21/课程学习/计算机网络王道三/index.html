@@ -29,8 +29,10 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://monica-y.github.io/images/%E8%AE%A1%E7%BD%91%E5%B0%81%E8%A3%85%E6%88%90%E5%B8%A73.1.png">
 <meta property="og:image" content="https://monica-y.github.io/images/%E8%AE%A1%E7%BD%91%E5%AD%97%E7%AC%A6%E8%AE%A1%E6%95%B0%E6%B3%953.1.png">
+<meta property="og:image" content="https://monica-y.github.io/images/%E8%AE%A1%E7%BD%91%E5%AD%97%E7%AC%A6%E5%A1%AB%E5%85%85%E6%B3%953.1.png">
+<meta property="og:image" content="https://monica-y.github.io/images/%E8%AE%A1%E7%BD%91%E8%BF%9D%E8%A7%84%E7%BC%96%E7%A0%81%E6%B3%953.1.png">
 <meta property="article:published_time" content="2021-03-21T03:44:56.042Z">
-<meta property="article:modified_time" content="2021-03-23T15:10:55.148Z">
+<meta property="article:modified_time" content="2021-03-26T01:54:41.424Z">
 <meta property="article:author" content="Monica">
 <meta property="article:tag" content="读书笔记">
 <meta property="article:tag" content="计算机网络">
@@ -195,7 +197,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-03-23 23:10:55" itemprop="dateModified" datetime="2021-03-23T23:10:55+08:00">2021-03-23</time>
+                <time title="修改时间：2021-03-26 09:54:41" itemprop="dateModified" datetime="2021-03-26T09:54:41+08:00">2021-03-26</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -220,7 +222,9 @@
 
       
         <h2 id="数据链路层功能概述"><a href="#数据链路层功能概述" class="headerlink" title="数据链路层功能概述"></a>数据链路层功能概述</h2><p>一、第三章的剧透<br>1、链路层的功能<br>2、链路层的两种信道<br>3、局域网、广域网<br>4、链路层的设备<br>二、数据链路层基本概念<br>1、结点：主机、路由器<br>2、链路：网络中两个结点之间的数据通道，链路的传输介质主要有双绞线、光纤和微波。分为有线链路、无线链路。<br>3、数据链路：网络中两个节点之间啊的逻辑通道，把实现控制数据传输协议的硬件和软件加到链路上就构成数据链路。<br>4、帧：链路层的协议数据单元，封装网络层数据报。<br>5、数据链路层负责通过一条链路从一个结点向另一个物理链路直接相连的相邻节点传送数据报。<br>三、数据链路层功能概述<br>1、数据链路层在物理层提供服务的基础上向网络层提供服务，其最基本的服务是将源自网络层来的数据可靠地传输到相邻节点地目标机网络层。其主要作用是加强物理传输层原始比特流地功能，将物理层提供地可能出错地物理连接改造成为逻辑上无差错地逻辑链路，使之对网络层表现为一条无差错地链路。<br>2、功能一：为网络层提供服务。无确认无连接服务，有确认无连接服务，有确认面向连接服务。（有连接一定有确认！）<br>3、功能二：链路管理，即连接的建立、维持、释放（用于面向连接的服务）。<br>4、功能三：组帧。<br>5、功能四：流量控制。<br>6、功能五：差错控制（帧错/位错）。</p>
-<h2 id="封装成帧-amp-透明传输"><a href="#封装成帧-amp-透明传输" class="headerlink" title="封装成帧&amp;透明传输"></a>封装成帧&amp;透明传输</h2><p>一、封装成帧<br>1、封装成帧就是在一段数据的前后部分添加首部和尾部，这样就构成了一个帧。接收端在收到物理层上交的比特流后，就能根据首部和尾部的标记，从收到的比特流中识别帧的开始和结束。<br><img src="/images/计网封装成帧3.1.png" alt="计网封装成帧3.1"><br>2、首部和尾部包含许多的控制信息，他们的一个重要作用：帧定界（确定帧的界限）。<br>3、帧同步：接收方应当能从接收到的二进制比特流中区分出帧的起始和终止。<br>4、组帧的四种方法：<br>1）字符计数法；<br>2）字符（节）填充法；<br>3）零比特填充法<br>4）违规编码法。<br>4、字符计数法：帧首部使用一个计数字段（第一个字节，八位）<br>二、透明传输<br>1、透明传输是指不管所传数据是什么样的比特组合，都应当能够在链路上传送。incident，链路层就“看不见”有什么妨碍数据传输的东西。<br>2、当所传数据中的比特组合恰巧与某一个控制信息完全一样时，就必须采取适当的措施，使接收方不会将这样的数据误认为是某种控制信息。这样才能保证数据链路层的传输是透明的。<br><img src="/images/计网字符计数法3.1.png" alt="计网字符计数法3.1"></p>
+<h2 id="封装成帧-amp-透明传输"><a href="#封装成帧-amp-透明传输" class="headerlink" title="封装成帧&amp;透明传输"></a>封装成帧&amp;透明传输</h2><p>一、封装成帧<br>1、封装成帧就是在一段数据的前后部分添加首部和尾部，这样就构成了一个帧。接收端在收到物理层上交的比特流后，就能根据首部和尾部的标记，从收到的比特流中识别帧的开始和结束。<br><img src="/images/计网封装成帧3.1.png" alt="计网封装成帧3.1"><br>2、首部和尾部包含许多的控制信息，他们的一个重要作用：帧定界（确定帧的界限）。<br>3、帧同步：接收方应当能从接收到的二进制比特流中区分出帧的起始和终止。<br>4、组帧的四种方法：<br>1）字符计数法；<br>2）字符（节）填充法；<br>3）零比特填充法<br>4）违规编码法。<br>4、字符计数法：帧首部使用一个计数字段（第一个字节，八位）<br>二、透明传输<br>1、透明传输是指不管所传数据是什么样的比特组合，都应当能够在链路上传送。incident，链路层就“看不见”有什么妨碍数据传输的东西。<br>2、当所传数据中的比特组合恰巧与某一个控制信息完全一样时，就必须采取适当的措施，使接收方不会将这样的数据误认为是某种控制信息。这样才能保证数据链路层的传输是透明的。<br>三、字符计数法<br><img src="/images/计网字符计数法3.1.png" alt="计网字符计数法3.1"><br>1、、帧首部使用一个计数字段（第一个字节，八位）来标明帧内字符数。<br>2、痛点：鸡蛋装在一个篮子里了。如果计数字段错误会导致后面的所有字节全部错误。<br>四、字符填充法<br><img src="/images/计网字符填充法3.1.png" alt="计网字符填充法3.1"><br>1、当传送的帧是由文本文件组成时（文本文件的字符都是从键盘上输入的，都是ASCII码）。不管从键盘上输入什么字符都可以放在帧里传过去，即透明传输。<br>2、当传送的帧是由非ASCII码的文本文件组成时（二进制代码的程序或图像等）。就要采用字符填充方法实现透明传输。（当接收方在帧的数据部分发现和结束字符相同的数据组合时继续正常接收数据）<br>方法：在控制字符前面加上一个转义字符ESC：00011011<br>五、零比特填充法<br>1、首部和尾部的标志符相同，都为：01111110。<br>2、当帧的数据部分出现01111110时，就5“1”1“0”。<br>3、（填充0）在发送端，扫描整个信息字段，只要连续5个1，就立即填入1个0。即使是111110这样的比特数据，依然要变成1111100。<br>4、（删除0）在接收端收到一个帧时，先找到标志字段确定边界，再用硬件对比特流进行扫描。连续发现5个1时，就把后面的0删除。<br>5、保证了透明传输：在传送的比特流中可以传送任意比特组合，而不会引起对帧边界的判断错误。（中间的数据一定是五个1，而帧开始和结束的标志是六个1）<br>六、违规编码法<br><img src="/images/计网违规编码法3.1.png" alt="计网违规编码法3.1"></p>
+<p>由于字节计数法Count字段的脆弱性（其值若有差错将导致灾难性后果）及字符填充实现上的复杂性和不兼容性，目前较普遍使用的帧同步法是比特填充和违规编码法。</p>
+<h2 id="差错控制（检错编码）"><a href="#差错控制（检错编码）" class="headerlink" title="差错控制（检错编码）"></a>差错控制（检错编码）</h2><p>该学计网了ohhh</p>
 
     </div>
 
@@ -302,7 +306,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#数据链路层功能概述"><span class="nav-number">1.</span> <span class="nav-text">数据链路层功能概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#封装成帧-amp-透明传输"><span class="nav-number">2.</span> <span class="nav-text">封装成帧&amp;透明传输</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#数据链路层功能概述"><span class="nav-number">1.</span> <span class="nav-text">数据链路层功能概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#封装成帧-amp-透明传输"><span class="nav-number">2.</span> <span class="nav-text">封装成帧&amp;透明传输</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#差错控制（检错编码）"><span class="nav-number">3.</span> <span class="nav-text">差错控制（检错编码）</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
