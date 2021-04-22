@@ -27,12 +27,14 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="第二章错题笔记">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://monica-y.github.io/images/%E8%AE%A1%E7%BB%84IEEE754%E6%A0%87%E5%87%862.16.png">
 <meta property="article:published_time" content="2021-04-09T14:39:27.999Z">
-<meta property="article:modified_time" content="2021-04-17T03:54:17.046Z">
+<meta property="article:modified_time" content="2021-04-22T03:14:54.426Z">
 <meta property="article:author" content="Monica">
 <meta property="article:tag" content="计算机组成与系统结构">
 <meta property="article:tag" content="错题笔记">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://monica-y.github.io/images/%E8%AE%A1%E7%BB%84IEEE754%E6%A0%87%E5%87%862.16.png">
 
 <link rel="canonical" href="https://monica-y.github.io/2021/04/09/%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0/%E8%AE%A1%E7%BB%84%E7%8E%8B%E9%81%93%E4%BA%8C/">
 
@@ -192,7 +194,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-04-17 11:54:17" itemprop="dateModified" datetime="2021-04-17T11:54:17+08:00">2021-04-17</time>
+                <time title="修改时间：2021-04-22 11:14:54" itemprop="dateModified" datetime="2021-04-22T11:14:54+08:00">2021-04-22</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -224,7 +226,19 @@
 <p>答案 D<br>使用补码表示时，若符号位相同，则数值位越大码值越大（对于正数和负数都适用）。<br>$[(-\frac{1}{2})_补] = 1.1000$,要是$x&lt;-\frac{1}{2}$成立，$x_1$必须为0，而$x_2~x_4$任意。<br>3、一个8位寄存器内的数值为11001010，进位标志寄存器C为0，若将此8位寄存器循环左移（不带进位位）1位，则该8位寄存器和标志寄存器内的数值分别为（）。<br>A、10010100 1<br>B、10010101 0<br>C、10010101 1<br>D、10010100 0</p>
 <p>答案 C<br>不带进位位的循环左移将最高位进入最低位和标志寄存器C位。<br>4、原码左、右移均补0，且符号位不变（注意与补码移位的区别）。补码负数移位时，左移补0（符号位也不能变），右移补1。即在负数情况下，左移和原码相同，右移和反码相同。<br>5、设x为真值,$x^<em>$为其绝对值，满足$[-x^\</em>]_补 = [-x]_补$，当且仅当（）<br>A、x任意<br>B、x为正数<br>C、x为负数<br>D、以上说法都不对</p>
 <p>答案 D<br>当x为0或正数时，都满足$[-x^*]_补 = [-x]_补$。因此B为充分条件，不是充要条件。<br>6、关于模四补码，下列说法正确的是（）。<br>A、模四补码和模二补码不同，它更容易检查乘除运算中的溢出问题<br>B、每个模四补码存储时只需一个符号位<br>C、存储每个模四补码需要两个符号位<br>D、模四补码，在算术与逻辑部件中为一个符号位<br>模四补码具有模二补码的全部优点且更易检查加减运算中的溢出问题，A错误。需要注意的是，存储模四补码仅需一个符号位，因为任何一个正确的数值，模四补码的两个符号位总是相同的，B正确。只在把两个模四补码的数送往ALU完成加减运算时，才把每个数的符号位的值同时送到ALU的双符号位中，即只在ALU中采用双符号位，C、D错误。<br>7、实现N位（不包括符号位）补码一位乘时，乘积为（）位。<br>A、N<br>B、N+1<br>C、2N<br>D、2N+1</p>
-<p>答案 D<br>补码一位乘法运算过程中一共向右移位N次，加上原先的N位，一共是2N位数值位，因乘积结果需加上符号位，故共2N+1位。<br>补码一位乘法中，最多需要n次移位（最后一次移位对运算结果没有影响所以不移位），n+1次加法运算。原码乘法移位和加法运算最多均为n次。</p>
+<p>答案 D<br>补码一位乘法运算过程中一共向右移位N次，加上原先的N位，一共是2N位数值位，因乘积结果需加上符号位，故共2N+1位。<br>补码一位乘法中，最多需要n次移位（最后一次移位对运算结果没有影响所以不移位），n+1次加法运算。原码乘法移位和加法运算最多均为n次。<br>8、假定在一个8位字长的计算机中运行如下C程序段</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">unsigned int x = 134;</span><br><span class="line"> unsigned int y = 246;</span><br><span class="line"> int m = x;</span><br><span class="line"> int n = y;</span><br><span class="line"> unsigned int z1 = x - y;</span><br><span class="line"> unsigned int z2 = x + y;</span><br><span class="line"> int k1 = m - n;</span><br><span class="line"> int k2 = m + n;</span><br></pre></td></tr></table></figure>
+<p>若编译器编译时将8个8位寄存器R1~R8分别分配给变量x,y,m,n,z1,z2,k1和k2。请回答下列问题（提示：有符号整数用补码表示）。<br>1）执行上述程序段后，寄存器R1，R5和R6的内容分别是什么（用十六进制表示）？<br>2）执行上述程序段后，变量m和k1的值分别是多少（用十六进制表示）？<br>3）上述程序段涉及有符号整数加减、无符号整数加减运算，这四种运算能否利用同一个加法器辅助电路实现？简述理由。<br>4）计算机内部如何判断有符号整数加减运算的结果是否发生溢出？上述程序段中，哪些有符号整数运算语句的执行结果会发生溢出？</p>
+<p>答案<br>1）R1的内容为86H，R5的内容为90H，R6的内容为7CH。<br>2）m为-122，k1为-112。<br>3）能。n位加法器实现的是模$2^n$无符号整数加减运算。对于无符号整数a和b，a+b可以直接用加法器实现，而a-b可用a加b的补数实现，即a - b = $a + [-b]_补(mod 2^n)$,所以n位无符号整数加减运算都可在n位加法器中实现。<br>由于有符号整数用补码表示，补码加减运算公式为$[a + b]_补 = [a]_补 + [b]_补(mod 2^n)$,$[a - b]_补 = [a]_补 + [-b]_补(mod 2^n)$,所以n位有符号整数加减运算都可在n位加法器中实现。<br>4）有符号整数加减运算的溢出判断规则为：若加法器的两个输入端（加法）的符号相同，且不同于输出端（和）的符号，则结果溢出，或加法器完成加法操作时，若次高位（最高数位）的进位和最高位（符号位）的进位不相同，则结果溢出。<br>最后一条语句执行时会发生溢出。因为1000 0110 + 1111 0110 = (1)0111 1100,括号中为加法器的进位，根据上述溢出判断规则可知结果溢出。或者，因为2个带符号整数均为负数，它们相加之后，结果小于8位二进制所能表示的最小负数。<br>实际上Z1和Z2都溢出了。第4问的是哪些“有符号整数”运算语句发生溢出，所以不能写它们。无符号数加减法运算，向更高位有进位、有借位，都算溢出。<br>9、假设有两个整数x和y，x = -68，y = -80，采用补码形式（含1位符号位）表示，x和y分别存放在寄存器A和B中。另外，还有两个寄存器C和D。A、B、C、D都是8位的寄存器。请回答下列问题（要求最终用十六进制表示二进制序列）：<br>1）寄存器A和B中的内容分别是什么？<br>2）x和y相加后的结果存放在寄存器C中，寄存器C中的内容是什么？<br>此时，溢出标志位OF是什么？符号标志位SF是什么？进位标志位CF是什么？<br>2）x和y相减后的结果存放在寄存器D中，寄存器D中的内容是什么？<br>此时，溢出标志位OF是什么？符号标志位SF是什么？进位标志位CF是什么？</p>
+<p>答案<br>1）A是BCH，B是B0H。<br>2）C是6CH。溢出标志位OF为1，表示溢出，即说明寄存器C中的内容不是真正的结果；符号标志位SF为0,表示结果为正数(溢出标志为1,说明符号位有错);进位标志位CF为1,仅表示加法器最高位有进位,对运算结果不说明什么。<br>3）D是0CH。溢出标志位OF为0，表示不溢出，即寄存器D中的内容是真正的结果；符号标志位SF为0,表示结果为正数;进位标志位CF为1,仅表示加法器最高位有进位,对运算结果不说明什么。<br>总结：产生进位不一定代表溢出。</p>
+<h2 id="浮点数的表示与运算"><a href="#浮点数的表示与运算" class="headerlink" title="浮点数的表示与运算"></a>浮点数的表示与运算</h2><p>1、浮点数加、减运算过程一般包括对阶、尾数运算、规格化、舍入和判断溢出等步骤。设浮点数的阶码和尾数均采用补码表示，且位数分别为5和7（均含2位符号位）。若有两个数$X = 2^7 x 29/32和Y = 2^5 x 5/8$,则用浮点加法计算X+Y的最终结果是（）。<br>A、00111 1100010<br>B、00111 0100010<br>C、01000 0010001<br>D、发生溢出</p>
+<p>答案 D<br>X的浮点数格式为00,111;00,11101(分号前为阶码，分号后为尾数)，Y的浮点数格式为00,101;00,10100。然后根据浮点数的加法步骤进行运算。<br>1）对阶。X、Y阶码相减，即00,111-00,101 = 00,111+11,011 = 00,010,可知X的阶码比Y的阶码大2（这一步可直接目测）。根据小阶向大阶看齐的原则，将Y的阶码加2，尾数右移2位，将Y变为00,111;00,00101。<br>2）尾数相加。即00,11101+00,00101 = 01,00010,尾数相加结果符号位为01，故需右规。<br>3）规格化。将尾数右移1位（小数点左移一位），阶码加1，得X+Y为01,000;00,10001。<br>4）判断溢出，阶码符号位为01，说明发生溢出。</p>
+<p>2、假定变量i、f和d的数据类型分别为int、float和double（int用补码表示，float和double分别用IEEE 754单精度和双精度浮点数格式表示），已知i = 785、f = 1.5678E3、d = 1.5E100，若在32位机器中执行下列关系表达式，则结果为“真”的是（）。<br>Ⅰ、(int)(float)i<br>Ⅱ、f = (float)(int)f<br>Ⅲ、f = (float)(double)f<br>Ⅳ、(d+f)-d = f<br>A、仅Ⅰ和Ⅱ<br>B、仅Ⅰ和Ⅲ<br>C、仅Ⅱ和Ⅲ<br>D、仅Ⅲ和Ⅳ</p>
+<p>答案 B<br><img src="/images/计组IEEE754标准2.16.png" alt="计组IEEE754标准2.16"><br>题中三种数据类型强制类型转换的顺序为int-&gt;float-&gt;double,int表示的类型为整数，若将float转换为int，小数点部分会被舍去，而int是精确到32位的整数，float只保存到23+1位，故一个长为32位的int整数在转换为float时也会有损失，但i&lt;1024(10位整数)，因此Ⅰ正确。<br>doulbe的精度和范围都比float大，float转换为double不会有损失，Ⅲ正确。<br>对于Ⅳ，初看似乎没有问题，但浮点运算d+f时需要对阶，对阶后f的尾数有效位被舍去而变为0，故d+f仍为d，再减去d后结果为0，故Ⅳ结果不为真。<br>注意：从int转换为float时，虽然不会发生溢出，但由于尾数尾数的关系，可能有数据舍入，而转换为double则能保留精度。</p>
+<p>3、float类型（即IEEE 754单精度浮点数格式）能表示的最大正整数是（）。<br>A、$2^{126}-2^{103}$<br>B、$2^{127}-2^{104}$<br>C、$2^{127}-2^{103}$<br>D、$2^{128}-2^{104}$</p>
+<p>答案 D<br>IEEE 754单精度浮点数是尾数用隐藏位策略的原码表示，且阶码都用移码（偏置值为127）表示的浮点数。注意移码不可以全为1，这在IEEE 754标准中表示无穷大（尾数为全零）或NAN（尾数中至少有一位不为零）。故float类型能表示的最大整数是$1.111…1x2^{127} = 2^{127}x(1+1-2^{-23}) = 2^{128}-2^{104}$。<br>注意：不要忘记整数部分隐藏的1。<br>4、某浮点机，采用规格化浮点数表示，阶码用移码表示（最高位代表符号位），尾数用原码表示。下列（）的表示不是规格化浮点数。<br>A、11111111,1.1000…00<br>B、0011111,1.0111…01<br>C、1000001,0.1111…01<br>D、0111111,0.1000…10</p>
+<p>答案 B<br>1）浮点数的加减实现一般参与计算的尾数是补码，其步骤中的规格化的目标是补码的规格化小数(1.0xxx或0.1xxx)。<br>2）IEEE 754标准的浮点尾数并不是规格化的浮点数，它的特殊之处在于位于个位的1被隐藏了。<br>3）原码的规格化表示：正数是0.1xxx(和补码相同)，负数是1.1xxx(与补码不同)。<br>规格化浮点数的定义：为了提高运算的精度，需要充分地利用尾数地有效数位，通常采用浮点数规格化形式，即规定尾数的最高数位必须是一个有效值。<br>规格化浮点数的尾数M的绝对值应满足条件$1/r \leqslant |M| \leqslant 1$，其中r表示r进制<br>5、设浮点数阶的基数为8，尾数用模四补码表示，下列浮点数中（）是规格化数。<br>A、11.111000<br>B、00.000111<br>C、11.101010<br>D、11.111101</p>
+<p>答案 C<br>注意尾数是模四补码，意味着有两个符号位，且采用的是补码的规格化标准，类比1.0xxx或0.1xxx(这个是二进制)。<br>当浮点数为正数时，数值位前三位不全为0时，是规格化数；当浮点数为负数时，数值位前三位不全为1时，是规格化数。（总是就是真值前三位必须不全为0）<br>紧紧抓住这个判定条件：规格化浮点数的尾数M的绝对值应满足条件$1/r \leqslant |M| \leqslant 1$，其中r表示r进制。</p>
 
     </div>
 
@@ -306,7 +320,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#数制与编码"><span class="nav-number">1.</span> <span class="nav-text">数制与编码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#定点数的表示与运算"><span class="nav-number">2.</span> <span class="nav-text">定点数的表示与运算</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#数制与编码"><span class="nav-number">1.</span> <span class="nav-text">数制与编码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#定点数的表示与运算"><span class="nav-number">2.</span> <span class="nav-text">定点数的表示与运算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#浮点数的表示与运算"><span class="nav-number">3.</span> <span class="nav-text">浮点数的表示与运算</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
