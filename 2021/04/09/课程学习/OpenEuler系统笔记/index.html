@@ -28,10 +28,10 @@
 <meta property="og:description" content="OpenEuler系统学习笔记">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-04-09T06:45:28.719Z">
-<meta property="article:modified_time" content="2021-04-09T07:50:49.663Z">
+<meta property="article:modified_time" content="2021-04-23T08:08:25.235Z">
 <meta property="article:author" content="Monica">
-<meta property="article:tag" content="读书笔记">
 <meta property="article:tag" content="操作系统">
+<meta property="article:tag" content="读书笔记">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="https://monica-y.github.io/2021/04/09/%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0/OpenEuler%E7%B3%BB%E7%BB%9F%E7%AC%94%E8%AE%B0/">
@@ -184,10 +184,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2021-04-09 14:45:28 / 修改时间：15:50:49" itemprop="dateCreated datePublished" datetime="2021-04-09T14:45:28+08:00">2021-04-09</time>
+              <time title="创建时间：2021-04-09 14:45:28" itemprop="dateCreated datePublished" datetime="2021-04-09T14:45:28+08:00">2021-04-09</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-04-23 16:08:25" itemprop="dateModified" datetime="2021-04-23T16:08:25+08:00">2021-04-23</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -212,6 +218,11 @@
       
         <p>一、引言<br>Linux系统源码虽然开放，但是架构文档并不开放，掌握了架构文档，就可以根据自身需要定制Linux系统。<br>华为OpenEuler系统是对Linux系统的改装<br>二、基本命令</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">touch cl//增加文件a</span><br><span class="line">rm cl//删除文件</span><br><span class="line">vi cl//修改文件</span><br><span class="line">find / name 08_del.sh//查找文件</span><br><span class="line">mkdir cl//增加一个目录文件</span><br><span class="line">rm -rf cldir//删除目录文件</span><br><span class="line"><span class="built_in">pwd</span> //目录文件</span><br><span class="line">find / -name cldir//查找文件</span><br><span class="line"></span><br><span class="line">ps -e//展示正在运行的进程</span><br><span class="line"></span><br><span class="line">vi f.c//编程</span><br><span class="line">进入编辑器后，我们先按i，即切换到“插入”状态</span><br><span class="line"><span class="comment">#include&lt;unistd.h&gt;</span></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    pid_t pid;</span><br><span class="line">    pid = fork();</span><br><span class="line">    <span class="keyword">if</span>(pid = 0)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">gcc -o f -g f.c</span><br><span class="line">gcc -o th -g thread.c -lpthread</span><br><span class="line"></span><br><span class="line">pthread_create</span><br><span class="line">fork生成进程</span><br></pre></td></tr></table></figure>
+<p>三、<br>用户空间：自己写的进程所占有的空间<br>内核空间：操作系统所占有的空间<br>用户空间内写的代码要经过操作系统才能访问硬件，但是我们可以使用内核空间的函数直接访问硬件，如以下代码访问显示器。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#include&lt;unistd.h&gt;</span></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    write(1,<span class="string">"haha\n"</span>,5);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">int 0x80中断指令，参数为0x80</span><br><span class="line">会查找系统调用表，system call table，系统调用号被放在了eax寄存器中</span><br></pre></td></tr></table></figure>
+<p>硬件中断<br>1、硬盘、键盘、网卡的管理程序直接向CPU的interrupt controller部分发指令，cpu在interrupt vector(中断向量表)中修改相应参数，然后处理信息，如将键盘输入的信息读入。</p>
+<p>0、下载源码<br>1、编出系统调用函数<br>2、加入系统调用表<br>3、重新编译内核并启用新的内核<br>写汇编语句<br>MOV LAX CALLID<br>int 0x80</p>
 
     </div>
 
@@ -221,8 +232,8 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" rel="tag"># 读书笔记</a>
               <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag"># 操作系统</a>
+              <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" rel="tag"># 读书笔记</a>
           </div>
 
         
@@ -309,7 +320,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">42</span>
+          <span class="site-state-item-count">44</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
