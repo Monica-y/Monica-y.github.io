@@ -28,7 +28,7 @@
 <meta property="og:description" content="汇编语言学习笔记">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-09-07T11:02:50.207Z">
-<meta property="article:modified_time" content="2021-09-28T12:47:13.512Z">
+<meta property="article:modified_time" content="2021-09-28T13:01:50.702Z">
 <meta property="article:author" content="Monica">
 <meta property="article:tag" content="汇编语言">
 <meta name="twitter:card" content="summary">
@@ -191,7 +191,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-09-28 20:47:13" itemprop="dateModified" datetime="2021-09-28T20:47:13+08:00">2021-09-28</time>
+                <time title="修改时间：2021-09-28 21:01:50" itemprop="dateModified" datetime="2021-09-28T21:01:50+08:00">2021-09-28</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -296,7 +296,7 @@
 <h4 id="堆栈操作指令"><a href="#堆栈操作指令" class="headerlink" title="堆栈操作指令"></a>堆栈操作指令</h4><p>1、PUSH SRC<br>要注意SRC不能为立即数<br>2、PUSH DST<br>3、PUSHF<br>4、POPF<br>以上堆栈操作指令都必修按字操作同时遵守上述六个规格。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">POP CS</span><br><span class="line">//error!CS不能做目的操作数</span><br><span class="line">PUSH CL</span><br><span class="line">//error！必须按字操作</span><br><span class="line">PUSH 1234H</span><br><span class="line">//error!必须按字操作</span><br></pre></td></tr></table></figure>
 <h3 id="算术运算类指令"><a href="#算术运算类指令" class="headerlink" title="算术运算类指令"></a>算术运算类指令</h3><p>1、CPU只要执行运算类指令，执行结果就会影响状态标志。<br>2、段寄存器不能参加运算。</p>
-<h4 id="加法指令"><a href="#加法指令" class="headerlink" title="加法指令"></a>加法指令</h4><p>1、不带进位位加法<br>ADD DST SRC<br>目的操作数DST&lt;-(DST)+SRC,同时根据和设置六个状态标志。ZF、PF、SF、CF、OF、AF。<br>2、带进位位的加法<br>ADC DST SRC<br>目的操作数DST&lt;-(DST)+SRC+CF,同时根据和设置六个状态标志。<br>3、增一指令<br>INC DST<br>目的操作数DST&lt;-(DST)+1,同时根据结果设置<strong>除CF以外</strong>的五个状态标志。对CF无影响。</p>
+<h4 id="加法指令"><a href="#加法指令" class="headerlink" title="加法指令"></a>加法指令</h4><p>1、不带进位位加法<br>ADD DST SRC<br>目的操作数DST&lt;-(DST)+SRC,同时根据和设置六个状态标志。ZF、PF、SF、CF、OF、AF。<br>2、带进位位的加法<br>ADC DST SRC<br>目的操作数DST&lt;-(DST)+SRC+CF,同时根据和设置六个状态标志。<br>3、增一指令<br>INC DST<br>目的操作数DST&lt;-(DST)+1,同时根据结果设置<strong>除CF以外</strong>的五个状态标志。对CF无影响。<br>例：</p>
 
     </div>
 
