@@ -29,7 +29,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://monica-y.github.io/images/%E6%B1%87%E7%BC%9635_%E4%B8%A4%E5%AD%97%E5%9E%8B%E6%95%B0%E6%8D%AE%E7%9B%B8%E5%8A%A0.png">
 <meta property="article:published_time" content="2021-09-07T11:02:50.207Z">
-<meta property="article:modified_time" content="2021-10-07T13:03:36.376Z">
+<meta property="article:modified_time" content="2021-10-09T11:16:25.985Z">
 <meta property="article:author" content="Monica">
 <meta property="article:tag" content="汇编语言">
 <meta name="twitter:card" content="summary">
@@ -193,7 +193,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-10-07 21:03:36" itemprop="dateModified" datetime="2021-10-07T21:03:36+08:00">2021-10-07</time>
+                <time title="修改时间：2021-10-09 19:16:25" itemprop="dateModified" datetime="2021-10-09T19:16:25+08:00">2021-10-09</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -323,7 +323,12 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">MOV AL,56H</span><br><span class="line">ADD AL,73H</span><br><span class="line">DAA</span><br><span class="line">//高四位超过九需要修正，低四位没有超过九且没有向高位的进位所以不需要修正</span><br></pre></td></tr></table></figure>
 <p>例子：分离BCD数运算4+8</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">MOV AL,04H</span><br><span class="line">ADD AL,08H</span><br><span class="line">AAA</span><br><span class="line">//低四位超过九需要加六修正，因为是分离BCD数，所以指令还会使高四位自动清零，并将AF标志传送给CF和AH，AH= 01H，最后的结果(AX) = 0102H。</span><br></pre></td></tr></table></figure>
-<p>这是因为分离BCD数相加结果十位最大为1，所以可以直接根据AF标志位来确定AH的内容。<br>大部分场合使用的是组合BCD数的运算。<br><a href="https://www.bilibili.com/video/BV1ZJ411b7Na?p=40" target="_blank" rel="noopener">目前更新进度40P</a></p>
+<p>这是因为分离BCD数相加结果十位最大为1，所以可以直接根据AF标志位来确定AH的内容。<br>大部分场合使用的是组合BCD数的运算。<br><a href="https://www.bilibili.com/video/BV1ZJ411b7Na?p=40" target="_blank" rel="noopener">目前更新进度40P</a><br>分离BDC数加法参与运算的不论是数字还是字符‘1’，运算得到的结果都相同。所以该指令又称为阿思科码加法调整指令。<br>2、减法BCD数调整指令<br>组合BCD数：DAS 减六修正原则,超过九则减六<br>分离BCD数：AAS<br>例：组合BCD数31-87</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">MOV AL,31H</span><br><span class="line">SUB AL,87H</span><br><span class="line">//有一位借位，存在CF中，最终输出结果要考虑CF寄存器内容</span><br><span class="line">DAS</span><br><span class="line">//AL = 44H,CF = 1，相当于借位了100，所以此时结果为44-100 = -56</span><br></pre></td></tr></table></figure>
+<p>3、乘法BCD数调整指令<br>分离BCD数：AAM<br>例：分离BCD数7*8</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">MOV AL,07H</span><br><span class="line">MOV BL,08H</span><br><span class="line">MUL BL;</span><br><span class="line">//AX&lt;-(AL)*(BL) == 0038H</span><br><span class="line">AAM</span><br><span class="line">//对AX中得到的积做除十运算，商放在AH中，余数放在AL中</span><br><span class="line">最终(AX) = 0506H</span><br></pre></td></tr></table></figure>
+<p>积的调整指令会调整SF、ZF标志。</p>
+<p>4、除法BCD数的调整</p>
 
     </div>
 
