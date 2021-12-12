@@ -155,6 +155,175 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://monica-y.github.io/2021/12/12/%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0/%E7%AC%AC%E4%B8%89%E7%AB%A0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Monica">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/12/12/%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0/%E7%AC%AC%E4%B8%89%E7%AB%A0/" class="post-title-link" itemprop="url">课程学习/第三章</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-12-12 15:34:59 / 修改时间：15:34:48" itemprop="dateCreated datePublished" datetime="2021-12-12T15:34:59+08:00">2021-12-12</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>-—</p>
+<p>title: 汇编语言之三</p>
+<p>data: 2021-12-12 15:34:30</p>
+<p>categories:</p>
+<p>- 计算机组成与系统结构</p>
+<p>tags:</p>
+<p>- 汇编语言</p>
+<p>description: 汇编语言学习笔记</p>
+<p>mathjax: true</p>
+<p>-—</p>
+<h1 id="Intel-x86微处理器的组成结构"><a href="#Intel-x86微处理器的组成结构" class="headerlink" title="Intel x86微处理器的组成结构"></a>Intel x86微处理器的组成结构</h1><h2 id="汇编语言源程序的结构"><a href="#汇编语言源程序的结构" class="headerlink" title="汇编语言源程序的结构"></a>汇编语言源程序的结构</h2><h3 id="简化段定义的程序结构"><a href="#简化段定义的程序结构" class="headerlink" title="简化段定义的程序结构"></a>简化段定义的程序结构</h3><p><img src="https://qn-s0.yuketang.cn/FuwIF1SBOqEEtED5IdOmXUoipxJl" alt="ppt"></p>
+<h3 id="内存模型"><a href="#内存模型" class="headerlink" title="内存模型"></a>内存模型</h3><p>在实际函数调用的过程中，函数的参数是从右向左依次压入栈中的。</p>
+<h2 id="内部寄存器"><a href="#内部寄存器" class="headerlink" title="　内部寄存器"></a>　内部寄存器</h2><p><img src="https://qn-s0.yuketang.cn/Fjvzey9jyKPGX2epnEUptb9Mw-Hu" alt="ppt"></p>
+<h3 id="通用寄存器"><a href="#通用寄存器" class="headerlink" title="通用寄存器"></a>通用寄存器</h3><p><strong>功能</strong>：主要用于<strong>算术计算</strong>和<strong>数据传送</strong>。</p>
+<p>AX,BX,CX,DX寄存器可以作为两个单独的8位使用。但SI,DI,BP,SP不可分开使用。</p>
+<h2 id="汇编语言的基本元素"><a href="#汇编语言的基本元素" class="headerlink" title="汇编语言的基本元素"></a>汇编语言的基本元素</h2><h3 id="定义数据"><a href="#定义数据" class="headerlink" title="定义数据"></a>定义数据</h3><p>BYTE 8bit无符号整数，关键词<strong>DB</strong>。</p>
+<p>WORD 16bit无符号整数，关键词<strong>DW</strong>。WORD中的数据采用小端存储的方式。</p>
+<p>符号常量，不占用任何实际的存储空间。只有在data段定义了大小的量才是变量。符号常量就相当于C中的宏定义，本质上是一个常量。</p>
+<h3 id="PTR操作符"><a href="#PTR操作符" class="headerlink" title="PTR操作符"></a>PTR操作符</h3><p>有一个16bit的存储空间，名字为space。在读取数据的时候，可以将它理解为一个16bit的数据:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MOV AX,WORD PTR space</span><br></pre></td></tr></table></figure>
+<p>也可以把它理解为两个8bit的数据：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MOV AL,BYTE PTR space</span><br></pre></td></tr></table></figure>
+<h2 id="数据传送指令"><a href="#数据传送指令" class="headerlink" title="数据传送指令"></a>数据传送指令</h2><h3 id="MOV指令"><a href="#MOV指令" class="headerlink" title="MOV指令"></a>MOV指令</h3><p>MOV指令需要遵循的规则：</p>
+<ul>
+<li>两个操作数的尺寸必须一致。</li>
+<li>两个操作数不能同时为内存操作数。中间可以通过寄存器暂存。</li>
+<li>目的操作数不能是CS，EIP和IP。</li>
+<li>立即数不能直接送至段寄存器。要取段地址，使用SEG关键词。</li>
+</ul>
+<h3 id="XCHG指令"><a href="#XCHG指令" class="headerlink" title="XCHG指令"></a>XCHG指令</h3><p>含义：exchange data，交换两个操作数的内容。</p>
+<p>注意：交换两个内存中操作数，需要将一个操作数移到寄存器中。</p>
+<h3 id="直接寻址"><a href="#直接寻址" class="headerlink" title="直接寻址"></a>直接寻址</h3><p>使用内存地址去内存中寻找操作数。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MOV al,arrayB</span><br><span class="line">MOV al,[arrayB+1]</span><br></pre></td></tr></table></figure>
+<h3 id="寄存器间接寻址"><a href="#寄存器间接寻址" class="headerlink" title="寄存器间接寻址"></a>寄存器间接寻址</h3><p><strong>间接操作数</strong>可以是任何用方括号括起来的16位通用寄存器，AX,BX,CX,DX,SI,DI,BP,SP。</p>
+<p>实地址模式下只能使用SI，DI，BX，BP。通常尽量避免使用BP，因为BP常用来寻址堆栈而不是数据段。</p>
+<p>PTR与间接操作数的联合使用:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">INC [SI];error:operand must have size</span><br><span class="line">INC BYTE PTR [SI]</span><br></pre></td></tr></table></figure>
+<h3 id="寄存器相对寻址"><a href="#寄存器相对寻址" class="headerlink" title="寄存器相对寻址"></a>寄存器相对寻址</h3><p>形如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MOV AL,[Array+SI]</span><br><span class="line">MOV AL,Array[SI];两种表达方式等价</span><br></pre></td></tr></table></figure>
+<p>实模式下只能使用SI，DI，BX，BP寄存器，同时要尽量避免使用BP寄存器。</p>
+<h2 id="加法和减法"><a href="#加法和减法" class="headerlink" title="加法和减法"></a>加法和减法</h2><h3 id="INC和DEC指令"><a href="#INC和DEC指令" class="headerlink" title="INC和DEC指令"></a>INC和DEC指令</h3><p>格式：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">INC reg/mem</span><br><span class="line">DEC reg/mem</span><br></pre></td></tr></table></figure>
+<p>注意：INC和DEC指令不影响进位标志。</p>
+<h3 id="ADD指令"><a href="#ADD指令" class="headerlink" title="ADD指令"></a>ADD指令</h3><p>将同尺寸的源操作数和目的操作数相加，结果在目的操作数中，不改变源操作数。</p>
+<p>格式：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ADD 目的，源</span><br></pre></td></tr></table></figure>
+<h3 id="SUB指令"><a href="#SUB指令" class="headerlink" title="SUB指令"></a>SUB指令</h3><p>将源操作数从目的操作数中减掉，结果在目的操作数中，不改变源操作数。</p>
+<p>格式：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SUB 目的，源</span><br></pre></td></tr></table></figure>
+<p>影响标志位：CF、ZF、SF、OF、AF、PF</p>
+<h3 id="NEG指令"><a href="#NEG指令" class="headerlink" title="NEG指令"></a>NEG指令</h3><p>含义：negate，求负</p>
+<p>格式：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">NEG reg/mem</span><br></pre></td></tr></table></figure>
+<p>影响标志位：CF、ZF、SF、OF、AF、PF</p>
+<h3 id="算术运算影响的进位标志"><a href="#算术运算影响的进位标志" class="headerlink" title="算术运算影响的进位标志"></a>算术运算影响的进位标志</h3><h4 id="ZF和SF"><a href="#ZF和SF" class="headerlink" title="ZF和SF"></a>ZF和SF</h4><p><img src="https://qn-s0.yuketang.cn/Fgk1VEHdVa9D9BuXVKeRp3CGA1vk" alt="ppt"></p>
+<p>注意符号位，为正数则SF=0，为负数则SF = 1。</p>
+<h4 id="CF"><a href="#CF" class="headerlink" title="CF"></a>CF</h4><p><img src="https://qn-s0.yuketang.cn/Fhm8X01f19ngFcxLZ1q0ZyiRmDOH" alt="ppt"></p>
+<p>注意，若在第二种情况中，如下写法，则CF= 1。即目的操作数为AL而不是AX。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MOV AL,0FFH</span><br><span class="line">ADD AL,1</span><br></pre></td></tr></table></figure>
+<h4 id="溢出标志"><a href="#溢出标志" class="headerlink" title="溢出标志"></a>溢出标志</h4><p>OF = $C_n\oplus C_{n-1}$，其中，$C_n$为符号位产生的进位，即标志位CF；$C_{n-1}$为最高有效位符号位产生的进位。</p>
+<p>CPU如何知道一个数字是有符号的还是无符号的？</p>
+<ul>
+<li>CPU并不知道——只有程序员才知道。</li>
+<li>CPU在执行指令之后机械地设置各种状态标志，它并不知道哪些对程序员是重要的，程序员自己来选择解释哪些标志和忽略哪些标志。</li>
+</ul>
+<h2 id="JMP和LOOP指令"><a href="#JMP和LOOP指令" class="headerlink" title="JMP和LOOP指令"></a>JMP和LOOP指令</h2><p>控制转移可分为两种：</p>
+<ul>
+<li>无条件转移：以JMP指令为例。</li>
+<li>条件转移：以LOOP指令为例。</li>
+</ul>
+<h3 id="LOOP指令"><a href="#LOOP指令" class="headerlink" title="LOOP指令"></a>LOOP指令</h3><p>格式：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LOOP 目的地址</span><br></pre></td></tr></table></figure>
+<p>在实地址模式下，用做默认循环计数器的是CX而不是ECX。</p>
+<p>循环的目的地址与当前地址只能在相距-128到+127字节的范围之内。</p>
+<p>循环的嵌套格式：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">L1:</span><br><span class="line">PUSH CX</span><br><span class="line">MOV CX,20</span><br><span class="line">L2:</span><br><span class="line">...</span><br><span class="line">LOOP L2</span><br><span class="line">POP CX</span><br><span class="line">LOOP L1</span><br></pre></td></tr></table></figure>
+<h2 id="布尔和比较指令"><a href="#布尔和比较指令" class="headerlink" title="布尔和比较指令"></a>布尔和比较指令</h2><h3 id="AND指令"><a href="#AND指令" class="headerlink" title="AND指令"></a>AND指令</h3><p><strong>功能</strong>：在操作数的对应数据位之间执行布尔(位)”与“操作，并将结果保存在目的操作数中。</p>
+<p><strong>格式</strong>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">AND 目的，源</span><br><span class="line">AND reg,reg</span><br><span class="line">AND reg,mem</span><br><span class="line">AND mem,reg</span><br><span class="line">AND reg,imm</span><br><span class="line">AND mem,imm</span><br></pre></td></tr></table></figure>
+<p>两个操作数可以是8bit，或16bit，但它们的尺寸必须相同。</p>
+<p><strong>影响的标志位</strong>：</p>
+<ul>
+<li>总是清除OF和CF；</li>
+<li>根据结果修改SF、ZF、PF。</li>
+</ul>
+<p><strong>主要用途</strong>：对特定的位清”0“，同时保留其它的位。</p>
+<h3 id="OR指令"><a href="#OR指令" class="headerlink" title="OR指令"></a>OR指令</h3><p><strong>功能</strong>：按位取“或”。</p>
+<p><strong>格式</strong>：与AND指令相同。</p>
+<p><strong>主要用途</strong>：对特定位置“1”，并保留其他位。</p>
+<p>例：将0到9之间的整数转换成对应的ASCII码数字。方法：将位4和位5设置为1.</p>
+<h3 id="XOR指令"><a href="#XOR指令" class="headerlink" title="XOR指令"></a>XOR指令</h3><p><strong>功能</strong>：按位取“异或”。</p>
+<p><strong>格式</strong>：与AND及OR指令相同。</p>
+<p><strong>用途</strong>：</p>
+<ol>
+<li>对某些位按位取反（与1做异或），同时不影响其他的位。</li>
+<li>判断16位或32位值的奇偶性。和0异或，看PF标志位。</li>
+<li>简单数据加密。</li>
+</ol>
+<h3 id="NOT指令"><a href="#NOT指令" class="headerlink" title="NOT指令"></a>NOT指令</h3><p><strong>功能</strong>：将操作数所有数据位取反，结果为反码。</p>
+<p><strong>格式</strong>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">NOT reg</span><br><span class="line">NOT mem</span><br></pre></td></tr></table></figure>
+<p>NOT指令不影响任何状态标志。</p>
+<h3 id="TEST"><a href="#TEST" class="headerlink" title="TEST"></a>TEST</h3><p><strong>功能</strong>：两操作数按位“与”，根据结果设置标志位，但不回送结果（不修改目的操作数）。</p>
+<p><strong>格式</strong>：与AND指令相同。</p>
+<p><strong>用途</strong>：测试操作数的某一位是“0”还是“1”。</p>
+<p>例如，测试AL中低0位、第3位是否同时为“0”。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">test</span> al,00001001b</span><br></pre></td></tr></table></figure>
+<p>然后判断ZF是否等于1。</p>
+<p><strong>影响的标志</strong>：清除OF、CF；修改SF、ZF、PF。</p>
+<h3 id="CMP指令"><a href="#CMP指令" class="headerlink" title="CMP指令"></a>CMP指令</h3><p><strong>格式</strong>：与AND指令相同</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://monica-y.github.io/2021/10/28/%E7%BC%96%E7%A8%8B/leetcode/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -874,87 +1043,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://monica-y.github.io/2021/03/21/%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%8E%8B%E9%81%93%E4%B8%89/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Monica">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/03/21/%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%8E%8B%E9%81%93%E4%B8%89/" class="post-title-link" itemprop="url">计算机网络王道三</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-03-21 11:44:56" itemprop="dateCreated datePublished" datetime="2021-03-21T11:44:56+08:00">2021-03-21</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-05-14 09:27:18" itemprop="dateModified" datetime="2021-05-14T09:27:18+08:00">2021-05-14</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" itemprop="url" rel="index"><span itemprop="name">计算机网络</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>第三章学习笔记</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/03/21/%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%8E%8B%E9%81%93%E4%B8%89/">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1024,7 +1112,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">47</span>
+          <span class="site-state-item-count">48</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
