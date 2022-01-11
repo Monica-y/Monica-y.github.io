@@ -1172,7 +1172,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #dfc3e9;
+  background: #7796ff;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2395,4 +2395,11 @@ body {
   background-attachment: fixed;
   background-position: 50% 50%;
   background-size: cover;
+}
+\opacity参数用于设置透明度,
+.header-inner {
+  opacity: 0.8;
+}
+.main-inner {
+  opacity: 0.8;
 }
