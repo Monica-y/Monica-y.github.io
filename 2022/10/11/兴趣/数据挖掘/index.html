@@ -36,7 +36,7 @@
 <meta property="og:image" content="https://monica-y.github.io/images/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2%E4%B8%8E%E9%87%87%E6%A0%B72.png">
 <meta property="og:image" content="https://monica-y.github.io/images/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2%E4%B8%8E%E9%87%87%E6%A0%B73.png">
 <meta property="article:published_time" content="2022-10-11T13:31:38.144Z">
-<meta property="article:modified_time" content="2022-10-13T15:38:14.609Z">
+<meta property="article:modified_time" content="2022-10-13T15:51:51.217Z">
 <meta property="article:author" content="Monica">
 <meta property="article:tag" content="数据挖掘">
 <meta name="twitter:card" content="summary">
@@ -200,7 +200,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-10-13 23:38:14" itemprop="dateModified" datetime="2022-10-13T23:38:14+08:00">2022-10-13</time>
+                <time title="修改时间：2022-10-13 23:51:51" itemprop="dateModified" datetime="2022-10-13T23:51:51+08:00">2022-10-13</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -253,14 +253,14 @@
 <h2 id="8-类型转换与采样"><a href="#8-类型转换与采样" class="headerlink" title="8 类型转换与采样"></a>8 类型转换与采样</h2><p>经过数据清洗，我们有了一个没有错误的数据集，接下来的工作有：<br>1)仍然需要标准化<br>2)类型转换<br>3)归一化<br>4)采样</p>
 <h3 id="8-1-数据类型-attribute-types"><a href="#8-1-数据类型-attribute-types" class="headerlink" title="8.1 数据类型 attribute types"></a>8.1 数据类型 attribute types</h3><p>连续型：真实值，如温度、高度、重量……<br>离散型：整数，例如人数……<br>序数型：排名，例如(优，中，差)……<br>名称型：符号，例如(老师，工人，推销员)……对于此类数据的编码，比较复杂，例如红(0),绿(1),蓝(2)这样编码，也就默认了红绿之间的距离小于红蓝。可以采用one-hot编码，红色(001),蓝色(010),绿色(100)，这三种颜色的汉明距离相同。<br>字符串型：文本信息，例如“西安电子科技大学”……</p>
 <h3 id="8-2-采样-sampling"><a href="#8-2-采样-sampling" class="headerlink" title="8.2 采样 sampling"></a>8.2 采样 sampling</h3><p>数据库/数据中心可以存储TB级的数据。<br>处理限制：CPU，内存，I/O……<br>用采样来降低时间复杂度。<br>在统计中，使用抽样是因为获取整个数据集是昂贵的。但是在大数据中使用采用的原因是数据量太大，一次无法全部处理，所以会从数据集中抽取10%的数据作为样本进行处理。<br>聚合：<br>改变数据的规模，我们只需要知道某个客户在一个月中一共打了多少电话，并不关心他打给谁，打了多长时间等等，这就是对数据的聚集的过程。<br>采样也可以被用于调整类的分布，平衡数据集的数据。例如在西电，男女比例悬殊，我们可以通过采样，来平衡数据集中样本的男女比例，以此避免在后续的数据分析过程中犯错误。<br><img src="/images/数据挖掘/类型转换与采样1.png" alt="类型转换与采样1"><br>对于上图中A，B两个分类器，A的准确率比B高，但是在实际使用过程中，我们更希望分类器可以分辨出红色块数据(例如是可能患癌症的人)，整体的准确率就不能很好的量化这两个分类器的表现。因此我们要用以下指标。<br>G-mean指标：</p>
-<script type="math/tex; mode=display">G-mean = (Acc^+\times Acc^-)^{0.5}</script><script type="math/tex; mode=display">where Acc^+ = \frac{TP}{TP+FN}</script><p>即在所有应该为positive的数据中，判断结果为positive的比例。</p>
+<script type="math/tex; mode=display">G-mean = (Acc^+\times Acc^-)^{0.5}</script><script type="math/tex; mode=display">where：Acc^+ = \frac{TP}{TP+FN}</script><p>即在所有应该为positive的数据中，判断结果为positive的比例。</p>
 <script type="math/tex; mode=display">Acc^- = \frac{TN}{TN+FP}</script><p>即在所有应该为negative的数据中，判断结果为negative的比例。<br>F-measure指标：</p>
-<script type="math/tex; mode=display">F-measure = \frac{2\times Precision\times Recall}{Precision+Recall}</script><script type="math/tex; mode=display">where Precision = \frac{TP}{TP+FP}</script><p>准确率即在所有判断为positive的数据中，确实是positive的比例。例如在搜索引擎上搜索文章，返回的结果中有多少是我真正需要的。</p>
+<script type="math/tex; mode=display">F-measure = \frac{2\times Precision\times Recall}{Precision+Recall}</script><script type="math/tex; mode=display">where：Precision = \frac{TP}{TP+FP}</script><p>准确率即在所有判断为positive的数据中，确实是positive的比例。例如在搜索引擎上搜索文章，返回的结果中有多少是我真正需要的。</p>
 <script type="math/tex; mode=display">Recall = \frac{TP}{TP+FN} = Acc^+</script><p>召回率即在所有应该为positive的数据中，判断为positive的比例。例如在搜索引擎上搜索文章，我需要的100篇文章中被顺利找到的文章有多少。</p>
 <h3 id="8-3-向上采样-over-sampling"><a href="#8-3-向上采样-over-sampling" class="headerlink" title="8.3 向上采样 over sampling"></a>8.3 向上采样 over sampling</h3><p><img src="/images/数据挖掘/类型转换与采样2.png" alt="类型转换与采样2"><br>在上图数据集中，如果红颜色的点远远多于蓝颜色的点，如果直接进行分类，很多分类器会犯错。我们可以在采样的时候多采样蓝颜色的点，具体的采样方法是对于颜色样本点A，我们找到他的近邻B，然后在A和B之间的区域中随机生成一个点，有点类似于插值的方法。</p>
 <h3 id="8-4-边界采样-boundary-sampling"><a href="#8-4-边界采样-boundary-sampling" class="headerlink" title="8.4 边界采样 boundary sampling"></a>8.4 边界采样 boundary sampling</h3><p><img src="/images/数据挖掘/类型转换与采样3.png" alt="类型转换与采样3"><br>在上图数据集中，我们观察发现边界点的价值远远大于中间的点，那么在采样的过程中，我们只需要提取边缘点，就可以达到和使用全部数据集相同的效果，从而节省大量的计算资源。</p>
 <h2 id="9-数据描述与可视化"><a href="#9-数据描述与可视化" class="headerlink" title="9 数据描述与可视化"></a>9 数据描述与可视化</h2><h3 id="9-1-标准化-normalization"><a href="#9-1-标准化-normalization" class="headerlink" title="9.1 标准化 normalization"></a>9.1 标准化 normalization</h3><p>不同单位下数值的大小会不同，因此需要一些标准化的操作。<br>Min-Max 标准化(作用是把数据映射到01区间)：</p>
-<script type="math/tex; mode=display">v^' = \frac{v-min}{max-min}(new\_max-new\_min)+new\_min</script><p>例如收入的范围是12000到98000，那么73600会被映射到</p>
+<script type="math/tex; mode=display">v^' = \frac{v-min}{max-min}(newmax-newmin)+newmin</script><p>例如收入的范围是12000到98000，那么73600会被映射到</p>
 <script type="math/tex; mode=display">\frac{73600-12000}{98000-12000}(1-0)+0 = 0.716</script><p>这种方法适用于数据有明确的上下界。对于没有明确上下界的数据，可以采用Z-score的方法进行标准化。Z-score的原理是计算样本点偏离了均值多少个σ。<br>Z-score 标准化(μ:mean,σ:标准差)</p>
 <script type="math/tex; mode=display">v^'= \frac{v-\mu}{\sigma}</script><script type="math/tex; mode=display">如果\mu = 54000,\sigma = 16000,那么\frac{73600-54000}{16000} = 1.225</script><h3 id="9-2-数据描述-data-description"><a href="#9-2-数据描述-data-description" class="headerlink" title="9.2 数据描述 data description"></a>9.2 数据描述 data description</h3><p>均值：算数平均值 = 数据总和/数量,特性是容易受到一两个大的值的影响。<br>中位数：即用位于50%位置的样本的水平来描述数据集的整体水平。<script type="math/tex">P(X \leq m) = P(X \geq m) = \int_{-\inf}^{m}f(x)dx = \frac{1}{2}</script><br>众数(在正态分布情况下均值、中位数、众数是重合的)：<br>1)一个列表中最频繁出现的值。<br>2)可用于非数值数据。<br>方差：多样性程度，是比较密集还是相对分散。</p>
 <script type="math/tex; mode=display">Var(X) = E[X-\mu]^2</script><script type="math/tex; mode=display">Var(X) = \int (x-\mu)^2f(x)dx</script><p>皮尔逊相关系数</p>
