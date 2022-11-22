@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"monica-y.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="深度学习学习笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="深度学习">
+<meta property="og:url" content="https://monica-y.github.io/2022/11/21/%E5%85%B4%E8%B6%A3/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="深度学习学习笔记">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://monica-y.github.io/images/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%861.png">
+<meta property="og:image" content="https://monica-y.github.io/images/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%862.png">
+<meta property="og:image" content="https://monica-y.github.io/images/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%863.png">
+<meta property="og:image" content="https://monica-y.github.io/images/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%864.png">
+<meta property="og:image" content="https://monica-y.github.io/images/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%865.png">
+<meta property="og:image" content="https://monica-y.github.io/images/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%866.png">
+<meta property="og:image" content="https://monica-y.github.io/images/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%867.png">
+<meta property="og:image" content="https://monica-y.github.io/images/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%868.png">
+<meta property="og:image" content="https://monica-y.github.io/images/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%869.png">
+<meta property="og:image" content="https://monica-y.github.io/images/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%8610.png">
+<meta property="og:image" content="https://monica-y.github.io/images/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%8611.png">
+<meta property="og:image" content="https://monica-y.github.io/images/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%8612.png">
+<meta property="og:image" content="https://monica-y.github.io/images/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%8613.png">
+<meta property="og:image" content="https://monica-y.github.io/images/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%8614.png">
+<meta property="article:published_time" content="2022-11-21T12:50:02.077Z">
+<meta property="article:modified_time" content="2022-11-22T15:18:36.723Z">
+<meta property="article:author" content="Monica">
+<meta property="article:tag" content="数据挖掘">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://monica-y.github.io/images/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%861.png">
+
+<link rel="canonical" href="https://monica-y.github.io/2022/11/21/%E5%85%B4%E8%B6%A3/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>深度学习 | Hexo</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Hexo</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://monica-y.github.io/2022/11/21/%E5%85%B4%E8%B6%A3/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Monica">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          深度学习
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-11-21 20:50:02" itemprop="dateCreated datePublished" datetime="2022-11-21T20:50:02+08:00">2022-11-21</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-11-22 23:18:36" itemprop="dateModified" datetime="2022-11-22T23:18:36+08:00">2022-11-22</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/" itemprop="url" rel="index"><span itemprop="name">数据挖掘</span></a>
+                </span>
+            </span>
+
+          
+            <div class="post-description">深度学习学习笔记</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="1-神经网络和深度学习"><a href="#1-神经网络和深度学习" class="headerlink" title="1 神经网络和深度学习"></a>1 神经网络和深度学习</h2><h3 id="1-1-什么是神经网络"><a href="#1-1-什么是神经网络" class="headerlink" title="1.1 什么是神经网络"></a>1.1 什么是神经网络</h3><p>“深度学习”指的是训练神经网络的规模很大。<br><a href="https://www.bilibili.com/video/BV1FT4y1E74V?p=2&amp;vd_source=3fbda25a4b0f2f754f5986883bf96612" target="_blank" rel="noopener">学习进度 01:31</a></p>
+<h2 id="2-改进深度神经网络：超参数调整、正则化和优化"><a href="#2-改进深度神经网络：超参数调整、正则化和优化" class="headerlink" title="2 改进深度神经网络：超参数调整、正则化和优化"></a>2 改进深度神经网络：超参数调整、正则化和优化</h2><h2 id="3-结构化机器学习工程"><a href="#3-结构化机器学习工程" class="headerlink" title="3 结构化机器学习工程"></a>3 结构化机器学习工程</h2><h2 id="4-卷积神经网络-Convolutional-Neural-Networks"><a href="#4-卷积神经网络-Convolutional-Neural-Networks" class="headerlink" title="4 卷积神经网络 Convolutional Neural Networks"></a>4 卷积神经网络 Convolutional Neural Networks</h2><h2 id="5-自然语言处理：建立序列模型"><a href="#5-自然语言处理：建立序列模型" class="headerlink" title="5 自然语言处理：建立序列模型"></a>5 自然语言处理：建立序列模型</h2><p><a href="https://github.com/graykode/nlp-tutorial" target="_blank" rel="noopener">学长给的代码库</a></p>
+<h3 id="5-1-数学符号"><a href="#5-1-数学符号" class="headerlink" title="5.1 数学符号"></a>5.1 数学符号</h3><p>例如我们需要在一句话中定位人的名字，即命名实体识别问题，这一问题常用于搜索引擎。命名实体识别系统可以用来查找不同类型的文本中的人名、公司名、时间、地点、国家名、货币名等等。<br>给定一段文字输入x，我们希望模型输出的数据y能标识x中的每个单词是否是人名的一部分。下图中，我们将输入的文字索引为x^1,x^2…x^9,然后我们对输出数据y使用相同的索引方式，y^1,y^2,y^3…y^9。我们使用T_x来表示输入序列的长度，T_y来表示输出序列的长度。<br><img src="/images/深度学习/自然语言处理1.png" alt="自然语言处理1"><br>对于第i个训练集x^i,我们用x^\<i\>\<t\>表示训练样本i序列中第t个元素，T_x是序列的长度，训练集中不同的训练样本就会有不同的长度，T_x^i表示第i个训练样本的输入序列长度。同样地，y^\<i\>\<t\>代表第i个训练样本中第t个元素，T_y^i就是第i个训练样本的输出序列的长度。<br>对于输入的序列x，我们需要思考如何表示一个序列里单独的单词。<br><img src="/images/深度学习/自然语言处理2.png" alt="自然语言处理2"><br>首先我们需要做一张词表，也叫做词典，就是将我将要用到的单词做成一个列表。这样词典中的每一个单词都对应了一个索引。<br>接下来我们使用one-hot表示法来表示词典里的每个单词，例如Harry在我们词典中的索引是4075，那么我们使用一个长度为10000(词典长度)的向量来表示一个单词，对于Harry来说，其余行都是0，只有第4075行是1。同样上图中potter也使用类似的表示方法。最终，我们将会使用9个向量来表示输入的文本x。我们的训练数据将会是带有对应标签的x。我们使用UNK来表示没有在词典中出现的单词。</p>
+<h3 id="5-2-循环神经网络"><a href="#5-2-循环神经网络" class="headerlink" title="5.2 循环神经网络"></a>5.2 循环神经网络</h3><p>我们考虑使用标准的神经网络来完成x到y的映射。如下图，神经网络的输入为经过one-hot编码得到的9个向量，输出为9个值为0/1的项，来表示输入的单词是否是人名的一部分。<br><img src="/images/深度学习/自然语言处理3.png" alt="自然语言处理3"><br>但结果表明这个方法并不好，主要存在两个问题：<br>1 输入数据x和输出结果y在不同例子中可以有不同的长度。不是所有的例子都有着同样输入长度T_x。即使每个句子都有最大长度，也许我们能够填充或0填充，使每个输入语句都达到最大长度，但仍然看起来不是一个好的表达方式。<br>2 标准神经网络并不共享从文本的不同位置学到的特征。例如在输入文本索引1出现的harry是人名的一部分，那么当Harry出现在其他位置时，我们希望它也能被识别为人名的一部分。<br>同时我们需要注意到，这个输入层非常庞大，它的大小为每条样本中最大单词数乘以10000，那么第一层的权重矩阵就会有巨量的参数。<br><img src="/images/深度学习/自然语言处理4.png" alt="自然语言处理4"><br>为了改善这些问题，我们有了循环神经网络。如上图，图中每一个块代表一个神经网络。如果我们从左到右读句子x，那么第一个单词就是x^1,我们要做的就是将x^输入到第一个神经网络的隐藏层，我们让这个神经网络尝试预测并输出结果。当神经网络读到句子x的第二个单词x^2时,它不是仅用x^2预测出y^2,它也会输入一些来自时间步1(也就是上一步)的信息，时间步1的激活值(激活项，是指由一个具体的神经元计算并输出的值)就会传递到时间步2，然后在下一个时间步。循环神经网络输入了单词x^3,然后输出了预测结果y^3,直到最后一个时间步，神经网络的输入为x^(T_x),神经网络的输出为y^(T_y),对于这个样本数据，T_x = T_y,如果不等，则这个结构会需要作出一些改变。<br>所以，在每一个时间步中，循环神经网络传递一个激活值到下一个步中用于计算。要开始整个流程，我们在零时刻，需要编造一个激活值(伪激活值)，它通常是一个0向量。<br>在上图中的右边位置，是有些论文中用来表示循环神经网络的方法，在课程中，我们一般使用左边这种表示方法。<br>循环神经网络是从左向右扫描数据，同时每个时间步的参数也是共享的。W_ax管理着从x^1到隐藏层的连接的一系列参数。每一个时间步使用的都是相同的参数W_ax。而激活值，也就是网络中的水平联系是由参数W_aa决定的，同时每一个时间步都使用相同的参数W_aa。网络的输入由W_ya决定。<br>在这个循环神经网络中，上一时间步的信息通过水平连接传递给下一时间步来帮助当前时间步进行预测。这个循环神经网络的缺点就是它只使用了这个序列中之前的信息来做出预测，而没有办法使用这个序列之后的信息，例如我们在预测索引3位置的单词时，没有用到4、5、6等等位置的信息。但是在实际使用中，我们做出正确的判断也需要后面的信息，如上图中的Teddy，在第一句中是人名，但在第二句中却不是。<br>在后面，我们学习的双向循环神经网络(BRNN)的时候解决这个问题，现在我们以RNN为例进行讲解。<br><img src="/images/深度学习/自然语言处理5.png" alt="自然语言处理5"><br>如上图，我们先来了解一下前向传播的过程。一般开始先输入a^0,它是一个零向量。接着为了计算a^1,我们使用</p>
+<script type="math/tex; mode=display">a^{<1>} = g(W_{aa}\times a^{<0>}+W_{ax}\times x^{<1>}+b_a),g = tanh/ReLU</script><p>然后计算y^1:</p>
+<script type="math/tex; mode=display">y^{<1>} = g(W_{ya}\times a^{<1>} + b_y),g = sigmoid</script><p>这里解释一下参数下标的含义，例如W_ax,第二个下标的名字为x，表示它将乘上一个x类型的量，第一个下标的名字为a，表示它是用来计算a类型的量的。<br>循环神经网络用的激活函数经常是选用tanh，有时也会用ReLU，但是tanh是更通常的选择。选用哪个激活函数是取决于我们的输出y，如果它是一个二分问题，激活函数为sigmoid，如果是k分类问题，激活函数是softmax。对于命名实体识别来说，y只可能是0或者1，因此我们计算y使用的激活函数为sigmoid。<br>同理我们可以计算出t时刻的a^t，结果如上图。<br><img src="/images/深度学习/自然语言处理6.png" alt="自然语言处理6"><br>在上图中，我们将Waa和Wax矩阵水平放置在一起，形成一个矩阵W_a。例如，a的维度是100(a指的是单元数目)，x的维度是10000，那么W_aa就是100*100的矩阵，W_ax就是100*10000的矩阵，因此如果将这两个矩阵并排放置，W_a就会是个100*10100维的矩阵，具体细节如上图右边。<br>则有:</p>
+<script type="math/tex; mode=display">a^{\left \langle t \right \rangle} = g(W_a[a^{\left \langle t-1 \right \rangle},x^{\left \langle t \right \rangle}]+b_a)</script><p>[]的意思是将这两个向量竖直放置在一起，如上图中紫色部分，最终得到10100维的向量。仔细观察绿色部分的两个矩阵相乘，实际上就等价于W_aa和a相乘，W_ax和x相乘。<br>这样做的好处是我们可以不使用两个参数矩阵W_aa和W_ax,而是将其压缩成一个参数矩阵W_a,这样能够简化我们要用到的符号。<br>同样对于y的计算，我们可以简化成图中左边蓝色部分，W_y表明它是计算类型y的权重矩阵，而上面的W_a和W_b则表示这些参数是用于计算a的值(激活值)</p>
+<h3 id="5-3-通过时间的反向传播"><a href="#5-3-通过时间的反向传播" class="headerlink" title="5.3 通过时间的反向传播"></a>5.3 通过时间的反向传播</h3><p><img src="/images/深度学习/自然语言处理7.png" alt="自然语言处理7"><br>在上图中，蓝色表示前向传播的计算方向，红色表示反向传播的计算方向。<br><img src="/images/深度学习/自然语言处理8.png" alt="自然语言处理8"><br>在上图中，我们有一系列的输入x^1,x^2,…,x^T_x。然后我们用x^1和a^0计算出时间步1的激活项a^1;用x^2和a^1计算出时间步2的激活项a^2。在这个过程中我们需要的参数为W_a和b_a,这两个参数会被用于计算出所有的激活项。<br>然后我们通过a^1计算出预测输出y^1,在下一个时间步中，我们通过a^2计算出预测输出y^2。在这个过程中我们需要的参数为W_y和b_y,这两个参数会被用于计算出所有的输出y。<br>在进行反向传播之前，我们需要一个损失函数。我们先定义一个元素损失函数，它对应的是序列中一个具体的词，如果第t个数据是人名，那么y^t就是1，然后神经网络将输出第t个值是名字的概率y_pre^t,例如y_pre^t=0.1。我们将损失函数定义为标准逻辑回归损失函数，也叫交叉熵损失函数。具体公式见上图红框部分。这是关于单个位置上或者说某个时间步t上某个单词的预测值的损失函数。<br>现在我们来定义整个序列的损失函数。将L定义为从t=1开始一直到t=T_x/T_y(因为T_x=T_y),对每一个时间步的损失求和。<br>于是在上图中，我们可以通过y_pre^t和y^t计算出时间步t的损失函数。最后我们的反向传播就是沿着红色箭头的方向进行计算。然后我们就可以使用梯度下降法来更新参数。在反向传播过程中最重要的信息传递就是从右到左的运算，因此这个算法还有个名字叫做通过时间(穿过时间)的反向传播。这是因为在前向传播中，我们是从左到右进行计算，在反向传播的过程中，我们从右到左进行计算，就像是时间倒流。</p>
+<h3 id="5-4-不同类型的循环神经网络"><a href="#5-4-不同类型的循环神经网络" class="headerlink" title="5.4 不同类型的循环神经网络"></a>5.4 不同类型的循环神经网络</h3><p>在前面我们谈论的RNN模型T_x=T_y,但是在实际问题中，T_x和T_y不一定相等。我们需要修改基本的RNN结构来处理这些问题。<br><img src="/images/深度学习/自然语言处理9.png" alt="自然语言处理9"><br>多对多结构：上图中左边的位置，输入序列有很多的输入，而输出序列也有很多输出。<br>多对一结构：输入x可能是一段文本，例如一个电影的评论，输出y是1-5或是0-1的数字。我们一次输入一个单词，如图中中部位置，我们不再在每个时间步上都有输出了，而是让这个RNN网络读入整个句子，然后在最后一个时间上得到输出。它的特点是输入序列有很多，然后只输出一个数字。<br>一对一结构：这就是一个小型的标准的神经网络。<br><img src="/images/深度学习/自然语言处理10.png" alt="自然语言处理10"><br>一对多结构：常用于音乐生成。我们的输出是一些音符，对应于一段音乐。输入x可以是一个整数，表示我们想要生成的音乐类型。首先我们输入x得到RNN输出的第一个值，在下一个时间步中，模型没有输入参数，输出第二个值。我们会在开头提供一个伪激活项a^0。这里有一个后面会涉及的技术细节，当我们生成序列时，通常会把第一个合成的输出也喂给下一层，所以实际的网络结构最终如上图左边所示。<br>对于多对多模型，我们考虑输入和输出长度不同的情况，例如机器翻译。首先读入这个句子。在输入结束时这个网络就会输出翻译的结果。因此整个网络分成了部分，首先是一个编码器，用于获取输入，第二部分是一个解码器，它会读取整个句子，然后输出翻译成其他语言的结果。<br>总结一下各种各样的RNN结构如下图;<br><img src="/images/深度学习/自然语言处理11.png" alt="自然语言处理11"><br>一对一：如果去掉了a^0，它就是一种标准类型的神经网络，不需要RNN。<br>一对多：用于音乐生成或者序列生成。<br>多对一：用于情感分类。<br>多对多：T_x=T_y,用于命名实体识别。<br>多对多：用于机器翻译，T_x不等于T_y。</p>
+<h3 id="5-5-语言模型和序列生成"><a href="#5-5-语言模型和序列生成" class="headerlink" title="5.5 语言模型和序列生成"></a>5.5 语言模型和序列生成</h3><h4 id="5-5-1-语言模型的作用"><a href="#5-5-1-语言模型的作用" class="headerlink" title="5.5.1 语言模型的作用"></a>5.5.1 语言模型的作用</h4><p><img src="/images/深度学习/自然语言处理12.png" alt="自然语言处理12"><br>我们在语音识别时可能会将语音输入识别为上图中两种可能的情况，然而此时我们应该想要表达的意思是第二种，一个好的语音识别系统能正确输出识别结果为第二种而不是第一种，即使这两句话听起来是如此相似。为了达到这一目的，我们需要使用一个语言模型，来计算这两句话各自的可能性，通过比较这两个概率值，来决定最终的输出结果。<br>语言识别模型的工作就是输出某个特定的句子出现的概率是多少，它是语音识别系统和机器翻译系统的重要组成部分，目的是正确输出最接近的句子。</p>
+<h4 id="5-5-2-建立一个语言模型"><a href="#5-5-2-建立一个语言模型" class="headerlink" title="5.5.2 建立一个语言模型"></a>5.5.2 建立一个语言模型</h4><h5 id="5-5-2-1-标记化"><a href="#5-5-2-1-标记化" class="headerlink" title="5.5.2.1 标记化"></a>5.5.2.1 标记化</h5><p><img src="/images/深度学习/自然语言处理13.png" alt="自然语言处理13"><br>训练集：包含一个很大的英文文本语料库。语料库是自然语言处理的一个专有名词，在这里就是数量众多的英文句子组成的文本。<br>假如说我们训练集中有一句话，如上图，猫一天睡15个小时。我们要做的第一件事就是将句子标记化。就像是之前我们曾经提到过的一样，建立一个字典，然后对每一个单词使用one-hot编码。同时我们需要定义句子的结尾，一般的做法是增加一个额外的标记EOS，这样我们可以知道一个句子什么时候结束。因此我们需要对训练集中的每一个句子的结尾增加这个标记。如果按照这样的规则，我们可以得到9个标记，y^1,y^2,…y^9。在这个过程中，我们可以决定要不要把标点看成是标记。这里我们忽略了标记。<br>在上图中第三行的样本数据中，出现了不在我们字典中的一些单词。此时我们可以把Mau替换成一个UNK标记，代表未知词。我们只针对UNK建立概率模型，而不针对这个具体的词Mau。</p>
+<h5 id="5-5-2-2-构建RNN"><a href="#5-5-2-2-构建RNN" class="headerlink" title="5.5.2.2 构建RNN"></a>5.5.2.2 构建RNN</h5><p><img src="/images/深度学习/自然语言处理14.png" alt="自然语言处理14"><br>在这里，x^t=y^(t-1)。在第0个时间步，我们计算激活项a^1,它是由a^0和x^1共同决定的，a^0和x^1会被设为全0向量。然后a^1通过softmax预测第一个词可能是y_pre^1。这一步实际上就是通过softmax来预测字典中的任意单词会是第一个词的概率。例如第一个词是cats的概率是多少？所以softmax层可能输出10000+2种结果，这是因为字典中一共有10000个词，再加上句子结尾和UNK标志。<br>然后RNN进入下一个时间步，我们计算激活项a^2，它是由a^1和y^1(即在时间步0中正确的输出，在这里y^1=Cats),最终预测得到的第二个词会是y_pre^2。输出结果同样经过softmax层进行预测，RNN的工作就是预测这些词的概率，而不去管正确的结果是什么，它只会考虑之前的值y^1。<br>然后再进入到RNN的下一个时间步，它的输入是y^2=average,输出是y_pre^3,也就是字典中每一个词出现在这里的概率，通过之前得到的cats和average。<br>以此类推，最后停在第9个时间步，此时的输入为y^8=day,输出为y_pre^9,y^9=EOS,因此我们希望EOS标志能有很高的概率。<br>所以RNN中的每一个时间步，都会考虑前面得到的单词，比如给他前三个单词，让他给出下个词的分布。RNN的工作就是学习从左到右地预测一个词。</p>
+<h5 id="5-5-2-3-定义代价函数"><a href="#5-5-2-3-定义代价函数" class="headerlink" title="5.5.2.3 定义代价函数"></a>5.5.2.3 定义代价函数</h5><p>在某一个时间步时，如果真正的词是y^t,softmax层预测的词是y_pre^t，那么softmax的损失函数定义如上图中红框部分。<br>而总体损失函数就是把所有单个预测的损失函数都相加起来。<br>如果我们用很大的训练集来训练这个RNN，我们就可以通过开头的一系列单词来预测之后的单词的概率。<br>现在有一个新的句子y^1,y^2,y^3，现在要计算出句子中各个单词的概率，方法就是第一个softmax层会输出p(y^1),然后第二个softmax层会输出在考虑y^1情况下的p(y^2),最后第三个softmax层会输出在考虑y^1和y^2情况下的p(y^3)。把这三个概率相乘，最后得到这个含3个单词的整个句子的概率。<br><a href="https://www.bilibili.com/video/BV1FT4y1E74V?p=157&amp;vd_source=3fbda25a4b0f2f754f5986883bf96612" target="_blank" rel="noopener">学习进度</a></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/" rel="tag"># 数据挖掘</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/11/01/%E5%85%B4%E8%B6%A3/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="prev" title="机器学习">
+      <i class="fa fa-chevron-left"></i> 机器学习
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-神经网络和深度学习"><span class="nav-number">1.</span> <span class="nav-text">1 神经网络和深度学习</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-什么是神经网络"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 什么是神经网络</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-改进深度神经网络：超参数调整、正则化和优化"><span class="nav-number">2.</span> <span class="nav-text">2 改进深度神经网络：超参数调整、正则化和优化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-结构化机器学习工程"><span class="nav-number">3.</span> <span class="nav-text">3 结构化机器学习工程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-卷积神经网络-Convolutional-Neural-Networks"><span class="nav-number">4.</span> <span class="nav-text">4 卷积神经网络 Convolutional Neural Networks</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-自然语言处理：建立序列模型"><span class="nav-number">5.</span> <span class="nav-text">5 自然语言处理：建立序列模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-数学符号"><span class="nav-number">5.1.</span> <span class="nav-text">5.1 数学符号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2-循环神经网络"><span class="nav-number">5.2.</span> <span class="nav-text">5.2 循环神经网络</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-3-通过时间的反向传播"><span class="nav-number">5.3.</span> <span class="nav-text">5.3 通过时间的反向传播</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-4-不同类型的循环神经网络"><span class="nav-number">5.4.</span> <span class="nav-text">5.4 不同类型的循环神经网络</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-5-语言模型和序列生成"><span class="nav-number">5.5.</span> <span class="nav-text">5.5 语言模型和序列生成</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#5-5-1-语言模型的作用"><span class="nav-number">5.5.1.</span> <span class="nav-text">5.5.1 语言模型的作用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-5-2-建立一个语言模型"><span class="nav-number">5.5.2.</span> <span class="nav-text">5.5.2 建立一个语言模型</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#5-5-2-1-标记化"><span class="nav-number">5.5.2.1.</span> <span class="nav-text">5.5.2.1 标记化</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-5-2-2-构建RNN"><span class="nav-number">5.5.2.2.</span> <span class="nav-text">5.5.2.2 构建RNN</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-5-2-3-定义代价函数"><span class="nav-number">5.5.2.3.</span> <span class="nav-text">5.5.2.3 定义代价函数</span></a></li></ol></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Monica</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">55</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">28</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Monica</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+          load: ['[tex]/mhchem'],
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+          packages: {'[+]': ['mhchem']},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+</body>
+</html>
