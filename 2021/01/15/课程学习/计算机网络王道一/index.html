@@ -38,9 +38,9 @@
 <meta property="og:image" content="https://monica-y.github.io/images/%E8%AE%A1%E7%BD%91TCPIP%E5%8F%82%E8%80%83%E6%A8%A1%E5%9E%8B1.7.png">
 <meta property="og:image" content="https://monica-y.github.io/images/%E8%AE%A1%E7%BD%91OSI%E4%B8%8ETCPIP%E4%B8%8D%E5%90%8C%E7%82%B91.7.png">
 <meta property="og:image" content="https://monica-y.github.io/images/%E8%AE%A1%E7%BD%915%E5%B1%82%E5%8F%82%E8%80%83%E6%A8%A1%E5%9E%8B%E7%9A%84%E6%95%B0%E6%8D%AE%E5%B0%81%E8%A3%85%E4%B8%8E%E8%A7%A3%E5%B0%81%E8%A3%851.7.png">
-<meta property="og:image" content="https://monica-y.github.io/images/%E8%AE%A1%E7%BD%91%E7%AC%AC%E4%B8%80%E7%AB%A0%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%931.8.png">
+<meta property="og:image" content="https://monica-y.github.io/images/%E8%AE%A1%E7%BD%91%E7%AC%AC%E4%B8%80%E7%AB%A0%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93%EF%BC%91.%EF%BC%98.png">
 <meta property="article:published_time" content="2021-01-15T02:42:17.718Z">
-<meta property="article:modified_time" content="2021-02-16T03:00:33.598Z">
+<meta property="article:modified_time" content="2023-08-04T04:37:04.861Z">
 <meta property="article:author" content="Monica">
 <meta property="article:tag" content="读书笔记">
 <meta property="article:tag" content="计算机网络">
@@ -205,7 +205,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-02-16 11:00:33" itemprop="dateModified" datetime="2021-02-16T11:00:33+08:00">2021-02-16</time>
+                <time title="修改时间：2023-08-04 12:37:04" itemprop="dateModified" datetime="2023-08-04T12:37:04+08:00">2023-08-04</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -251,7 +251,7 @@
 <p>从发送方发送数据的最后一个bit上线开始，到发送方接收到接收方的确认（接收方收到消息后立即发送确认），总共经历的时延。<br>2、RTT越大，在收到确认之前，可以发送的数据越多。<br>3、RTT包括<br>往返传播时延 = 传播时延*2<br>末端处理时间</p>
 <p>四、利用率<br>1、利用率的分类<br>信道利用率 有数据通过时间/（有+无）数据通过时间<br>网络利用率 信道利用率加权平均值</p>
 <p><img src="/images/脑图时刻1.4.png" alt="脑图时刻1.4"></p>
-<h2 id="分层结构、协议、接口、服务"><a href="#分层结构、协议、接口、服务" class="headerlink" title="　分层结构、协议、接口、服务"></a>　分层结构、协议、接口、服务</h2><p>一、分层的基本原则<br>1、各层之间相互独立，每层只实现一种相对独立的功能。<br>2、每层之间界面自然清晰，易于理解，相互交流尽可能少。<br>3、结构上可分割开。每层都采用最合适的技术来实现。<br>4、保持下层对上层的独立性。上层单向使用下层提供的服务。<br>5、整个分层结构应该能促进标准化工作。</p>
+<h2 id="分层结构、协议、接口、服务"><a href="#分层结构、协议、接口、服务" class="headerlink" title="分层结构、协议、接口、服务"></a>分层结构、协议、接口、服务</h2><p>一、分层的基本原则<br>1、各层之间相互独立，每层只实现一种相对独立的功能。<br>2、每层之间界面自然清晰，易于理解，相互交流尽可能少。<br>3、结构上可分割开。每层都采用最合适的技术来实现。<br>4、保持下层对上层的独立性。上层单向使用下层提供的服务。<br>5、整个分层结构应该能促进标准化工作。</p>
 <p>二、认识分层结构<br>1、实体：第n层中的活动元素称为n层实体。同一层的实体叫对等实体。<br>2、协议：为进行网络中的对等实体数据交换而建立的规则、标准或约定称为网络协议。（水平）<br>语法：规定传输数据的格式<br>语义：规定所要完成的功能<br>同步：规定各种操作的顺序<br>3、接口（访问服务点SAP）：上层使用下层服务的入口<br>4、服务：下层为相邻上层提供的功能调用。（垂直）<br>5、SDU服务数据单元（service database unit）：为完成用户所要求的功能而应传送的数据。<br>6、PCI协议控制信息：控制协议操作的信息<br>7、PDU协议数据单元：对等层次之间传送的数据单位。<br>PDU = PCI（控制信息）+SDU（数据内容）</p>
 <p>三、概念总结<br>1、网络体系结构是从功能上描述计算机网络结构。<br>2、计算机网络体系结构简称网络体系结构是分层结构。<br>3、每层遵循某个/些网络协议以完成本层功能。<br>4、计算机网络体系结构是计算机网络的各层及其协议的集合。<br>5、第n层在向n+1层提供服务时，此服务不仅包含第n层本身的功能，还包含由下层服务提供的功能。<br>6、仅仅在相邻层间有接口，且所提供服务的具体实现细节对上一层完全屏蔽。<br>7、体系结构是抽象的，而实现是指能运行的一些软件和硬件。</p>
 <p><img src="/images/脑图时刻1.5.png" alt="脑图时刻1.5"></p>
@@ -268,7 +268,7 @@
 <h2 id="TCP-IP-amp-五层参考模型"><a href="#TCP-IP-amp-五层参考模型" class="headerlink" title="TCP/IP&amp;五层参考模型"></a>TCP/IP&amp;五层参考模型</h2><p><img src="/images/计网TCPIP参考模型1.7.png" alt="计网TCPIP参考模型1.7"></p>
 <p>一、TCP/IP<br>1、OSI参考模型与TCP/IP参考模型相同点<br>1）都分层<br>2）都基于独立的协议栈的概念<br>3）都可以实现异构网络互联<br>2、1、OSI参考模型与TCP/IP参考模型不同点<br>1）OSI定义三点：服务、协议、接口<br>2）OSI先出现，参考模型先于协议发明，不偏向特定协议<br>3）TCP/IP设计之初就考虑到异构网互联问题，将IP作为重要层次<br>4）见ppt中表格<br><img src="/images/计网OSI与TCPIP不同点1.7.png" alt="计网OSI与TCPIP不同点1.7"><br>面向连接分为三个阶段，第一是建立连接，在此阶段，发出一个建立连接的请求。只有在连接成功建立之后，才能开始数据传输，这是第二阶段。接着，当数据传输完毕，必须释放连接。而面向无连接没有这么多阶段，它直接进行数据传输。</p>
 <p>二、5层参考模型<br>1、应用层：支持各种网络应用。协议：FTP、SMTP、HTTP<br>2、传输层：进程-进程的数据传输。协议：TCP、UDP<br>3、网络层：源主机到目的主机的数据分组路由与转发。协议：IP、ICMP、OSPF等<br>4、数据链路层：把网络层传下来的数据报组装成帧。协议：Ethernet、PPP<br>5、物理层：比特传输<br><img src="/images/计网5层参考模型的数据封装与解封装1.7.png" alt="计网5层参考模型的数据封装与解封装1.7"></p>
-<h2 id="第一章知识总结"><a href="#第一章知识总结" class="headerlink" title="第一章知识总结"></a>第一章知识总结</h2><p><img src="/images/计网第一章知识总结1.8.png" alt="计网第一章知识总结1.8"></p>
+<h2 id="第一章知识总结"><a href="#第一章知识总结" class="headerlink" title="第一章知识总结"></a>第一章知识总结</h2><p><img src="/images/计网第一章知识总结１.８.png" alt="计网第一章知识总结1.8"></p>
 
     </div>
 
@@ -353,7 +353,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概念、组成、功能和分类"><span class="nav-number">1.</span> <span class="nav-text">概念、组成、功能和分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#标准化工作及其相关组织"><span class="nav-number">2.</span> <span class="nav-text">标准化工作及其相关组织</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#速率相关的性能指标"><span class="nav-number">3.</span> <span class="nav-text">速率相关的性能指标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#时延、时延带宽积、RTT和利用率"><span class="nav-number">4.</span> <span class="nav-text">时延、时延带宽积、RTT和利用率</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分层结构、协议、接口、服务"><span class="nav-number">5.</span> <span class="nav-text">　分层结构、协议、接口、服务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#OSI参考模型（1）"><span class="nav-number">6.</span> <span class="nav-text">OSI参考模型（1）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#OSI参考模型（2）"><span class="nav-number">7.</span> <span class="nav-text">OSI参考模型（2）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TCP-IP-amp-五层参考模型"><span class="nav-number">8.</span> <span class="nav-text">TCP&#x2F;IP&amp;五层参考模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第一章知识总结"><span class="nav-number">9.</span> <span class="nav-text">第一章知识总结</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概念、组成、功能和分类"><span class="nav-number">1.</span> <span class="nav-text">概念、组成、功能和分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#标准化工作及其相关组织"><span class="nav-number">2.</span> <span class="nav-text">标准化工作及其相关组织</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#速率相关的性能指标"><span class="nav-number">3.</span> <span class="nav-text">速率相关的性能指标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#时延、时延带宽积、RTT和利用率"><span class="nav-number">4.</span> <span class="nav-text">时延、时延带宽积、RTT和利用率</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分层结构、协议、接口、服务"><span class="nav-number">5.</span> <span class="nav-text">分层结构、协议、接口、服务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#OSI参考模型（1）"><span class="nav-number">6.</span> <span class="nav-text">OSI参考模型（1）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#OSI参考模型（2）"><span class="nav-number">7.</span> <span class="nav-text">OSI参考模型（2）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TCP-IP-amp-五层参考模型"><span class="nav-number">8.</span> <span class="nav-text">TCP&#x2F;IP&amp;五层参考模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第一章知识总结"><span class="nav-number">9.</span> <span class="nav-text">第一章知识总结</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
