@@ -28,7 +28,7 @@
 <meta property="og:description" content="Windows10&#x2F;11家庭版配置远程连接功能">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-01-24T08:00:03.580Z">
-<meta property="article:modified_time" content="2024-01-24T08:13:23.226Z">
+<meta property="article:modified_time" content="2025-12-27T07:59:19.916Z">
 <meta property="article:author" content="Monica">
 <meta property="article:tag" content="教程">
 <meta name="twitter:card" content="summary">
@@ -183,10 +183,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2024-01-24 16:00:03 / 修改时间：16:13:23" itemprop="dateCreated datePublished" datetime="2024-01-24T16:00:03+08:00">2024-01-24</time>
+              <time title="创建时间：2024-01-24 16:00:03" itemprop="dateCreated datePublished" datetime="2024-01-24T16:00:03+08:00">2024-01-24</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2025-12-27 15:59:19" itemprop="dateModified" datetime="2025-12-27T15:59:19+08:00">2025-12-27</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -210,9 +216,10 @@
 
       
         <h2 id="1-正常思路"><a href="#1-正常思路" class="headerlink" title="1 正常思路"></a>1 正常思路</h2><p>知乎上的相关教程<a href="https://zhuanlan.zhihu.com/p/600706130" target="_blank" rel="noopener">配置RDP</a>。</p>
-<h2 id="2-问题解决"><a href="#2-问题解决" class="headerlink" title="2 问题解决"></a>2 问题解决</h2><p>可以查看解决办法的仓库<a href="https://github.com/stascorp/rdpwrap/issues" target="_blank" rel="noopener">RDP issuses</a></p>
+<h2 id="2-运行问题解决"><a href="#2-运行问题解决" class="headerlink" title="2 运行问题解决"></a>2 运行问题解决</h2><p>可以查看解决办法的仓库<a href="https://github.com/stascorp/rdpwrap/issues" target="_blank" rel="noopener">RDP issuses</a></p>
 <h3 id="2-1-win11-fully-supported-but-not-listening"><a href="#2-1-win11-fully-supported-but-not-listening" class="headerlink" title="2.1 win11-fully supported but not listening"></a>2.1 win11-fully supported but not listening</h3><p>防火墙将RDP程序拦截，重新设置防火墙信任列表。</p>
 <h3 id="2-2-win10-not-supported-and-not-listening"><a href="#2-2-win10-not-supported-and-not-listening" class="headerlink" title="2.2 win10-not supported and not listening"></a>2.2 win10-not supported and not listening</h3><p>这是因为Windows系统的小版本号与RDPWARP.ini文件中的版本号不匹配的原因。更新系统后都可能会出现这个问题。<a href="https://blog.csdn.net/sanqima/article/details/117251038" target="_blank" rel="noopener">解决办法</a>但是这个博客中的ini文件并不能解决我的版本号，最新的ini文件的<a href="https://github.com/sebaxakerhtc/rdpwrap.ini/blob/master/rdpwrap.ini" target="_blank" rel="noopener">下载连接</a>,可以从下载文件中查看支持的小版本号。</p>
+<h2 id="3-安装问题解决"><a href="#3-安装问题解决" class="headerlink" title="3 安装问题解决"></a>3 安装问题解决</h2><h3 id="3-1-运行install文件拒绝访问"><a href="#3-1-运行install文件拒绝访问" class="headerlink" title="3.1 运行install文件拒绝访问"></a>3.1 运行install文件拒绝访问</h3><p>需要关闭Windows系统的实时保护。</p>
 
     </div>
 
@@ -296,7 +303,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-正常思路"><span class="nav-number">1.</span> <span class="nav-text">1 正常思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-问题解决"><span class="nav-number">2.</span> <span class="nav-text">2 问题解决</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-win11-fully-supported-but-not-listening"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 win11-fully supported but not listening</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-win10-not-supported-and-not-listening"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 win10-not supported and not listening</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-正常思路"><span class="nav-number">1.</span> <span class="nav-text">1 正常思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-运行问题解决"><span class="nav-number">2.</span> <span class="nav-text">2 运行问题解决</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-win11-fully-supported-but-not-listening"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 win11-fully supported but not listening</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-win10-not-supported-and-not-listening"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 win10-not supported and not listening</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-安装问题解决"><span class="nav-number">3.</span> <span class="nav-text">3 安装问题解决</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-运行install文件拒绝访问"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 运行install文件拒绝访问</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
